@@ -5,54 +5,60 @@
   "email": "hello@quietwire.ai",
   "description": "QuietWire builds local AI, governed memory, and attested systems that keep decisions, evidence, and identity aligned across time, teams, and places.",
   "nav": [
-    {
-      "label": "Work",
-      "href": "/work/",
-      "key": "work"
-    },
-    {
-      "label": "Method",
-      "href": "/method/",
-      "key": "method"
-    },
-    {
-      "label": "Field",
-      "href": "/field/",
-      "key": "field"
-    },
-    {
-      "label": "About",
-      "href": "/about/",
-      "key": "about"
-    }
+    {"label": "Work", "href": "/work/", "key": "work"},
+    {"label": "Appliances", "href": "/appliances/", "key": "appliances"},
+    {"label": "Pilot", "href": "/pilot/", "key": "pilot"},
+    {"label": "Patterns", "href": "/patterns/", "key": "patterns"},
+    {"label": "About", "href": "/about/", "key": "about"}
   ],
   "pages": [
     {
       "source": "index.html",
       "output": "index.html",
       "key": "home",
-      "title": "QuietWire \u2014 Coherence Infrastructure",
+      "title": "QuietWire — Coherence Infrastructure",
       "description": "Local AI, governed memory, and attested systems for organizations that need continuity they can own."
     },
     {
       "source": "work.html",
       "output": "work/index.html",
       "key": "work",
-      "title": "What We Build \u2014 QuietWire",
+      "title": "What We Build — QuietWire",
       "description": "Sovereign nodes, attestation, coherent companions, and mesh infrastructure."
+    },
+    {
+      "source": "appliances.html",
+      "output": "appliances/index.html",
+      "key": "appliances",
+      "title": "Node Appliances & Pricing — QuietWire",
+      "description": "Client-owned QuietWire node appliances with onboarding, governed memory, and monthly stewardship."
+    },
+    {
+      "source": "pilot.html",
+      "output": "pilot/index.html",
+      "key": "pilot",
+      "title": "The 60-Day Node Pilot — QuietWire",
+      "description": "A bounded path from discovery to a working QuietWire node, evidence package, and expansion decision."
+    },
+    {
+      "source": "patterns.html",
+      "output": "patterns/index.html",
+      "key": "patterns",
+      "title": "Deployment Patterns — QuietWire",
+      "description": "Practical QuietWire deployment patterns for hospitals, professional practices, field networks, and public infrastructure."
     },
     {
       "source": "method.html",
       "output": "method/index.html",
       "key": "method",
-      "title": "How We Build Trust \u2014 QuietWire",
+      "title": "How We Build Trust — QuietWire",
       "description": "A local-first, evidence-bearing method for AI, memory, and operational continuity."
     },
     {
       "source": "field.html",
       "output": "field/index.html",
       "key": "field",
-      "title": "Field Patterns \u2014 QuietWire",
+      "title": "Field Patterns — QuietWire",
       "description": "Practical patterns for clinics, shops, offices, public access, education, and cultural memory."
     },
     {
@@ -66,7 +72,7 @@
       "source": "privacy.html",
       "output": "privacy/index.html",
       "key": "privacy",
-      "title": "Privacy \u2014 QuietWire",
+      "title": "Privacy — QuietWire",
       "description": "How this website and QuietWire approach privacy and local custody."
     }
   ]

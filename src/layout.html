@@ -7,7 +7,11 @@
   <meta name="description" content="{{page_description}}">
   <meta name="theme-color" content="#0a1212">
   <link rel="canonical" href="{{canonical_url}}">
-<link rel="manifest" href="/site.webmanifest">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" href="/assets/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
   <script>document.documentElement.classList.add("has-js")</script>
   <link rel="stylesheet" href="/assets/site.css">
   <meta property="og:type" content="website">
@@ -21,10 +25,6 @@
   <meta name="twitter:description" content="{{page_description}}">
   <meta name="twitter:image" content="{{base_url}}/assets/quietwire-og.png">
   <script type="application/ld+json">{{structured_data}}</script>
-  <link rel="icon" href="/assets/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 </head>
 <body class="page-{{page_key}}">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -39,7 +39,7 @@
       </button>
       <nav id="site-nav" class="site-nav" aria-label="Primary" data-nav>
         {{navigation}}
-        <a class="nav-cta" href="mailto:hello@quietwire.ai">Start a conversation</a>
+        <a class="nav-cta" href="mailto:hello@quietwire.ai?subject=QuietWire%20node%20conversation">Start a conversation</a>
       </nav>
     </div>
   </header>
@@ -58,10 +58,17 @@
         <p>Local AI, governed memory, and attested systems for work that has to remain understandable.</p>
       </div>
       <div class="footer-links">
+        <strong>Begin</strong>
+        <a href="/appliances/">Node appliances</a>
+        <a href="/pilot/">60-day pilot</a>
+        <a href="/patterns/">Deployment patterns</a>
+        <a href="mailto:hello@quietwire.ai?subject=QuietWire%20node%20conversation">Start a conversation</a>
+      </div>
+      <div class="footer-links">
         <strong>Explore</strong>
         <a href="/work/">What we build</a>
         <a href="/method/">Our method</a>
-        <a href="/field/">Field patterns</a>
+        <a href="/field/">Field history</a>
         <a href="/about/">About</a>
       </div>
       <div class="footer-links">

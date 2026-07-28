@@ -41,7 +41,7 @@ for page in sorted(DIST.rglob('*.html')):
     text=page.read_text(encoding='utf-8').lower()
     for forbidden in ('google-analytics.com','googletagmanager.com','facebook.net','doubleclick.net'):
         if forbidden in text: errors.append(f'{page}: tracker reference {forbidden}')
-required=['index.html','work/index.html','method/index.html','field/index.html','about/index.html','privacy/index.html','robots.txt','sitemap.xml','site.webmanifest']
+required=['index.html','work/index.html','appliances/index.html','pilot/index.html','patterns/index.html','method/index.html','field/index.html','about/index.html','privacy/index.html','robots.txt','sitemap.xml','site.webmanifest']
 for rel in required:
     if not (DIST/rel).exists(): errors.append(f'missing {rel}')
 if errors:

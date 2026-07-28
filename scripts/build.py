@@ -93,7 +93,10 @@ def build() -> None:
         "display": "standalone",
         "background_color": "#0a1212",
         "theme_color": "#0a1212",
-        "icons": [{"src": "/assets/favicon.svg", "sizes": "any", "type": "image/svg+xml"}]
+        "icons": [
+            {"src": "/assets/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png"},
+            {"src": "/assets/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png"}
+        ]
     }
     (DIST / "site.webmanifest").write_text(json.dumps(manifest, indent=2)+"\n", encoding="utf-8")
     (DIST / "CNAME").write_text("www.quietwire.ai\n", encoding="utf-8")
