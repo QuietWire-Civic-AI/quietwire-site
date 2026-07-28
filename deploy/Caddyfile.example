@@ -1,0 +1,22 @@
+# Preview host first. Replace the email and paths during the Teddy hosting stage.
+teddy.quietwire.ai {
+    root * /var/lib/qwos/sites/quietwire/current
+    encode zstd gzip
+    file_server
+
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains"
+        X-Content-Type-Options "nosniff"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        X-Frame-Options "DENY"
+        Permissions-Policy "camera=(), microphone=(), geolocation=()"
+        Content-Security-Policy "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self' mailto:"
+    }
+}
+
+# Later cutover:
+# www.quietwire.ai, quietwire.ai {
+#     root * /var/lib/qwos/sites/quietwire/current
+#     encode zstd gzip
+#     file_server
+# }

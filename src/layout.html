@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{page_title}}</title>
+  <meta name="description" content="{{page_description}}">
+  <meta name="theme-color" content="#0a1212">
+  <link rel="canonical" href="{{canonical_url}}">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/site.webmanifest">
+  <script>document.documentElement.classList.add("has-js")</script>
+  <link rel="stylesheet" href="/assets/site.css">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="QuietWire">
+  <meta property="og:title" content="{{page_title}}">
+  <meta property="og:description" content="{{page_description}}">
+  <meta property="og:url" content="{{canonical_url}}">
+  <meta property="og:image" content="{{base_url}}/assets/quietwire-og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{page_title}}">
+  <meta name="twitter:description" content="{{page_description}}">
+  <meta name="twitter:image" content="{{base_url}}/assets/quietwire-og.png">
+  <script type="application/ld+json">{{structured_data}}</script>
+</head>
+<body class="page-{{page_key}}">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-header>
+    <div class="shell header-inner">
+      <a class="brand" href="/" aria-label="QuietWire home">
+        <img src="/assets/quietwire-mark.svg" width="38" height="38" alt="">
+        <span class="brand-copy"><strong>QuietWire</strong><small>coherence infrastructure</small></span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+        <span class="sr-only">Open navigation</span><span></span><span></span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary" data-nav>
+        {{navigation}}
+        <a class="nav-cta" href="mailto:hello@quietwire.ai">Start a conversation</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    {{content}}
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div>
+        <a class="brand footer-brand" href="/">
+          <img src="/assets/quietwire-mark.svg" width="34" height="34" alt="">
+          <span class="brand-copy"><strong>QuietWire</strong><small>local strength, shared coherence</small></span>
+        </a>
+        <p>Local AI, governed memory, and attested systems for work that has to remain understandable.</p>
+      </div>
+      <div class="footer-links">
+        <strong>Explore</strong>
+        <a href="/work/">What we build</a>
+        <a href="/method/">Our method</a>
+        <a href="/field/">Field patterns</a>
+        <a href="/about/">About</a>
+      </div>
+      <div class="footer-links">
+        <strong>Connect</strong>
+        <a href="mailto:hello@quietwire.ai">hello@quietwire.ai</a>
+        <a href="https://github.com/QuietWire-Civic-AI">GitHub</a>
+        <a href="https://www.linkedin.com/company/quietwire/">LinkedIn</a>
+        <a href="/privacy/">Privacy</a>
+      </div>
+    </div>
+    <div class="shell footer-base">
+      <span>© {{year}} QuietWire. Built to be held close.</span>
+      <span>No trackers. No advertising. No borrowed attention.</span>
+    </div>
+  </footer>
+  <script src="/assets/site.js" defer></script>
+</body>
+</html>

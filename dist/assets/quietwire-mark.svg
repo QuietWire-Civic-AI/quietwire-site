@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+<title>QuietWire mark</title>
+<rect width="64" height="64" rx="18" fill="#102322"/>
+<path d="M13 20c10 0 10 24 20 24s10-24 20-24" fill="none" stroke="#77d0bb" stroke-width="5" stroke-linecap="round"/>
+<path d="M13 44c10 0 10-24 20-24s10 24 20 24" fill="none" stroke="#d3a36b" stroke-width="5" stroke-linecap="round"/>
+<circle cx="13" cy="20" r="3" fill="#e9f3ee"/><circle cx="53" cy="44" r="3" fill="#e9f3ee"/>
+</svg>
