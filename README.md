@@ -8,6 +8,8 @@ A static, local-first public website for QuietWire.
 - No advertising, trackers, external fonts, or third-party JavaScript.
 - Locale-specific page fragments live in `src/content/<locale>/pages/`.
 - Locale-specific shell strings live in `src/i18n/<locale>.json`.
+- English (`en-CA`) is unprefixed; Arabic (`ar`) uses `/ar/` and RTL output.
+- Language links connect equivalent routes without JavaScript or automatic redirects.
 - Shared structure lives in `src/layout.html` and `site.config.json`.
 - `dist/` is committed so a web server can serve it immediately.
 - Builds are deterministic enough to package into content-addressed releases.
@@ -40,6 +42,7 @@ This produces a static archive and manifest under `releases/`. A later QWOS depl
 site.config.json      site metadata, routes, and locale registry
 src/layout.html       shared document shell
 src/content/en-CA/    default-locale page content
+src/content/ar/       machine-assisted Arabic page drafts pending human review
 src/i18n/en-CA.json    default-locale shell strings
 src/assets/           CSS, JavaScript, and local graphics
 scripts/build.py      dependency-free static builder
@@ -52,3 +55,6 @@ deploy/               bounded Teddy hosting examples
 ## Publishing boundary
 
 Models and companions may draft source changes and previews. Production publishing should remain an explicit human-approved release action.
+
+Discovery remains English-only at `/discovery/`; it has no `/ar/discovery/`
+route. Arabic translation governance is recorded in `docs/i18n/`.

@@ -12,9 +12,16 @@ class Parser(HTMLParser):
     def __init__(self):
         super().__init__()
         self.links=[]; self.title=False; self.description=False; self.h1=0
+        self.lang=None; self.direction=None; self.alternates=[]; self.x_default=False; self.language_links=[]; self.canonical=None
     def handle_starttag(self, tag, attrs):
         a=dict(attrs)
         if tag == 'a' and a.get('href'): self.links.append(a['href'])
+        if tag == 'a' and a.get('hreflang'): self.language_links.append((a['hreflang'], a['href']))
+        if tag == 'html': self.lang, self.direction = a.get('lang'), a.get('dir')
+        if tag == 'link' and a.get('rel') == 'canonical': self.canonical = a.get('href')
+        if tag == 'link' and a.get('rel') == 'alternate' and a.get('hreflang'):
+            self.alternates.append((a['hreflang'], a.get('href')))
+            self.x_default = self.x_default or a['hreflang'] == 'x-default'
         if tag == 'title': self.title=True
         if tag == 'meta' and a.get('name') == 'description' and a.get('content'): self.description=True
         if tag == 'h1': self.h1 += 1
@@ -41,7 +48,15 @@ for page in sorted(DIST.rglob('*.html')):
     text=page.read_text(encoding='utf-8').lower()
     for forbidden in ('google-analytics.com','googletagmanager.com','facebook.net','doubleclick.net'):
         if forbidden in text: errors.append(f'{page}: tracker reference {forbidden}')
-required=['index.html','work/index.html','appliances/index.html','pilot/index.html','patterns/index.html','discovery/index.html','method/index.html','field/index.html','about/index.html','privacy/index.html','robots.txt','sitemap.xml','site.webmanifest']
+config = json.loads((ROOT / 'site.config.json').read_text(encoding='utf-8'))
+locales = {locale['id']: locale for locale in config['locales']}
+required=['robots.txt','sitemap.xml','site.webmanifest']
+required += [
+    str(Path(locale['url_prefix']) / page['output']) if locale['url_prefix'] else page['output']
+    for locale in locales.values()
+    for page in locale['pages']
+]
+required += [app['output'].rstrip('/') + '/index.html' for app in config.get('static_apps', [])]
 for rel in required:
     if not (DIST/rel).exists(): errors.append(f'missing {rel}')
 if errors:
@@ -49,6 +64,55 @@ if errors:
 print(f'PASS: {len(list(DIST.rglob("*.html")))} HTML files validated')
 print('PASS: internal links resolve')
 print('PASS: one H1 and description per page')
+
+default_locale = locales.get(config['default_locale'])
+if default_locale is None:
+    errors.append(f"locale: configured default {config['default_locale']!r} is not enabled")
+for locale_id, locale in locales.items():
+    for page in locale['pages']:
+        rel = Path(locale['url_prefix']) / page['output'] if locale['url_prefix'] else Path(page['output'])
+        path = DIST / rel
+        parser = Parser(); parser.feed(path.read_text(encoding='utf-8'))
+        expected_lang, expected_dir = locale_id, locale['direction']
+        if (parser.lang, parser.direction) != (expected_lang, expected_dir):
+            errors.append(f'{path}: expected lang={expected_lang} dir={expected_dir}')
+        routes = {other_id: next(p for p in other['pages'] if p['key'] == page['key']) for other_id, other in locales.items()}
+        expected_alternates = {other_id for other_id in locales} | {'x-default'}
+        if {item[0] for item in parser.alternates} != expected_alternates:
+            errors.append(f'{path}: missing reciprocal hreflang or x-default')
+        if not parser.x_default:
+            errors.append(f'{path}: missing x-default')
+        if len(parser.language_links) != len(locales):
+            errors.append(f'{path}: language selector must contain one ordinary link per locale')
+        expected_paths = {other_id: (('/' + other['url_prefix'].strip('/') if other['url_prefix'].strip('/') else '') + ('/' if routes[other_id]['output'] == 'index.html' else '/' + routes[other_id]['output'].removesuffix('index.html'))) for other_id, other in locales.items()}
+        expected_links = {other_id: config['base_url'] + path for other_id, path in expected_paths.items()}
+        if parser.canonical != expected_links[locale_id] or not parser.canonical.startswith(('http://', 'https://')):
+            errors.append(f'{path}: locale-incorrect canonical URL')
+        for other_id, href in expected_links.items():
+            if (other_id, expected_paths[other_id]) not in parser.language_links:
+                errors.append(f'{path}: language link for {other_id} must be root-relative {expected_paths[other_id]}')
+            if (other_id, href) not in parser.alternates:
+                errors.append(f'{path}: hreflang for {other_id} does not point to {href}')
+        if default_locale is not None and ('x-default', expected_links[config['default_locale']]) not in parser.alternates:
+            errors.append(f'{path}: x-default does not point to English route')
+if (DIST / 'ar/discovery').exists():
+    errors.append('locale: accidental /ar/discovery/ output')
+if '/ar/discovery/' in (DIST / 'sitemap.xml').read_text(encoding='utf-8'):
+    errors.append('locale: sitemap contains accidental /ar/discovery/')
+for page in sorted((ROOT / 'src/content/ar/pages').glob('*.html')):
+    source = page.read_text(encoding='utf-8')
+    if '{{' in source or '}}' in source:
+        errors.append(f'{page}: untranslated template placeholder marker')
+manifest_path = ROOT / 'docs/i18n/ar-translation-manifest.json'
+manifest = json.loads(manifest_path.read_text(encoding='utf-8')) if manifest_path.is_file() else {}
+for key, value in {'locale':'ar','source_locale':'en-CA','source_commit':'8c3b9fbb42a5a7109d48c9d03cd1d5e08257df71','status':'machine_draft','human_reviewed':False,'reviewer':None,'glossary_version':'1.0.0'}.items():
+    if manifest.get(key) != value: errors.append(f'translation governance: invalid {key}')
+if len(manifest.get('routes', [])) != 9 or any(not route.startswith('/ar/') for route in manifest.get('routes', [])):
+    errors.append('translation governance: expected nine Arabic routes')
+if errors:
+    print('\n'.join(errors), file=sys.stderr); raise SystemExit(1)
+print('PASS: locale output language attributes, reciprocal hreflang, x-default, and route links')
+print('PASS: Arabic translation governance metadata is a machine draft')
 
 layout=(ROOT/'src/layout.html').read_text(encoding='utf-8')
 css=(ROOT/'src/assets/site.css').read_text(encoding='utf-8')

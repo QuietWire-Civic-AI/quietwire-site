@@ -1,0 +1,7 @@
+{
+  "navigation": {"primary_label":"التنقل الرئيسي","toggle_label":"فتح التنقل","home_label":"الصفحة الرئيسية لكوايت واير","cta":"ابدأ محادثة","cta_subject":"محادثة حول عقدة QuietWire","language_label":"اللغة","language_name":"العربية","labels":{"work":"ما نبنيه","appliances":"الأجهزة","pilot":"التجربة","patterns":"الأنماط","discovery":"اكتشاف (بالإنجليزية حالياً)","about":"عنّا"}},
+  "brand":{"subtitle":"بنية التماسك","footer_subtitle":"قوة محلية، تماسك مشترك"},
+  "accessibility":{"skip_to_content":"انتقل إلى المحتوى"},
+  "footer":{"description":"ذكاء اصطناعي محلي وذاكرة محكومة وأنظمة موثقة للعمل الذي يجب أن يظل مفهوماً.","begin":"ابدأ","node_appliances":"أجهزة العقد","pilot":"تجربة 60 يوماً","patterns":"أنماط النشر","explore":"استكشف","what_we_build":"ما نبنيه","method":"منهجنا","field":"التاريخ الميداني","about":"عنّا","connect":"تواصل","privacy":"الخصوصية","copyright":"© {{year}} QuietWire. صُممت لتبقى قريبة.","quiet_principles":"لا أدوات تتبع. لا إعلانات. لا انتباه مستعار."},
+  "metadata":{"site_name":"QuietWire","manifest_name":"QuietWire","manifest_short_name":"QuietWire"}
+}

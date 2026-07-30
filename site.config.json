@@ -11,6 +11,7 @@
       "default": true,
       "url_prefix": "",
       "direction": "ltr",
+      "language_name": "English",
       "shell": "src/i18n/en-CA.json",
       "content_dir": "src/content/en-CA",
       "pages": [
@@ -77,6 +78,26 @@
           "title": "Privacy — QuietWire",
           "description": "How this website and QuietWire approach privacy and local custody."
         }
+      ]
+    },
+    {
+      "id": "ar",
+      "default": false,
+      "url_prefix": "ar",
+      "direction": "rtl",
+      "language_name": "العربية",
+      "shell": "src/i18n/ar.json",
+      "content_dir": "src/content/ar",
+      "pages": [
+        {"source": "index.html", "output": "index.html", "key": "home", "title": "كوايت واير — بنية التماسك", "description": "ذكاء اصطناعي محلي وذاكرة محكومة وأنظمة موثقة للمؤسسات التي تحتاج إلى استمرارية تملكها."},
+        {"source": "work.html", "output": "work/index.html", "key": "work", "title": "ما نبنيه — كوايت واير", "description": "عُقد سيادية، وتصديق، ورفقاء متماسكون، وبنية شبكية."},
+        {"source": "appliances.html", "output": "appliances/index.html", "key": "appliances", "title": "أجهزة العقد والأسعار — كوايت واير", "description": "أجهزة عقد محلية مملوكة للعميل مع الإعداد والذاكرة المحكومة والرعاية الشهرية."},
+        {"source": "pilot.html", "output": "pilot/index.html", "key": "pilot", "title": "التجربة الميدانية للعقدة خلال 60 يوماً — كوايت واير", "description": "مسار محدود من الاكتشاف إلى عقدة عاملة وحزمة أدلة وقرار توسع."},
+        {"source": "patterns.html", "output": "patterns/index.html", "key": "patterns", "title": "أنماط النشر — كوايت واير", "description": "أنماط عملية للنشر في المستشفيات والممارسات المهنية والشبكات الميدانية والبنية العامة."},
+        {"source": "method.html", "output": "method/index.html", "key": "method", "title": "كيف نبني الثقة — كوايت واير", "description": "منهج محلي أولاً يحمل الأدلة للذكاء الاصطناعي والذاكرة والاستمرارية التشغيلية."},
+        {"source": "field.html", "output": "field/index.html", "key": "field", "title": "الأنماط الميدانية — كوايت واير", "description": "أنماط عملية للعيادات والمتاجر والمكاتب والوصول العام والتعليم والذاكرة الثقافية."},
+        {"source": "about.html", "output": "about/index.html", "key": "about", "title": "عن كوايت واير", "description": "بنية تحتفظ بها كندا ومتجذرة عالمياً للذاكرة والأدلة والكرامة والاستمرارية."},
+        {"source": "privacy.html", "output": "privacy/index.html", "key": "privacy", "title": "الخصوصية — كوايت واير", "description": "كيف يتعامل هذا الموقع وكوايت واير مع الخصوصية والحيازة المحلية."}
       ]
     }
   ],

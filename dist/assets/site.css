@@ -201,6 +201,14 @@ h3 { font-size: 1.4rem; }
 .has-js [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
 .has-js [data-reveal].is-visible { opacity: 1; transform: none; }
 
+/* Arabic foundation: keep the shared layout and adjust only directional details. */
+[dir="rtl"] { text-align: start; }
+[dir="rtl"] .hero-aside { border-inline-start: 1px solid var(--line); border-left: 0; padding-inline-start: 36px; padding-left: 0; }
+[dir="rtl"] .footer-links { align-items: flex-start; }
+[dir="rtl"] .language-switcher { direction: ltr; }
+[dir="rtl"] .check-list li { padding-inline-start: 24px; padding-left: 0; }
+[dir="rtl"] .offer-bridge-grid > div { padding-inline-end: 32px; padding-right: 0; }
+
 
 /* Public offer expansion -------------------------------------------------- */
 .appliance-preview { overflow: hidden; }

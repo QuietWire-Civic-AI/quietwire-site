@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{lang}}" dir="{{direction}}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,6 +7,7 @@
   <meta name="description" content="{{page_description}}">
   <meta name="theme-color" content="#0a1212">
   <link rel="canonical" href="{{canonical_url}}">
+  {{hreflang}}
   <link rel="manifest" href="/site.webmanifest">
   <link rel="icon" href="/assets/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
@@ -30,7 +31,7 @@
   <a class="skip-link" href="#main">{{skip_to_content}}</a>
   <header class="site-header" data-header>
     <div class="shell header-inner">
-      <a class="brand" href="/" aria-label="{{home_label}}">
+      <a class="brand" href="{{home_url}}" aria-label="{{home_label}}">
         <img src="/assets/quietwire-mark.png" width="46" height="46" alt="">
         <span class="brand-copy"><strong>{{site_name}}</strong><small>{{brand_subtitle}}</small></span>
       </a>
@@ -39,6 +40,7 @@
       </button>
       <nav id="site-nav" class="site-nav" aria-label="{{primary_label}}" data-nav>
         {{navigation}}
+        <span class="language-switcher" aria-label="{{language_label}}">{{language_links}}</span>
         <a class="nav-cta" href="mailto:hello@quietwire.ai?subject={{cta_subject}}">{{cta}}</a>
       </nav>
     </div>
@@ -51,7 +53,7 @@
   <footer class="site-footer">
     <div class="shell footer-grid">
       <div>
-        <a class="brand footer-brand" href="/">
+        <a class="brand footer-brand" href="{{home_url}}">
           <img src="/assets/quietwire-mark.png" width="42" height="42" alt="">
           <span class="brand-copy"><strong>{{site_name}}</strong><small>{{footer_subtitle}}</small></span>
         </a>
@@ -59,24 +61,24 @@
       </div>
       <div class="footer-links">
         <strong>{{begin}}</strong>
-        <a href="/appliances/">{{node_appliances}}</a>
-        <a href="/pilot/">{{pilot}}</a>
-        <a href="/patterns/">{{patterns}}</a>
+        <a href="{{appliances_url}}">{{node_appliances}}</a>
+        <a href="{{pilot_url}}">{{pilot}}</a>
+        <a href="{{patterns_url}}">{{patterns}}</a>
         <a href="mailto:hello@quietwire.ai?subject={{cta_subject}}">{{cta}}</a>
       </div>
       <div class="footer-links">
         <strong>{{explore}}</strong>
-        <a href="/work/">{{what_we_build}}</a>
-        <a href="/method/">{{method}}</a>
-        <a href="/field/">{{field}}</a>
-        <a href="/about/">{{about}}</a>
+        <a href="{{work_url}}">{{what_we_build}}</a>
+        <a href="{{method_url}}">{{method}}</a>
+        <a href="{{field_url}}">{{field}}</a>
+        <a href="{{about_url}}">{{about}}</a>
       </div>
       <div class="footer-links">
         <strong>{{connect}}</strong>
         <a href="mailto:hello@quietwire.ai">hello@quietwire.ai</a>
         <a href="https://github.com/QuietWire-Civic-AI">GitHub</a>
         <a href="https://www.linkedin.com/company/quietwire/">LinkedIn</a>
-        <a href="/privacy/">{{privacy}}</a>
+        <a href="{{privacy_url}}">{{privacy}}</a>
       </div>
     </div>
     <div class="shell footer-base">
