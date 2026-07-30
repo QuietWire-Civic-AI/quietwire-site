@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A private, browser-local operational discovery workbook from QuietWire.">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; form-action 'none'; object-src 'none'; base-uri 'none'; frame-ancestors 'self'">
+  <title>QuietWire Discovery</title>
+  <link rel="canonical" href="https://www.quietwire.ai/discovery/">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" href="/assets/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="./discovery.css">
+  <link rel="stylesheet" href="./report.css" media="print">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to discovery</a>
+
+  <header class="site-header" data-header>
+    <div class="header-inner">
+      <a class="brand" href="/" aria-label="QuietWire home">
+        <img src="/assets/quietwire-mark.png" alt="" width="46" height="46">
+        <span class="brand-copy">
+          <strong>QuietWire</strong>
+          <small>coherence infrastructure</small>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+        <span class="sr-only">Open navigation</span><span></span><span></span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary" data-nav>
+        <a href="/work/">Work</a>
+        <a href="/appliances/">Appliances</a>
+        <a href="/pilot/">Pilot</a>
+        <a href="/patterns/">Patterns</a>
+        <a href="/discovery/" aria-current="page">Discovery</a>
+        <a href="/about/">About</a>
+        <a class="nav-cta" href="mailto:hello@quietwire.ai?subject=QuietWire%20node%20conversation">Start a conversation</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="welcome" class="hero page active" aria-labelledby="welcome-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Local-first operational discovery</p>
+        <h1 id="welcome-title">Understand what your organization needs before selecting its systems.</h1>
+        <p class="lede">Work through a guided discovery at your own pace. Begin with a ten-minute orientation, follow a role-specific path, or explore the complete library.</p>
+        <div class="privacy-promise" role="note">
+          <h2>Your work remains yours</h2>
+          <p>This questionnaire runs entirely in your browser. QuietWire does not receive your answers while you work. Nothing is transmitted unless you later choose to share a downloaded copy.</p>
+        </div>
+        <div class="path-grid" aria-label="Choose a discovery path">
+          <button class="path-card" data-start-path="quick">
+            <span class="path-time">About 10 minutes</span>
+            <strong>Quick orientation</strong>
+            <span>A short set of questions that produces a useful first summary.</span>
+          </button>
+          <button class="path-card" data-start-path="guided">
+            <span class="path-time">Choose your depth</span>
+            <strong>Guided discovery</strong>
+            <span>Select your role and areas of interest. We will recommend the relevant sections.</span>
+          </button>
+          <button class="path-card" data-start-path="full">
+            <span class="path-time">Complete library</span>
+            <strong>Full discovery</strong>
+            <span>Open any of the thirty operational, technical, and governance sections.</span>
+          </button>
+        </div>
+        <div class="welcome-actions">
+          <button id="open-working-file" class="button secondary">Open a saved working file</button>
+          <input id="working-file-input" type="file" accept="application/json,.json,.qwd" hidden>
+          <button id="show-privacy" class="button ghost">How privacy works</button>
+        </div>
+      </div>
+      <aside class="status-card" aria-label="Current privacy status">
+        <p class="eyebrow">Live custody status</p>
+        <dl>
+          <div><dt>Answers held now</dt><dd>This browser session</dd></div>
+          <div><dt>Sent to QuietWire</dt><dd>Nothing</dd></div>
+          <div><dt>Browser recovery copy</dt><dd>Off</dd></div>
+          <div><dt>Third-party answer analytics</dt><dd>None</dd></div>
+        </dl>
+        <p class="microcopy">Closing or refreshing this page clears unsaved answers. Use “Save to this device” when you are ready.</p>
+      </aside>
+    </section>
+
+    <section id="guided-setup" class="page" aria-labelledby="guided-title">
+      <div class="panel narrow">
+        <p class="eyebrow">Guided discovery</p>
+        <h2 id="guided-title">Which perspective are you bringing?</h2>
+        <p>Choose one role and any areas you want to explore. You can change this later.</p>
+        <fieldset>
+          <legend>Primary role</legend>
+          <div id="role-options" class="choice-grid"></div>
+        </fieldset>
+        <fieldset>
+          <legend>Areas of interest</legend>
+          <div id="area-options" class="choice-grid compact"></div>
+        </fieldset>
+        <div class="actions">
+          <button class="button ghost" data-go-home>Back</button>
+          <button id="begin-guided" class="button primary">Build my path</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="workspace" class="page" aria-labelledby="workspace-title">
+      <div class="workspace-shell">
+        <aside class="workspace-nav" aria-label="Discovery navigation">
+          <div class="workspace-brand">
+            <p class="eyebrow">QuietWire Discovery</p>
+            <h2 id="workspace-title">Your working session</h2>
+          </div>
+          <div class="progress-block">
+            <div class="progress-label"><span id="progress-text">0 of 0 answered</span><span id="progress-percent">0%</span></div>
+            <div class="progress-track" aria-hidden="true"><span id="progress-bar"></span></div>
+          </div>
+          <label class="search-label" for="question-search">Find a question</label>
+          <input id="question-search" type="search" placeholder="Search the discovery library">
+          <div class="nav-tabs" role="tablist" aria-label="Workspace views">
+            <button class="nav-tab active" data-view="questions" role="tab" aria-selected="true" aria-controls="questions-view">Questions</button>
+            <button class="nav-tab" data-view="review" role="tab" aria-selected="false" aria-controls="review-view">Review</button>
+            <button class="nav-tab" data-view="privacy" role="tab" aria-selected="false" aria-controls="privacy-view">Privacy</button>
+          </div>
+          <div id="section-list" class="section-list"></div>
+          <div class="workspace-tools">
+            <button id="save-working-file" class="button secondary full">Save to this device</button>
+            <button id="download-report" class="button secondary full">Download report</button>
+            <button id="print-report" class="button ghost full">Print / save as PDF</button>
+            <button id="clear-session" class="button danger full">Clear this session</button>
+          </div>
+        </aside>
+
+        <section class="workspace-main" aria-live="polite">
+          <div id="questions-view" class="workspace-view active"></div>
+          <div id="review-view" class="workspace-view"></div>
+          <div id="privacy-view" class="workspace-view"></div>
+        </section>
+      </div>
+    </section>
+
+    <section id="privacy-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="privacy-title" hidden>
+      <div class="modal-card">
+        <button id="close-privacy" class="modal-close" aria-label="Close privacy explanation">×</button>
+        <p class="eyebrow">Privacy by architecture</p>
+        <h2 id="privacy-title">This candidate does not collect your answers.</h2>
+        <p>The application is delivered as static HTML, CSS, JavaScript, and a versioned question set. It has no form endpoint, database, account system, telemetry, or third-party scripts.</p>
+        <ul>
+          <li>Answers are kept in JavaScript memory during the open session.</li>
+          <li>No answers are written to browser storage automatically.</li>
+          <li>No network connections are permitted by the page security policy.</li>
+          <li>Downloaded working files remain under your custody.</li>
+          <li>Sharing with QuietWire is a separate, deliberate act outside this first release.</li>
+        </ul>
+        <button class="button primary" id="privacy-understood">Understood</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>QuietWire Discovery</strong> — a local-first public instrument.</p>
+    <p>Receipt is not acceptance. An answer is not necessarily a decision. Nothing leaves this page unless you choose to carry it out.</p>
+  </footer>
+
+  <script src="./data/water-treatment-en-v1.js"></script>
+  <script src="./discovery.js"></script>
+</body>
+</html>
