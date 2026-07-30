@@ -1,7 +1,8 @@
 # QuietWire multilingual foundation
 
-The canonical internal locale identifier is `en-CA`. It is the sole enabled
-locale in this milestone and is the default locale. Its `url_prefix` is empty,
+The canonical internal locale identifier is `en-CA`. Arabic (`ar`) is the
+second enabled locale and is machine-drafted pending human review. English is
+the default locale. Its `url_prefix` is empty,
 so its public routes remain `/`, `/work/`, `/appliances/`, and the other
 existing unprefixed routes. English is not duplicated under `/en/` or
 `/en-ca/`.
@@ -14,8 +15,8 @@ existing unprefixed routes. English is not duplicated under `/en/` or
   shared metadata strings.
 - `src/layout.html` remains the shared document shell; the builder injects the
   selected locale's shell values without changing their current output.
-- The builder currently emits only the enabled default locale and keeps its
-  empty URL prefix. Future prefixed locales will use the same route identities.
+- The builder emits both enabled locales. English keeps its empty URL prefix;
+  Arabic uses `/ar/` and the same route identities.
 
 Every locale must have exactly one registry entry, a unique identifier and URL
 prefix, a direction of `ltr` or `rtl`, complete shell keys, and one content
@@ -27,8 +28,10 @@ silent fallback to another locale.
 English remains unprefixed for continuity with the existing public site,
 stable links, and the captured English baseline. Browser-language redirects,
 cookies, runtime language detection, and duplicate English routes are
-intentionally absent. Locale selection will be an explicit URL/build concern
-when additional locales are enabled.
+intentionally absent. Locale selection is explicit URL/build behavior.
+Equivalent pages expose ordinary keyboard-accessible links to one another and
+never redirect automatically. Arabic pages use `dir="rtl"`; English remains
+`dir="ltr"`.
 
 ## Discovery
 
@@ -46,10 +49,9 @@ files before it is enabled.
 
 ## Arabic and translation review
 
-The next locale can add `ar` (or another agreed canonical identifier) with
-`url_prefix`, `direction: rtl`, a complete shell, equivalent page keys, and a
-locale-specific Discovery text layer. RTL layout changes belong in a later
-reviewed output change, not in this foundation. Machine-drafted translations
-must be marked as drafts and must not be treated as publishable until a human
-reviewer verifies terminology, cultural meaning, accessibility, and right-to-
-left presentation.
+Arabic has `url_prefix: "ar"`, `direction: "rtl"`, a complete shell, and
+equivalent ordinary page keys. Discovery remains English-only at
+`/discovery/`; Arabic may link to it only with a clear English-availability
+label. The Arabic translation manifest is `machine_draft` and must not be
+treated as publishable until a human reviewer verifies terminology, cultural
+meaning, accessibility, and right-to-left presentation.

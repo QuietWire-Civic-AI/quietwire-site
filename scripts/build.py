@@ -17,29 +17,52 @@ def replace(template: str, values: dict[str, str]) -> str:
     return template
 
 
-def current_locale() -> dict:
-    locales = CONFIG["locales"]
-    for locale in locales:
-        if locale["id"] == CONFIG["default_locale"]:
-            return locale
-    raise ValueError(f"default locale not found: {CONFIG['default_locale']}")
+def locales() -> list[dict]:
+    return CONFIG["locales"]
 
 
-def navigation(active: str, shell: dict) -> str:
+def locale_path(page: dict, locale: dict) -> str:
+    prefix = locale["url_prefix"].strip("/")
+    route_prefix = ("/" + prefix) if prefix else ""
+    if page["output"] == "index.html":
+        return route_prefix + "/"
+    return route_prefix + "/" + page["output"].removesuffix("index.html")
+
+
+def canonical_url(page: dict, locale: dict) -> str:
+    return CONFIG["base_url"] + locale_path(page, locale)
+
+
+def page_for_key(locale: dict, key: str) -> dict:
+    for page in locale["pages"]:
+        if page["key"] == key:
+            return page
+    raise ValueError(f"locale {locale['id']} has no page key {key}")
+
+
+def navigation(active: str, shell: dict, locale: dict) -> str:
     links = []
     for item in CONFIG["nav"]:
         current = ' aria-current="page"' if item["key"] == active else ""
         label = shell["navigation"]["labels"][item["key"]]
-        links.append(f'<a href="{escape(item["href"])}"{current}>{escape(label)}</a>')
+        href = item["href"] if item["key"] == "discovery" else locale_path(page_for_key(locale, item["key"]), locale)
+        links.append(f'<a href="{escape(href)}"{current}>{escape(label)}</a>')
     return "\n".join(links)
 
 
-def canonical(output: str, locale: dict) -> str:
-    prefix = locale["url_prefix"].strip("/")
-    route_prefix = ("/" + prefix) if prefix else ""
-    if output == "index.html":
-        return CONFIG["base_url"] + route_prefix + "/"
-    return CONFIG["base_url"] + route_prefix + "/" + output.removesuffix("index.html")
+def language_links(page: dict, locale: dict) -> tuple[str, str]:
+    links = []
+    alternates = []
+    for other in locales():
+        equivalent = page_for_key(other, page["key"])
+        href = locale_path(equivalent, other)
+        name = other["language_name"]
+        links.append(f'<a href="{escape(href)}" hreflang="{escape(other["id"])}">{escape(name)}</a>')
+        alternates.append(f'<link rel="alternate" hreflang="{escape(other["id"])}" href="{escape(canonical_url(equivalent, other))}">')
+    default_page = page_for_key(next(l for l in locales() if l["id"] == CONFIG["default_locale"]), page["key"])
+    default_locale = next(l for l in locales() if l["id"] == CONFIG["default_locale"])
+    alternates.append(f'<link rel="alternate" hreflang="x-default" href="{escape(canonical_url(default_page, default_locale))}">')
+    return " ".join(links), "\n  ".join(alternates)
 
 
 def structured_data(site_name: str) -> str:
@@ -59,53 +82,55 @@ def structured_data(site_name: str) -> str:
 
 
 def build() -> None:
-    locale = current_locale()
-    shell = json.loads((ROOT / locale["shell"]).read_text(encoding="utf-8"))
     if DIST.exists():
         shutil.rmtree(DIST)
     DIST.mkdir(parents=True)
     shutil.copytree(SRC / "assets", DIST / "assets")
     layout = (SRC / "layout.html").read_text(encoding="utf-8")
     year = str(datetime.now(timezone.utc).year)
-    for page in locale["pages"]:
-        body = (ROOT / locale["content_dir"] / "pages" / page["source"]).read_text(encoding="utf-8")
-        output = DIST / page["output"]
-        output.parent.mkdir(parents=True, exist_ok=True)
-        html = replace(layout, {
-            "page_title": escape(page["title"]),
-            "page_description": escape(page["description"]),
-            "page_key": escape(page["key"]),
-            "canonical_url": canonical(page["output"], locale),
-            "base_url": CONFIG["base_url"],
-            "structured_data": structured_data(shell["metadata"]["site_name"]),
-            "site_name": shell["metadata"]["site_name"],
-            "navigation": navigation(page["key"], shell),
-            "skip_to_content": shell["accessibility"]["skip_to_content"],
-            "home_label": shell["navigation"]["home_label"],
-            "toggle_label": shell["navigation"]["toggle_label"],
-            "primary_label": shell["navigation"]["primary_label"],
-            "cta": shell["navigation"]["cta"],
-            "cta_subject": shell["navigation"]["cta_subject"],
-            "brand_subtitle": shell["brand"]["subtitle"],
-            "footer_subtitle": shell["brand"]["footer_subtitle"],
-            "footer_description": shell["footer"]["description"],
-            "begin": shell["footer"]["begin"],
-            "node_appliances": shell["footer"]["node_appliances"],
-            "pilot": shell["footer"]["pilot"],
-            "patterns": shell["footer"]["patterns"],
-            "explore": shell["footer"]["explore"],
-            "what_we_build": shell["footer"]["what_we_build"],
-            "method": shell["footer"]["method"],
-            "field": shell["footer"]["field"],
-            "about": shell["footer"]["about"],
-            "connect": shell["footer"]["connect"],
-            "privacy": shell["footer"]["privacy"],
-            "copyright": shell["footer"]["copyright"].replace("{{year}}", year),
-            "quiet_principles": shell["footer"]["quiet_principles"],
-            "content": body,
-            "year": year,
-        })
-        output.write_text(html.rstrip() + "\n", encoding="utf-8")
+    for locale in locales():
+        shell = json.loads((ROOT / locale["shell"]).read_text(encoding="utf-8"))
+        for page in locale["pages"]:
+            body = (ROOT / locale["content_dir"] / "pages" / page["source"]).read_text(encoding="utf-8")
+            relative_output = (Path(locale["url_prefix"]) / page["output"] if locale["url_prefix"] else Path(page["output"]))
+            output = DIST / relative_output
+            links, alternates = language_links(page, locale)
+            urls = {item["key"]: locale_path(page_for_key(locale, item["key"]), locale) for item in locale["pages"]}
+            output.parent.mkdir(parents=True, exist_ok=True)
+            html = replace(layout, {
+                "lang": escape(locale["id"]),
+                "direction": escape(locale["direction"]),
+                "hreflang": alternates,
+                "language_links": links,
+                "language_label": shell["navigation"]["language_label"],
+                "home_url": urls["home"],
+                "work_url": urls["work"], "appliances_url": urls["appliances"], "pilot_url": urls["pilot"],
+                "patterns_url": urls["patterns"], "method_url": urls["method"], "field_url": urls["field"],
+                "about_url": urls["about"], "privacy_url": urls["privacy"],
+                "page_title": escape(page["title"]),
+                "page_description": escape(page["description"]),
+                "page_key": escape(page["key"]),
+                "canonical_url": canonical_url(page, locale),
+                "base_url": CONFIG["base_url"],
+                "structured_data": structured_data(shell["metadata"]["site_name"]),
+                "site_name": shell["metadata"]["site_name"],
+                "navigation": navigation(page["key"], shell, locale),
+                "skip_to_content": shell["accessibility"]["skip_to_content"],
+                "home_label": shell["navigation"]["home_label"],
+                "toggle_label": shell["navigation"]["toggle_label"],
+                "primary_label": shell["navigation"]["primary_label"],
+                "cta": shell["navigation"]["cta"], "cta_subject": shell["navigation"]["cta_subject"],
+                "brand_subtitle": shell["brand"]["subtitle"], "footer_subtitle": shell["brand"]["footer_subtitle"],
+                "footer_description": shell["footer"]["description"], "begin": shell["footer"]["begin"],
+                "node_appliances": shell["footer"]["node_appliances"], "pilot": shell["footer"]["pilot"],
+                "patterns": shell["footer"]["patterns"], "explore": shell["footer"]["explore"],
+                "what_we_build": shell["footer"]["what_we_build"], "method": shell["footer"]["method"],
+                "field": shell["footer"]["field"], "about": shell["footer"]["about"],
+                "connect": shell["footer"]["connect"], "privacy": shell["footer"]["privacy"],
+                "copyright": shell["footer"]["copyright"].replace("{{year}}", year),
+                "quiet_principles": shell["footer"]["quiet_principles"], "content": body, "year": year,
+            })
+            output.write_text(html.rstrip() + "\n", encoding="utf-8")
 
     for app in CONFIG.get("static_apps", []):
         source = SRC / app["source"]
@@ -122,7 +147,7 @@ def build() -> None:
     (DIST / "robots.txt").write_text(
         f'User-agent: *\nAllow: /\n\nSitemap: {CONFIG["base_url"]}/sitemap.xml\n', encoding="utf-8"
     )
-    urls = [canonical(page["output"], locale) for page in locale["pages"]]
+    urls = [canonical_url(page, locale) for locale in locales() for page in locale["pages"]]
     urls.extend(CONFIG["base_url"] + "/" + app["output"].strip("/") + "/" for app in CONFIG.get("static_apps", []))
     (DIST / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
@@ -147,8 +172,7 @@ def build() -> None:
 
 if __name__ == "__main__":
     build()
-    built_locale = current_locale()
     print(
-        f"Built {len(built_locale['pages'])} pages and "
+        f"Built {sum(len(locale['pages']) for locale in locales())} pages and "
         f"{len(CONFIG.get('static_apps', []))} static app(s) in {DIST}"
     )

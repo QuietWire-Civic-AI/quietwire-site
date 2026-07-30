@@ -1,0 +1,23 @@
+{
+  "schema": "https://www.quietwire.ai/schemas/translation-manifest-v1.json",
+  "schema_id": "quietwire.translation-manifest.v1",
+  "locale": "ar",
+  "source_locale": "en-CA",
+  "source_commit": "8c3b9fbb42a5a7109d48c9d03cd1d5e08257df71",
+  "status": "machine_draft",
+  "human_reviewed": false,
+  "reviewer": null,
+  "glossary_version": "1.0.0",
+  "created_at_utc": "2026-07-30T17:53:57Z",
+  "routes": [
+    "/ar/",
+    "/ar/work/",
+    "/ar/appliances/",
+    "/ar/pilot/",
+    "/ar/patterns/",
+    "/ar/method/",
+    "/ar/field/",
+    "/ar/about/",
+    "/ar/privacy/"
+  ]
+}
