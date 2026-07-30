@@ -11,6 +11,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: python3 scripts/build.py
+      - run: python3 scripts/check_locales.py
       - run: python3 scripts/check.py
       - name: Verify committed build output
         run: git diff --exit-code -- dist

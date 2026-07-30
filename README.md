@@ -6,7 +6,8 @@ A static, local-first public website for QuietWire.
 
 - No framework or external runtime is required to serve the site.
 - No advertising, trackers, external fonts, or third-party JavaScript.
-- Source fragments live in `src/pages/`.
+- Locale-specific page fragments live in `src/content/<locale>/pages/`.
+- Locale-specific shell strings live in `src/i18n/<locale>.json`.
 - Shared structure lives in `src/layout.html` and `site.config.json`.
 - `dist/` is committed so a web server can serve it immediately.
 - Builds are deterministic enough to package into content-addressed releases.
@@ -36,9 +37,10 @@ This produces a static archive and manifest under `releases/`. A later QWOS depl
 ## Structure
 
 ```text
-site.config.json      site metadata and navigation
+site.config.json      site metadata, routes, and locale registry
 src/layout.html       shared document shell
-src/pages/            page content fragments
+src/content/en-CA/    default-locale page content
+src/i18n/en-CA.json    default-locale shell strings
 src/assets/           CSS, JavaScript, and local graphics
 scripts/build.py      dependency-free static builder
 scripts/check.py      link, metadata, and tracker checks

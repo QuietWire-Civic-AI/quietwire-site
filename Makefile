@@ -2,6 +2,7 @@
 build:
 	python3 scripts/build.py
 check: build
+	python3 scripts/check_locales.py
 	python3 scripts/check.py
 preview: build
 	python3 scripts/serve.py
