@@ -71,6 +71,11 @@ def build() -> None:
         })
         output.write_text(html.rstrip() + "\n", encoding="utf-8")
 
+    for app in CONFIG.get("static_apps", []):
+        source = SRC / app["source"]
+        output = DIST / app["output"]
+        shutil.copytree(source, output)
+
     (DIST / "404.html").write_text((DIST / "index.html").read_text(encoding="utf-8").replace(
         "Coherence infrastructure for organizations with a story to protect.",
         "This wire does not lead anywhere yet."
@@ -81,9 +86,12 @@ def build() -> None:
     (DIST / "robots.txt").write_text(
         f'User-agent: *\nAllow: /\n\nSitemap: {CONFIG["base_url"]}/sitemap.xml\n', encoding="utf-8"
     )
-    urls = "\n".join(f"  <url><loc>{canonical(p['output'])}</loc></url>" for p in CONFIG["pages"])
+    urls = [canonical(page["output"]) for page in CONFIG["pages"]]
+    urls.extend(CONFIG["base_url"] + "/" + app["output"].strip("/") + "/" for app in CONFIG.get("static_apps", []))
     (DIST / "sitemap.xml").write_text(
-        '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls + '\n</urlset>\n',
+        '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        + "\n".join(f"  <url><loc>{url}</loc></url>" for url in urls)
+        + '\n</urlset>\n',
         encoding="utf-8"
     )
     manifest = {
@@ -103,4 +111,7 @@ def build() -> None:
 
 if __name__ == "__main__":
     build()
-    print(f"Built {len(CONFIG['pages'])} pages in {DIST}")
+    print(
+        f"Built {len(CONFIG['pages'])} pages and "
+        f"{len(CONFIG.get('static_apps', []))} static app(s) in {DIST}"
+    )

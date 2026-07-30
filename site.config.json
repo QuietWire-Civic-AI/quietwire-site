@@ -9,6 +9,7 @@
     {"label": "Appliances", "href": "/appliances/", "key": "appliances"},
     {"label": "Pilot", "href": "/pilot/", "key": "pilot"},
     {"label": "Patterns", "href": "/patterns/", "key": "patterns"},
+    {"label": "Discovery", "href": "/discovery/", "key": "discovery"},
     {"label": "About", "href": "/about/", "key": "about"}
   ],
   "pages": [
@@ -74,6 +75,12 @@
       "key": "privacy",
       "title": "Privacy — QuietWire",
       "description": "How this website and QuietWire approach privacy and local custody."
+    }
+  ],
+  "static_apps": [
+    {
+      "source": "discovery",
+      "output": "discovery"
     }
   ]
 }

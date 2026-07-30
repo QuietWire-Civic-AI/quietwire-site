@@ -1,0 +1,9 @@
+@page { size: letter; margin: 0.65in; }
+body { background: white !important; color: #111 !important; font-family: Georgia, "Times New Roman", serif; }
+.site-header, .site-footer, .workspace-nav, .modal, #questions-view, #privacy-view { display: none !important; }
+main, #workspace, .workspace-shell, .workspace-main, #review-view { display: block !important; width: auto !important; margin: 0 !important; padding: 0 !important; border: 0 !important; box-shadow: none !important; }
+.review-hero h1 { font-size: 28pt; }
+.review-grid { display: grid !important; grid-template-columns: repeat(3, 1fr); }
+.metric, .review-item { break-inside: avoid; border-color: #999 !important; background: white !important; }
+.review-section { break-before: auto; }
+a { text-decoration: none; }
