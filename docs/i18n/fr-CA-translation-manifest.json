@@ -1,0 +1,46 @@
+{
+  "schema": "https://www.quietwire.ai/schemas/translation-manifest-v1.json",
+  "schema_id": "quietwire.translation-manifest.v1",
+  "locale": "fr-CA",
+  "source_locale": "en-CA",
+  "source_commit": "5d480485232108a0de05efdc97f56ca47ce6f600",
+  "status": "machine_draft",
+  "translation_status": "machine_draft",
+  "publication_status": "repository_preview",
+  "human_reviewed": false,
+  "review_status": "unreviewed",
+  "reviewer": null,
+  "reviewers": [],
+  "intended_review_habitats": [
+    "Québec",
+    "Francophone Canada"
+  ],
+  "review_note": "Review habitats identify where Canadian-French language and institutional usage should be tested. They do not appoint reviewers or imply approval.",
+  "glossary_version": "1.0.0",
+  "created_at_utc": "2026-07-31T02:54:52Z",
+  "routes": [
+    "/fr/",
+    "/fr/work/",
+    "/fr/appliances/",
+    "/fr/pilot/",
+    "/fr/patterns/",
+    "/fr/method/",
+    "/fr/field/",
+    "/fr/about/",
+    "/fr/privacy/"
+  ],
+  "reviewed_routes": [],
+  "pending_routes": [
+    "/fr/",
+    "/fr/work/",
+    "/fr/appliances/",
+    "/fr/pilot/",
+    "/fr/patterns/",
+    "/fr/method/",
+    "/fr/field/",
+    "/fr/about/",
+    "/fr/privacy/"
+  ],
+  "source_alignment": "complete_route_and_structure_mapping",
+  "source_alignment_note": "All nine French-Canadian routes were machine-drafted from the current English source structure at the pinned source commit. Human linguistic and cultural review remains pending."
+}

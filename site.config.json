@@ -173,6 +173,80 @@
           "description": "Cómo abordan este sitio web y QuietWire la privacidad y la custodia local."
         }
       ]
+    },
+    {
+      "id": "fr-CA",
+      "default": false,
+      "url_prefix": "fr",
+      "direction": "ltr",
+      "language_name": "Français",
+      "shell": "src/i18n/fr-CA.json",
+      "content_dir": "src/content/fr-CA",
+      "pages": [
+        {
+          "source": "index.html",
+          "output": "index.html",
+          "key": "home",
+          "title": "QuietWire — Infrastructure de cohérence",
+          "description": "IA locale, mémoire gouvernée et systèmes attestés pour les organisations qui ont besoin d’une continuité qu’elles peuvent posséder."
+        },
+        {
+          "source": "work.html",
+          "output": "work/index.html",
+          "key": "work",
+          "title": "Ce que nous construisons — QuietWire",
+          "description": "Nœuds souverains, attestation, compagnons numériques cohérents et infrastructure de maillage."
+        },
+        {
+          "source": "appliances.html",
+          "output": "appliances/index.html",
+          "key": "appliances",
+          "title": "Appareils de nœud et tarification — QuietWire",
+          "description": "Appareils de nœud QuietWire appartenant au client, avec mise en service, mémoire gouvernée et accompagnement mensuel."
+        },
+        {
+          "source": "pilot.html",
+          "output": "pilot/index.html",
+          "key": "pilot",
+          "title": "Projet pilote de nœud de 60 jours — QuietWire",
+          "description": "Un parcours délimité, de l’exploration à un nœud opérationnel, un dossier de preuves et une décision d’expansion."
+        },
+        {
+          "source": "patterns.html",
+          "output": "patterns/index.html",
+          "key": "patterns",
+          "title": "Modèles de déploiement — QuietWire",
+          "description": "Modèles pratiques de déploiement QuietWire pour les hôpitaux, les cabinets professionnels, les réseaux de terrain et l’infrastructure publique."
+        },
+        {
+          "source": "method.html",
+          "output": "method/index.html",
+          "key": "method",
+          "title": "Comment nous bâtissons la confiance — QuietWire",
+          "description": "Une méthode locale d’abord, fondée sur des preuves, pour l’IA, la mémoire et la continuité opérationnelle."
+        },
+        {
+          "source": "field.html",
+          "output": "field/index.html",
+          "key": "field",
+          "title": "Modèles de terrain — QuietWire",
+          "description": "Modèles pratiques pour les cliniques, commerces, bureaux, points d’accès publics, milieux éducatifs et mémoires culturelles."
+        },
+        {
+          "source": "about.html",
+          "output": "about/index.html",
+          "key": "about",
+          "title": "À propos de QuietWire",
+          "description": "Infrastructure sous garde canadienne et enracinée dans le monde, au service de la mémoire, des preuves, de la dignité et de la continuité."
+        },
+        {
+          "source": "privacy.html",
+          "output": "privacy/index.html",
+          "key": "privacy",
+          "title": "Confidentialité — QuietWire",
+          "description": "Comment ce site Web et QuietWire abordent la confidentialité et la garde locale."
+        }
+      ]
     }
   ],
   "nav": [
