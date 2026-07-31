@@ -1,0 +1,46 @@
+{
+  "navigation": {
+    "primary_label": "Navegación principal",
+    "toggle_label": "Abrir navegación",
+    "home_label": "Inicio de QuietWire",
+    "cta": "Iniciar una conversación",
+    "cta_subject": "Conversacion%20sobre%20un%20nodo%20QuietWire",
+    "language_label": "Idioma",
+    "labels": {
+      "work": "Qué construimos",
+      "appliances": "Equipos",
+      "pilot": "Piloto",
+      "patterns": "Patrones",
+      "discovery": "Discovery (actualmente en inglés)",
+      "about": "Quiénes somos"
+    }
+  },
+  "brand": {
+    "subtitle": "infraestructura de coherencia",
+    "footer_subtitle": "fortaleza local, coherencia compartida"
+  },
+  "accessibility": {
+    "skip_to_content": "Saltar al contenido"
+  },
+  "footer": {
+    "description": "IA local, memoria bajo gobernanza y sistemas atestados para trabajos que deben seguir siendo comprensibles.",
+    "begin": "Empezar",
+    "node_appliances": "Equipos de nodo",
+    "pilot": "Piloto de 60 días",
+    "patterns": "Patrones de despliegue",
+    "explore": "Explorar",
+    "what_we_build": "Qué construimos",
+    "method": "Nuestro método",
+    "field": "Experiencia de campo",
+    "about": "Quiénes somos",
+    "connect": "Contacto",
+    "privacy": "Privacidad",
+    "copyright": "© {{year}} QuietWire. Diseñado para mantenerse cerca.",
+    "quiet_principles": "Sin rastreadores. Sin publicidad. Sin explotar su atención."
+  },
+  "metadata": {
+    "site_name": "QuietWire",
+    "manifest_name": "QuietWire",
+    "manifest_short_name": "QuietWire"
+  }
+}
