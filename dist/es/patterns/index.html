@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Patrones de despliegue — QuietWire</title>
+  <meta name="description" content="Patrones prácticos de despliegue de QuietWire para hospitales, prácticas profesionales, redes de campo e infraestructura pública.">
+  <meta name="theme-color" content="#0a1212">
+  <link rel="canonical" href="https://www.quietwire.ai/es/patterns/">
+  <link rel="alternate" hreflang="en-CA" href="https://www.quietwire.ai/patterns/">
+  <link rel="alternate" hreflang="ar" href="https://www.quietwire.ai/ar/patterns/">
+  <link rel="alternate" hreflang="es" href="https://www.quietwire.ai/es/patterns/">
+  <link rel="alternate" hreflang="x-default" href="https://www.quietwire.ai/patterns/">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" href="/assets/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <script>document.documentElement.classList.add("has-js")</script>
+  <link rel="stylesheet" href="/assets/site.css">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="QuietWire">
+  <meta property="og:title" content="Patrones de despliegue — QuietWire">
+  <meta property="og:description" content="Patrones prácticos de despliegue de QuietWire para hospitales, prácticas profesionales, redes de campo e infraestructura pública.">
+  <meta property="og:url" content="https://www.quietwire.ai/es/patterns/">
+  <meta property="og:image" content="https://www.quietwire.ai/assets/quietwire-og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Patrones de despliegue — QuietWire">
+  <meta name="twitter:description" content="Patrones prácticos de despliegue de QuietWire para hospitales, prácticas profesionales, redes de campo e infraestructura pública.">
+  <meta name="twitter:image" content="https://www.quietwire.ai/assets/quietwire-og.png">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"QuietWire","url":"https://www.quietwire.ai","email":"hello@quietwire.ai","description":"QuietWire builds local AI, governed memory, and attested systems that keep decisions, evidence, and identity aligned across time, teams, and places.","sameAs":["https://github.com/QuietWire-Civic-AI","https://www.linkedin.com/company/quietwire/"]}</script>
+</head>
+<body class="page-patterns">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <header class="site-header" data-header>
+    <div class="shell header-inner">
+      <a class="brand" href="/es/" aria-label="Inicio de QuietWire">
+        <img src="/assets/quietwire-mark.png" width="46" height="46" alt="">
+        <span class="brand-copy"><strong>QuietWire</strong><small>infraestructura de coherencia</small></span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+        <span class="sr-only">Abrir navegación</span><span></span><span></span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Navegación principal" data-nav>
+        <a href="/es/work/">Qué construimos</a>
+<a href="/es/appliances/">Equipos</a>
+<a href="/es/pilot/">Piloto</a>
+<a href="/es/patterns/" aria-current="page">Patrones</a>
+<a href="/discovery/">Discovery (actualmente en inglés)</a>
+<a href="/es/about/">Quiénes somos</a>
+        <details class="language-switcher">
+          <summary aria-label="Idioma">Español</summary>
+          <div class="language-menu"><a href="/patterns/" hreflang="en-CA" lang="en-CA" dir="auto">English</a> <a href="/ar/patterns/" hreflang="ar" lang="ar" dir="auto">العربية</a> <a href="/es/patterns/" hreflang="es" lang="es" dir="auto" aria-current="true">Español</a></div>
+        </details>
+        <a class="nav-cta" href="mailto:hello@quietwire.ai?subject=Conversacion%20sobre%20un%20nodo%20QuietWire">Iniciar una conversación</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero section-dark patterns-hero">
+  <div class="shell page-hero-grid">
+    <div data-reveal><p class="eyebrow"><span></span> Patrones de despliegue</p><h1>Vea el nodo dentro del trabajo.</h1><p class="hero-lede">Estos son patrones reutilizables de despliegue—formas creíbles de configurar QuietWire en un sector—no afirmaciones de que todos los sistemas descritos ya estén instalados en un cliente identificado.</p></div>
+    <div class="hero-aside" data-reveal><p>Un patrón responde seis preguntas:</p><code>entorno<br>presión de fallo<br>posición del nodo<br>memoria bajo gobernanza<br>evidencia producida<br>piloto útil más pequeño</code></div>
+  </div>
+</section>
+
+<section id="hospital" class="section section-cream pattern-detail detail-section">
+  <div class="shell pattern-detail-grid">
+    <div class="pattern-marker" data-reveal><span>01</span><strong>Malla de confianza hospitalaria</strong><small>clínica · administrativa · biomédica</small></div>
+    <div data-reveal><p class="section-kicker">El entorno</p><h2>Muchos sistemas críticos. Ninguna memoria única y honesta de cómo dependen unos de otros.</h2><p class="large-copy">Una malla de confianza hospitalaria coloca un nodo de mando y nodos departamentales delimitados alrededor de los sistemas existentes de HIS, ERP, imagen, laboratorio, biomédica, red, instalaciones y atención al paciente.</p>
+      <div class="pattern-facts"><div><span>Qué recuerda</span><p>Políticas, procedimientos, registros de dispositivos y proveedores, dependencias de puesta en marcha, incidentes, entregas, procedimientos de inactividad e historial de revisión.</p></div><div><span>Qué produce</span><p>Recuperación basada en fuentes, registros de acceso y cambio, mapas de dependencia de proveedores, evidencia de preparación, exportaciones de auditoría y notas de recuperación.</p></div><div><span>Piloto útil más pequeño</span><p>Nodo de mando hospitalario + nodo de ciberseguridad/red + un departamento de alta consecuencia, seguido de un ejercicio de preparación.</p></div></div>
+      <div class="node-map" aria-label="Nodo de mando hospitalario conectado con nodos departamentales"><div class="node-map-core">Mando</div><div>Ciber</div><div>HIS</div><div>ERP</div><div>Urgencias</div><div>Imagen</div><div>Laboratorio</div><div>Biomédica</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="practice" class="section section-mist pattern-detail detail-section">
+  <div class="shell pattern-detail-grid">
+    <div class="pattern-marker" data-reveal><span>02</span><strong>Nodo para práctica profesional</strong><small>legal · asesoría · consultoría</small></div>
+    <div data-reveal><p class="section-kicker">El entorno</p><h2>El conocimiento sale por la puerta, mientras la responsabilidad permanece.</h2><p class="large-copy">Un nodo de práctica ofrece a una firma un entorno privado y gobernado localmente para continuidad de clientes y asuntos, preparación basada en fuentes, historial de proyectos, métodos reutilizables y asistencia de IA revisada por personas.</p>
+      <div class="pattern-facts"><div><span>Qué recuerda</span><p>Contexto de asuntos y proyectos, precedentes aprobados, restricciones del cliente, fuentes de investigación, compromisos, entregas e historial de decisiones.</p></div><div><span>Qué produce</span><p>Borradores citados, registros de procedencia, colas de revisión, mapas de fuentes, informes de continuidad y registros de trabajo exportables.</p></div><div><span>Piloto útil más pequeño</span><p>Un Pro Node, un equipo y un flujo recurrente de preparación o continuidad con admisión humana explícita.</p></div></div>
+      <div class="workflow-ribbon"><span>fuentes aprobadas</span><b>→</b><span>contexto local</span><b>→</b><span>propuesta de borrador</span><b>→</b><span>revisión humana</span><b>→</b><span>registro admitido</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="field" class="section section-dark pattern-detail detail-section">
+  <div class="shell pattern-detail-grid">
+    <div class="pattern-marker" data-reveal><span>03</span><strong>Red de campo y comunidad</strong><small>farmacia · comercio · ONG · clínica · espacio</small></div>
+    <div data-reveal><p class="section-kicker">El entorno</p><h2>Trabajo real con energía, ancho de banda, hardware y personal imperfectos.</h2><p class="large-copy">Los nodos de campo son deliberadamente modestos, inspeccionables y útiles sin dependencia constante de la nube. Cada sitio conserva sus propios registros y puede intercambiar trabajo delimitado con nodos más potentes cuando corresponde.</p>
+      <div class="pattern-facts"><div><span>Qué recuerda</span><p>Inventario, proveedores, procedimientos locales, formación, notas de servicio, orientación de clientes o pacientes, incidentes, contactos y pasos de recuperación.</p></div><div><span>Qué produce</span><p>Paneles locales, registros de entrega, continuidad de existencias y servicios, asistencia multilingüe, registros de incidencias e intercambios atestados.</p></div><div><span>Piloto útil más pequeño</span><p>Un Micro Node en un sitio, un flujo diario, copia local, formación del operador y una ruta de acompañamiento remoto.</p></div></div>
+      <div class="field-mesh"><div><strong>Sitio local</strong><span>custodia</span></div><i></i><div><strong>Malla delimitada</strong><span>comprobantes</span></div><i></i><div><strong>Capacidad Hearth</strong><span>trabajo pesado</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="public" class="section section-cream pattern-detail detail-section">
+  <div class="shell pattern-detail-grid">
+    <div class="pattern-marker" data-reveal><span>04</span><strong>Infraestructura municipal y pública</strong><small>departamento · programa · comunidad</small></div>
+    <div data-reveal><p class="section-kicker">El entorno</p><h2>Responsabilidad pública extendida entre departamentos, proveedores, políticas, incidentes y personal cambiante.</h2><p class="large-copy">Un nodo de infraestructura pública preserva el control local y facilita inspeccionar evidencia de políticas, continuidad operativa, aprendizaje de incidentes, registros públicos y entregas entre departamentos.</p>
+      <div class="pattern-facts"><div><span>Qué recuerda</span><p>Políticas, obligaciones de servicio, registros de concejo y programas, proveedores, incidentes, dependencias de infraestructura, comunicaciones públicas y fundamentos.</p></div><div><span>Qué produce</span><p>Informes vinculados a evidencia, trazas de decisiones, continuidad de incidentes, exportaciones públicas, registros de gobernanza y vistas de estado departamental.</p></div><div><span>Piloto útil más pequeño</span><p>Un departamento, un Server Node, un flujo recurrente de informes o incidentes y un paquete de verificación para la dirección.</p></div></div>
+      <div class="public-layers"><div>Personas y autoridad</div><div>Programas y políticas</div><div>Evidencia y registros</div><div>Nodo local</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-mist pattern-truth">
+  <div class="shell split-lead"><p class="section-kicker">Disciplina de evidencia</p><div data-reveal><h2>Patrón, piloto y estudio de caso son cosas distintas.</h2><div class="truth-grid"><article><span>Patrón</span><p>Una arquitectura reutilizable que muestra cómo podría encajar el sistema en un entorno.</p></article><article><span>Piloto</span><p>Una intervención delimitada, autorizada por un cliente y probada frente a criterios explícitos.</p></article><article><span>Estudio de caso</span><p>Un despliegue verificado con permiso para publicar los hechos y resultados.</p></article></div><p class="large-copy">QuietWire no convertirá una propuesta en estudio de caso cambiando el encabezado.</p></div></div>
+</section>
+
+<section class="section section-teal closing-cta"><div class="shell cta-grid" data-reveal><div><p class="section-kicker">Traiga el entorno real</p><h2>Adaptaremos el patrón sin fingir que el lugar es genérico.</h2></div><div><p>Cuéntenos sobre los sistemas, personas, restricciones y obligaciones que ya existen en el terreno. El nodo adecuado comienza allí.</p><a class="button button-light" href="mailto:hello@quietwire.ai?subject=Patron%20de%20despliegue%20QuietWire">Hablar de un patrón de despliegue</a></div></div></section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div>
+        <a class="brand footer-brand" href="/es/">
+          <img src="/assets/quietwire-mark.png" width="42" height="42" alt="">
+          <span class="brand-copy"><strong>QuietWire</strong><small>fortaleza local, coherencia compartida</small></span>
+        </a>
+        <p>IA local, memoria bajo gobernanza y sistemas atestados para trabajos que deben seguir siendo comprensibles.</p>
+      </div>
+      <div class="footer-links">
+        <strong>Empezar</strong>
+        <a href="/es/appliances/">Equipos de nodo</a>
+        <a href="/es/pilot/">Piloto de 60 días</a>
+        <a href="/es/patterns/">Patrones de despliegue</a>
+        <a href="mailto:hello@quietwire.ai?subject=Conversacion%20sobre%20un%20nodo%20QuietWire">Iniciar una conversación</a>
+      </div>
+      <div class="footer-links">
+        <strong>Explorar</strong>
+        <a href="/es/work/">Qué construimos</a>
+        <a href="/es/method/">Nuestro método</a>
+        <a href="/es/field/">Experiencia de campo</a>
+        <a href="/es/about/">Quiénes somos</a>
+      </div>
+      <div class="footer-links">
+        <strong>Contacto</strong>
+        <a href="mailto:hello@quietwire.ai">hello@quietwire.ai</a>
+        <a href="https://github.com/QuietWire-Civic-AI">GitHub</a>
+        <a href="https://www.linkedin.com/company/quietwire/">LinkedIn</a>
+        <a href="/es/privacy/">Privacidad</a>
+      </div>
+    </div>
+    <div class="shell footer-base">
+      <span>© 2026 QuietWire. Diseñado para mantenerse cerca.</span>
+      <span>Sin rastreadores. Sin publicidad. Sin explotar su atención.</span>
+    </div>
+  </footer>
+  <script src="/assets/site.js" defer></script>
+</body>
+</html>

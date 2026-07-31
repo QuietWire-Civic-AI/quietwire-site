@@ -1,0 +1,51 @@
+{
+  "schema": "https://www.quietwire.ai/schemas/translation-manifest-v1.json",
+  "schema_id": "quietwire.translation-manifest.v1",
+  "locale": "es",
+  "source_locale": "en-CA",
+  "source_commit": "f14e2e960be723ea29c6e885d6a887e3e2a43f8a",
+  "status": "machine_draft",
+  "human_reviewed": false,
+  "reviewer": null,
+  "glossary_version": "1.0.0",
+  "created_at_utc": "2026-07-31T01:49:58Z",
+  "routes": [
+    "/es/",
+    "/es/work/",
+    "/es/appliances/",
+    "/es/pilot/",
+    "/es/patterns/",
+    "/es/method/",
+    "/es/field/",
+    "/es/about/",
+    "/es/privacy/"
+  ],
+  "translation_status": "machine_draft",
+  "publication_status": "repository_preview",
+  "review_status": "unreviewed",
+  "reviewers": [],
+  "reviewed_routes": [],
+  "pending_routes": [
+    "/es/",
+    "/es/work/",
+    "/es/appliances/",
+    "/es/pilot/",
+    "/es/patterns/",
+    "/es/method/",
+    "/es/field/",
+    "/es/about/",
+    "/es/privacy/"
+  ],
+  "review_scope": [
+    "neutral international Spanish machine draft",
+    "all nine ordinary public site routes",
+    "shared navigation, accessibility, and footer strings"
+  ],
+  "intended_review_habitats": [
+    "Madrid, Spain",
+    "Colombia"
+  ],
+  "reviewer_assignment_status": "pending_explicit_acceptance",
+  "source_alignment": "direct_route_equivalence",
+  "source_alignment_note": "Each Spanish route was machine-drafted from the corresponding English route at the pinned source commit. Human linguistic, cultural, technical, and UX review remains pending."
+}
