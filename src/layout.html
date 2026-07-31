@@ -40,7 +40,10 @@
       </button>
       <nav id="site-nav" class="site-nav" aria-label="{{primary_label}}" data-nav>
         {{navigation}}
-        <span class="language-switcher" aria-label="{{language_label}}">{{language_links}}</span>
+        <details class="language-switcher">
+          <summary aria-label="{{language_label}}">{{current_language}}</summary>
+          <div class="language-menu">{{language_links}}</div>
+        </details>
         <a class="nav-cta" href="mailto:hello@quietwire.ai?subject={{cta_subject}}">{{cta}}</a>
       </nav>
     </div>

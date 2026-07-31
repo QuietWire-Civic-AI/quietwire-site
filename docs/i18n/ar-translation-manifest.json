@@ -7,7 +7,7 @@
   "status": "machine_draft",
   "human_reviewed": false,
   "reviewer": null,
-  "glossary_version": "1.0.0",
+  "glossary_version": "1.1.0",
   "created_at_utc": "2026-07-30T17:53:57Z",
   "routes": [
     "/ar/",
@@ -19,5 +19,36 @@
     "/ar/field/",
     "/ar/about/",
     "/ar/privacy/"
-  ]
+  ],
+  "translation_status": "machine_draft_with_partial_human_review",
+  "publication_status": "public_review_preview",
+  "review_status": "partial_human_review",
+  "reviewers": [
+    "Ali Adnan",
+    "Khalil"
+  ],
+  "reviewed_routes": [
+    "/ar/"
+  ],
+  "pending_routes": [
+    "/ar/work/",
+    "/ar/appliances/",
+    "/ar/pilot/",
+    "/ar/patterns/",
+    "/ar/method/",
+    "/ar/field/",
+    "/ar/about/",
+    "/ar/privacy/"
+  ],
+  "review_scope": [
+    "visible Arabic homepage language",
+    "translation and UX writing",
+    "homepage RTL presentation",
+    "homepage and shared footer terminology"
+  ],
+  "review_reported_date": "2026-07-30",
+  "review_recorded_at_utc": "2026-07-31T01:25:30Z",
+  "review_basis": "Written review relayed by Chris Blask from Ali Adnan and Khalil.",
+  "source_alignment": "pending_exact_mapping",
+  "source_alignment_note": "The reviewed Arabic homepage is an earlier compact structure and does not correspond line-for-line to the current public English homepage. Reviewer-proposed wording was applied to the visible Arabic structure; exact English-source mapping remains pending."
 }

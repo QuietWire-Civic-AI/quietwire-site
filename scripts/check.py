@@ -95,24 +95,60 @@ for locale_id, locale in locales.items():
                 errors.append(f'{path}: hreflang for {other_id} does not point to {href}')
         if default_locale is not None and ('x-default', expected_links[config['default_locale']]) not in parser.alternates:
             errors.append(f'{path}: x-default does not point to English route')
-if (DIST / 'ar/discovery').exists():
-    errors.append('locale: accidental /ar/discovery/ output')
-if '/ar/discovery/' in (DIST / 'sitemap.xml').read_text(encoding='utf-8'):
-    errors.append('locale: sitemap contains accidental /ar/discovery/')
-for page in sorted((ROOT / 'src/content/ar/pages').glob('*.html')):
-    source = page.read_text(encoding='utf-8')
-    if '{{' in source or '}}' in source:
-        errors.append(f'{page}: untranslated template placeholder marker')
-manifest_path = ROOT / 'docs/i18n/ar-translation-manifest.json'
-manifest = json.loads(manifest_path.read_text(encoding='utf-8')) if manifest_path.is_file() else {}
-for key, value in {'locale':'ar','source_locale':'en-CA','source_commit':'8c3b9fbb42a5a7109d48c9d03cd1d5e08257df71','status':'machine_draft','human_reviewed':False,'reviewer':None,'glossary_version':'1.0.0'}.items():
-    if manifest.get(key) != value: errors.append(f'translation governance: invalid {key}')
-if len(manifest.get('routes', [])) != 9 or any(not route.startswith('/ar/') for route in manifest.get('routes', [])):
-    errors.append('translation governance: expected nine Arabic routes')
+sitemap_text = (DIST / 'sitemap.xml').read_text(encoding='utf-8')
+for locale_id, locale in locales.items():
+    if locale_id == config['default_locale']:
+        continue
+    prefix = locale['url_prefix'].strip('/')
+    if not prefix:
+        errors.append(f'locale {locale_id}: non-default locale must have a URL prefix')
+        continue
+    prohibited_discovery = f'/{prefix}/discovery/'
+    if (DIST / prefix / 'discovery').exists():
+        errors.append(f'locale {locale_id}: accidental {prohibited_discovery} output')
+    if prohibited_discovery in sitemap_text:
+        errors.append(f'locale {locale_id}: sitemap contains accidental {prohibited_discovery}')
+    for page in sorted((ROOT / locale['content_dir'] / 'pages').glob('*.html')):
+        source = page.read_text(encoding='utf-8')
+        if '{{' in source or '}}' in source:
+            errors.append(f'{page}: untranslated template placeholder marker')
+    manifest_path = ROOT / 'docs/i18n' / f'{locale_id}-translation-manifest.json'
+    if not manifest_path.is_file():
+        errors.append(f'locale {locale_id}: missing translation manifest {manifest_path}')
+        continue
+    manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
+    expected_routes = [
+        ('/' + prefix + '/') if page['output'] == 'index.html'
+        else '/' + prefix + '/' + page['output'].removesuffix('index.html')
+        for page in locale['pages']
+    ]
+    if manifest.get('locale') != locale_id:
+        errors.append(f'locale {locale_id}: manifest locale mismatch')
+    if manifest.get('source_locale') != config['default_locale']:
+        errors.append(f'locale {locale_id}: manifest source_locale mismatch')
+    if not manifest.get('source_commit'):
+        errors.append(f'locale {locale_id}: manifest source_commit is required')
+    if manifest.get('routes') != expected_routes:
+        errors.append(f'locale {locale_id}: manifest routes do not match configured routes')
+    if not manifest.get('glossary_version'):
+        errors.append(f'locale {locale_id}: manifest glossary_version is required')
+    if not isinstance(manifest.get('human_reviewed'), bool):
+        errors.append(f'locale {locale_id}: manifest human_reviewed must be boolean')
+    review_status = manifest.get('review_status')
+    reviewed_routes = manifest.get('reviewed_routes', [])
+    if review_status == 'partial_human_review':
+        if manifest.get('human_reviewed') is not False:
+            errors.append(f'locale {locale_id}: partial review cannot mark the full locale human reviewed')
+        if not reviewed_routes or not set(reviewed_routes).issubset(expected_routes):
+            errors.append(f'locale {locale_id}: partial review routes must be a non-empty subset')
+        if set(reviewed_routes) == set(expected_routes):
+            errors.append(f'locale {locale_id}: partial review cannot cover every route')
+        if not manifest.get('reviewers'):
+            errors.append(f'locale {locale_id}: partial review must name its reviewers')
 if errors:
     print('\n'.join(errors), file=sys.stderr); raise SystemExit(1)
 print('PASS: locale output language attributes, reciprocal hreflang, x-default, and route links')
-print('PASS: Arabic translation governance metadata is a machine draft')
+print('PASS: non-default locale manifests, review scope, and Discovery exclusions validated')
 
 layout=(ROOT/'src/layout.html').read_text(encoding='utf-8')
 css=(ROOT/'src/assets/site.css').read_text(encoding='utf-8')

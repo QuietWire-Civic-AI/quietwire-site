@@ -57,7 +57,11 @@ def language_links(page: dict, locale: dict) -> tuple[str, str]:
         equivalent = page_for_key(other, page["key"])
         href = locale_path(equivalent, other)
         name = other["language_name"]
-        links.append(f'<a href="{escape(href)}" hreflang="{escape(other["id"])}">{escape(name)}</a>')
+        current = ' aria-current="true"' if other["id"] == locale["id"] else ""
+        links.append(
+            f'<a href="{escape(href)}" hreflang="{escape(other["id"])}" '
+            f'lang="{escape(other["id"])}" dir="auto"{current}>{escape(name)}</a>'
+        )
         alternates.append(f'<link rel="alternate" hreflang="{escape(other["id"])}" href="{escape(canonical_url(equivalent, other))}">')
     default_page = page_for_key(next(l for l in locales() if l["id"] == CONFIG["default_locale"]), page["key"])
     default_locale = next(l for l in locales() if l["id"] == CONFIG["default_locale"])
@@ -88,6 +92,8 @@ def build() -> None:
     shutil.copytree(SRC / "assets", DIST / "assets")
     layout = (SRC / "layout.html").read_text(encoding="utf-8")
     year = str(datetime.now(timezone.utc).year)
+    default_locale = next(locale for locale in locales() if locale["id"] == CONFIG["default_locale"])
+    default_shell = json.loads((ROOT / default_locale["shell"]).read_text(encoding="utf-8"))
     for locale in locales():
         shell = json.loads((ROOT / locale["shell"]).read_text(encoding="utf-8"))
         for page in locale["pages"]:
@@ -103,6 +109,7 @@ def build() -> None:
                 "hreflang": alternates,
                 "language_links": links,
                 "language_label": shell["navigation"]["language_label"],
+                "current_language": locale["language_name"],
                 "home_url": urls["home"],
                 "work_url": urls["work"], "appliances_url": urls["appliances"], "pilot_url": urls["pilot"],
                 "patterns_url": urls["patterns"], "method_url": urls["method"], "field_url": urls["field"],
@@ -156,8 +163,8 @@ def build() -> None:
         encoding="utf-8"
     )
     manifest = {
-        "name": shell["metadata"]["manifest_name"],
-        "short_name": shell["metadata"]["manifest_short_name"],
+        "name": default_shell["metadata"]["manifest_name"],
+        "short_name": default_shell["metadata"]["manifest_short_name"],
         "start_url": "/",
         "display": "standalone",
         "background_color": "#0a1212",
