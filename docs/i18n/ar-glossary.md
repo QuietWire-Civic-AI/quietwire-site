@@ -1,8 +1,10 @@
-# Arabic glossary v1.1.0
+# Arabic glossary v1.2.0
 
 This glossary began with the machine-assisted Arabic draft. Version 1.1.0
 incorporates terminology recommended by Ali Adnan and Khalil during their
-partial human review of the visible Arabic homepage on 30 July 2026.
+partial human review of the visible Arabic homepage on 30 July 2026. Version
+1.2.0 incorporates Ali Adnan and Khalil's review of the Arabic Node Appliances
+page, reported on 31 July 2026.
 
 The review did not cover the full Arabic locale. Terms remain context-sensitive,
 and governed names stay unchanged. Arabic explanations do not create new
@@ -17,15 +19,20 @@ product, legal, authority, or adoption claims.
 | Civic AI | `Civic AI` | الذكاء الاصطناعي المدني | Explanatory terminology. |
 | coherence infrastructure | coherence infrastructure | بنية التماسك المؤسسي | Homepage-reviewed institutional wording. |
 | workflow | workflow | سير العمل | Homepage-reviewed. |
+| node | node | عُقدة | Reviewed Appliances terminology. |
+| nodes | nodes | عُقَد | Reviewed Appliances terminology. |
 | local node | local node | عُقدة محلية | Use the diacritic where it improves clarity. |
 | local memory | local memory | ذاكرة محلية | Homepage-reviewed terminology set. |
 | governed memory | governed memory | ذاكرة خاضعة للحوكمة | Prefer over the literal `ذاكرة محكومة`. |
 | evidence | evidence | أدلة موثوقة وقابلة للتحقق | Context may instead require سجلات قابلة للتحقق. |
+| verifiable evidence | verifiable evidence | أدلة قابلة للتحقق | Reviewed Appliances terminology. |
 | continuity | continuity | الاستمرارية | Homepage-reviewed. |
 | companion | companion | رفيق رقمي | Official product-language candidate; `مساعد رقمي` remains a context-dependent alternative. |
 | Discovery | `Discovery` | أداة الاستكشاف (Discovery) | Arabic term first; preserve the English product name where useful. |
 | pilot | pilot | مشروع تجريبي | Prefer over the ambiguous `تجربة`. |
 | deployment | deployment | نشر / تطبيق | Select according to technical context. |
+| workloads | workloads | أعباء العمل | Reviewed Appliances terminology. |
+| customer-owned | customer-owned | مملوك للعميل / يمتلكه العميل | Select according to sentence structure. |
 | auditability | auditability | قابلية المراجعة والتحقق | Homepage-reviewed terminology set. |
 | custody | custody | الحيازة المحلية | Provisional. |
 | provenance | provenance | مصدرية السجل / أصل الدليل | Context-dependent and still provisional. |
