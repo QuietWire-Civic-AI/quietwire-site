@@ -3,7 +3,7 @@ from __future__ import annotations
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlparse
-import json, re, sys
+import json, re, subprocess, sys
 
 ROOT = Path(__file__).resolve().parents[1]
 DIST = ROOT / "dist"
@@ -211,3 +211,65 @@ if errors:
     raise SystemExit(1)
 print('PASS: Discovery has 30 sections, 333 questions, and 333 unique IDs')
 print('PASS: Discovery CSP and local-only API boundary validated')
+
+
+# Focused human-review regression protection for the Arabic Appliances page.
+arabic_appliances_source = (ROOT / 'src/content/ar/pages/appliances.html').read_text(encoding='utf-8')
+arabic_appliances_output = (DIST / 'ar/appliances/index.html').read_text(encoding='utf-8')
+reviewed_phrases = [
+    'أجهزة عُقَد QuietWire',
+    'وجود جهاز داخل منشأتك يغيّر علاقتك بالذكاء الاصطناعي.',
+    'ليست عُقدة QuietWire مجرد روبوت محادثة داخل صندوق.',
+    'بل هي بنية أساسية محلية يملكها العميل، وتدعم ذاكرةً خاضعةً للحوكمة، ومساعدة الذكاء الاصطناعي، والأدلة القابلة للتحقق، واستمرارية الأعمال، والتكاملات المستقبلية.',
+    'استكشف المشروع التجريبي لمدة 60 يومًا',
+    'تبقى الأجهزة، وخدمات الإعداد، والرعاية عناصر واضحة ومنفصلة ضمن العلاقة التعاقدية.',
+    'خيارات مناسبة للبدء',
+    'ثلاثة خيارات واضحة للبدء.',
+    'نقطة ارتكاز محلية موثوقة للملفات والسجلات وعمليات التسليم، ولسير العمل البسيط وذاكرة استمرارية الأعمال والتعافي.',
+    'عُقدة مكتبية تدعم استمرارية العمل مع العملاء والمشروعات والمقترحات، من دون تسليم ذاكرة العمل إلى مزوّد نماذج الذكاء الاصطناعي.',
+    'قدرات مشتركة للفرق والبيئات متعددة المواقع وأعباء العمل الثقيلة، وفق نطاق عمل موثّق.',
+    'اختر أصغر جهاز قادر على حفظ السجل كاملًا.',
+    'سنحدّد معك الخيار الأنسب، وحدود النطاق، ومتطلبات الإعداد وتوثيقه.',
+    'ناقش الجهاز المناسب',
+]
+for phrase in reviewed_phrases:
+    if phrase not in arabic_appliances_source or phrase not in arabic_appliances_output:
+        errors.append(f'ar/appliances: reviewed phrase missing from source or generated output: {phrase}')
+for superseded in (
+    'أجهزة عقد QuietWire', 'صندوق في المبنى يغير المحادثة.',
+    'عقدة QuietWire ليست روبوت محادثة داخل صندوق.', 'ذاكرة محكومة',
+    'شاهد تجربة 60 يوماً', 'نقاط بداية مناسبة', 'ثلاثة إعدادات واضحة للبدء.',
+    'CAD $5,400', 'CAD $10,750', 'CAD $30,000', 'اختر جهازاً',
+):
+    if superseded in arabic_appliances_source or superseded in arabic_appliances_output:
+        errors.append(f'ar/appliances: superseded phrase remains: {superseded}')
+if '$' in arabic_appliances_source or '$' in arabic_appliances_output:
+    errors.append('ar/appliances: price rendering contains a dollar sign')
+price_numbers = ('5,400', '400', '10,750', '750', '30,000', '2,500')
+if sum(len(re.findall(rf'<bdi dir="ltr">{re.escape(number)}</bdi>', arabic_appliances_source)) for number in price_numbers) != 6:
+    errors.append('ar/appliances: all six price numbers must be bidi-isolated')
+for sentence in (
+    '<bdi dir="ltr">5,400</bdi> دولار كندي، ثم <bdi dir="ltr">400</bdi> دولار كندي شهريًا.',
+    '<bdi dir="ltr">10,750</bdi> دولارًا كنديًا، ثم <bdi dir="ltr">750</bdi> دولارًا كنديًا شهريًا.',
+    '<bdi dir="ltr">30,000</bdi> دولار كندي، ثم <bdi dir="ltr">2,500</bdi> دولار كندي شهريًا.',
+):
+    if sentence not in arabic_appliances_source or sentence not in arabic_appliances_output:
+        errors.append(f'ar/appliances: fully Arabic price sentence missing: {sentence}')
+manifest = json.loads((ROOT / 'docs/i18n/ar-translation-manifest.json').read_text(encoding='utf-8'))
+if '/ar/appliances/' not in manifest.get('reviewed_routes', []) or '/ar/appliances/' in manifest.get('pending_routes', []):
+    errors.append('ar/appliances: manifest reviewed/pending route state is incorrect')
+if manifest.get('human_reviewed') is not False:
+    errors.append('ar: human_reviewed must remain false')
+glossary = (ROOT / 'docs/i18n/ar-glossary.md').read_text(encoding='utf-8')
+glossary_version = re.search(r'^# Arabic glossary (\S+)', glossary, re.MULTILINE)
+if not glossary_version or glossary_version.group(1) != 'v1.2.0' or manifest.get('glossary_version') != '1.2.0':
+    errors.append('ar: glossary and manifest versions must both be 1.2.0')
+baseline = '52b500fa0f61bc3e299f23c5c39a14f9cef96e63'
+non_arabic_paths = ['src/content/en-CA', 'src/content/es', 'src/content/fr-CA']
+unchanged = subprocess.run(['git', 'diff', '--quiet', baseline, '--', *non_arabic_paths], cwd=ROOT).returncode
+if unchanged != 0:
+    errors.append('source: non-Arabic page content differs from the requested baseline')
+if errors:
+    print('\n'.join(errors), file=sys.stderr)
+    raise SystemExit(1)
+print('PASS: Arabic Appliances human-review phrases, RTL-safe prices, manifest state, and non-Arabic source boundary')
