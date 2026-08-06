@@ -4,6 +4,7 @@ build:
 check: build
 	python3 scripts/check_locales.py
 	python3 scripts/check.py
+	python3 scripts/check_ar_pilot.py
 preview: build
 	python3 scripts/serve.py
 release: check

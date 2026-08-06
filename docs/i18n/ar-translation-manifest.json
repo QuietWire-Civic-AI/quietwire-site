@@ -16,9 +16,9 @@
   "publication_status": "public_review_preview",
   "review_status": "partial_human_review",
   "reviewers": ["Ali Adnan", "Khalil"],
-  "reviewed_routes": ["/ar/", "/ar/appliances/"],
+  "reviewed_routes": ["/ar/", "/ar/appliances/", "/ar/pilot/"],
   "pending_routes": [
-    "/ar/work/", "/ar/advisory/", "/ar/pilot/", "/ar/patterns/", "/ar/method/", "/ar/field/", "/ar/about/", "/ar/privacy/"
+    "/ar/work/", "/ar/advisory/", "/ar/patterns/", "/ar/method/", "/ar/field/", "/ar/about/", "/ar/privacy/"
   ],
   "review_scope": [
     "visible Arabic homepage language",
@@ -29,11 +29,33 @@
     "Arabic Appliances UX writing",
     "Arabic Appliances terminology",
     "Arabic Appliances RTL presentation",
-    "Arabic Appliances price and currency bidi formatting"
+    "Arabic Appliances price and currency bidi formatting",
+    "Arabic Pilot language and UX writing",
+    "Arabic Pilot terminology",
+    "Arabic Pilot RTL day-range presentation",
+    "Arabic Pilot source completeness and missing sections",
+    "Arabic Pilot price and currency bidi formatting"
   ],
-  "review_reported_date": "2026-07-31",
-  "review_recorded_at_utc": "2026-08-01T17:12:53Z",
-  "review_basis": "Written review relayed by Chris Blask from Ali Adnan and Khalil.",
-  "source_alignment": "pending_exact_mapping",
-  "source_alignment_note": "The reviewed Arabic homepage is an earlier compact structure and does not correspond line-for-line to the current public English homepage. The Arabic Advisory route is an explicit English-language review placeholder until human Arabic wording is approved."
+  "review_reported_date": "2026-08-06",
+  "review_recorded_at_utc": "2026-08-06T18:20:00Z",
+  "review_basis": "Written reviews relayed by Chris Blask from Ali Adnan and Khalil.",
+  "review_history": [
+    {
+      "route": "/ar/",
+      "reported_date": "2026-07-30",
+      "scope": "visible language, UX writing, RTL presentation, and shared terminology"
+    },
+    {
+      "route": "/ar/appliances/",
+      "reported_date": "2026-07-31",
+      "scope": "language, terminology, UX writing, RTL presentation, and price formatting"
+    },
+    {
+      "route": "/ar/pilot/",
+      "reported_date": "2026-08-06",
+      "scope": "complete page language, terminology, RTL day ranges, source completeness, deliverables, fit boundaries, and pricing"
+    }
+  ],
+  "source_alignment": "partial_exact_mapping",
+  "source_alignment_note": "The reviewed Arabic homepage is an earlier compact structure and does not correspond line-for-line to the current public English homepage. The Arabic Appliances and Pilot routes are aligned to their English counterparts after written human review. The Arabic Advisory route remains an English-language review placeholder until human Arabic wording is approved."
 }
