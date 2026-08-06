@@ -4,10 +4,11 @@
     "toggle_label": "Open navigation",
     "home_label": "QuietWire home",
     "cta": "Start a conversation",
-    "cta_subject": "QuietWire%20node%20conversation",
+    "cta_subject": "QuietWire%20conversation",
     "language_label": "Language",
     "labels": {
       "work": "Work",
+      "advisory": "Advisory",
       "appliances": "Appliances",
       "pilot": "Pilot",
       "patterns": "Patterns",
@@ -19,12 +20,11 @@
     "subtitle": "coherence infrastructure",
     "footer_subtitle": "local strength, shared coherence"
   },
-  "accessibility": {
-    "skip_to_content": "Skip to content"
-  },
+  "accessibility": {"skip_to_content": "Skip to content"},
   "footer": {
     "description": "Local AI, governed memory, and attested systems for work that has to remain understandable.",
     "begin": "Begin",
+    "advisory": "QuietWire Advisory",
     "node_appliances": "Node appliances",
     "pilot": "60-day pilot",
     "patterns": "Deployment patterns",
@@ -38,9 +38,5 @@
     "copyright": "© {{year}} QuietWire. Built to be held close.",
     "quiet_principles": "No trackers. No advertising. No borrowed attention."
   },
-  "metadata": {
-    "site_name": "QuietWire",
-    "manifest_name": "QuietWire",
-    "manifest_short_name": "QuietWire"
-  }
+  "metadata": {"site_name": "QuietWire", "manifest_name": "QuietWire", "manifest_short_name": "QuietWire"}
 }
