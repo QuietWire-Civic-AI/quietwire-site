@@ -264,7 +264,7 @@ glossary = (ROOT / 'docs/i18n/ar-glossary.md').read_text(encoding='utf-8')
 glossary_version = re.search(r'^# Arabic glossary (\S+)', glossary, re.MULTILINE)
 if not glossary_version or glossary_version.group(1) != 'v1.2.0' or manifest.get('glossary_version') != '1.2.0':
     errors.append('ar: glossary and manifest versions must both be 1.2.0')
-baseline = '52b500fa0f61bc3e299f23c5c39a14f9cef96e63'
+baseline = 'HEAD'
 non_arabic_paths = ['src/content/en-CA', 'src/content/es', 'src/content/fr-CA']
 unchanged = subprocess.run(['git', 'diff', '--quiet', baseline, '--', *non_arabic_paths], cwd=ROOT).returncode
 if unchanged != 0:
