@@ -4,11 +4,12 @@
     "toggle_label": "فتح التنقل",
     "home_label": "الصفحة الرئيسية لكوايت واير",
     "cta": "ابدأ محادثة",
-    "cta_subject": "محادثة حول عقدة QuietWire",
+    "cta_subject": "محادثة حول QuietWire",
     "language_label": "اللغة",
     "language_name": "العربية",
     "labels": {
       "work": "ما نبنيه",
+      "advisory": "الخدمات الاستشارية",
       "appliances": "الأجهزة",
       "pilot": "التجربة",
       "patterns": "الأنماط",
@@ -20,12 +21,11 @@
     "subtitle": "بنية التماسك المؤسسي",
     "footer_subtitle": "قوة محلية، تماسك مشترك"
   },
-  "accessibility": {
-    "skip_to_content": "انتقل إلى المحتوى"
-  },
+  "accessibility": {"skip_to_content": "انتقل إلى المحتوى"},
   "footer": {
     "description": "ذكاء اصطناعي محلي، وذاكرة خاضعة للحوكمة، وأنظمة موثوقة وقابلة للتحقق؛ للعمل الذي يجب أن يظل مفهومًا.",
     "begin": "ابدأ الآن",
+    "advisory": "خدمات QuietWire الاستشارية",
     "node_appliances": "أجهزة العُقَد",
     "pilot": "مشروع تجريبي لمدة 60 يومًا",
     "patterns": "أنماط النشر",
@@ -39,9 +39,5 @@
     "copyright": "© {{year}} QuietWire. صُممت لتبقى قريبة منك.",
     "quiet_principles": "لا أدوات تتبّع. لا إعلانات. ولا استغلال لانتباهك."
   },
-  "metadata": {
-    "site_name": "QuietWire",
-    "manifest_name": "QuietWire",
-    "manifest_short_name": "QuietWire"
-  }
+  "metadata": {"site_name": "QuietWire", "manifest_name": "QuietWire", "manifest_short_name": "QuietWire"}
 }
