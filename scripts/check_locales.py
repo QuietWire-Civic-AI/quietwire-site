@@ -28,7 +28,7 @@ required_shell = {
     "navigation.primary_label", "navigation.toggle_label", "navigation.home_label",
     "navigation.cta", "navigation.cta_subject", "navigation.language_label", "navigation.labels", "brand.subtitle",
     "brand.footer_subtitle", "accessibility.skip_to_content", "footer.description",
-    "footer.begin", "footer.node_appliances", "footer.pilot", "footer.patterns",
+    "footer.begin", "footer.advisory", "footer.node_appliances", "footer.pilot", "footer.patterns",
     "footer.explore", "footer.what_we_build", "footer.method", "footer.field",
     "footer.about", "footer.connect", "footer.privacy", "footer.copyright",
     "footer.quiet_principles",
@@ -83,7 +83,8 @@ for locale in locales:
     route_sets.append(set(page.get("key") for page in locale.get("pages", [])))
 if route_sets and any(routes != route_sets[0] for routes in route_sets[1:]):
     errors.append("locale: page route identity coverage differs between locales")
-if route_sets and set(route_sets[0]) != {"home", "work", "appliances", "pilot", "patterns", "method", "field", "about", "privacy"}:
+expected_keys = {"home", "work", "advisory", "appliances", "pilot", "patterns", "method", "field", "about", "privacy"}
+if route_sets and set(route_sets[0]) != expected_keys:
     errors.append("locale: ordinary page key set is incomplete or drifting")
 if errors:
     print("\n".join(errors), file=sys.stderr)
