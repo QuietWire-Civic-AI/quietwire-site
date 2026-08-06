@@ -11,36 +11,13 @@
   "review_status": "unreviewed",
   "reviewer": null,
   "reviewers": [],
-  "intended_review_habitats": [
-    "Québec",
-    "Francophone Canada"
-  ],
+  "intended_review_habitats": ["Québec", "Francophone Canada"],
   "review_note": "Review habitats identify where Canadian-French language and institutional usage should be tested. They do not appoint reviewers or imply approval.",
   "glossary_version": "1.0.0",
   "created_at_utc": "2026-07-31T02:54:52Z",
-  "routes": [
-    "/fr/",
-    "/fr/work/",
-    "/fr/appliances/",
-    "/fr/pilot/",
-    "/fr/patterns/",
-    "/fr/method/",
-    "/fr/field/",
-    "/fr/about/",
-    "/fr/privacy/"
-  ],
+  "routes": ["/fr/", "/fr/work/", "/fr/advisory/", "/fr/appliances/", "/fr/pilot/", "/fr/patterns/", "/fr/method/", "/fr/field/", "/fr/about/", "/fr/privacy/"],
   "reviewed_routes": [],
-  "pending_routes": [
-    "/fr/",
-    "/fr/work/",
-    "/fr/appliances/",
-    "/fr/pilot/",
-    "/fr/patterns/",
-    "/fr/method/",
-    "/fr/field/",
-    "/fr/about/",
-    "/fr/privacy/"
-  ],
+  "pending_routes": ["/fr/", "/fr/work/", "/fr/advisory/", "/fr/appliances/", "/fr/pilot/", "/fr/patterns/", "/fr/method/", "/fr/field/", "/fr/about/", "/fr/privacy/"],
   "source_alignment": "complete_route_and_structure_mapping",
-  "source_alignment_note": "All nine French-Canadian routes were machine-drafted from the current English source structure at the pinned source commit. Human linguistic and cultural review remains pending."
+  "source_alignment_note": "All ten French-Canadian routes were machine-drafted from the English source structure. Human linguistic and cultural review remains pending."
 }
