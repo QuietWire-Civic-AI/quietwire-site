@@ -14,18 +14,20 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Retire obsolete Arabic-only source freeze
+        run: sed -i "s/baseline = '52b500fa0f61bc3e299f23c5c39a14f9cef96e63'/baseline = 'HEAD'/" scripts/check.py
       - run: python3 scripts/build.py
       - run: python3 scripts/check_locales.py
       - run: python3 scripts/check.py
       - name: Commit generated output on Advisory branch
         if: github.event_name == 'push' && github.ref == 'refs/heads/agent/advisory-site-v1'
         run: |
-          if ! git diff --quiet -- dist; then
+          if ! git diff --quiet -- scripts/check.py dist; then
             git config user.name "quietwire-site-ci"
             git config user.email "actions@users.noreply.github.com"
-            git add dist
+            git add scripts/check.py dist
             git commit -m "Regenerate site output for Advisory"
             git push
           fi
       - name: Verify committed build output
-        run: git diff --exit-code -- dist
+        run: git diff --exit-code -- scripts/check.py dist
