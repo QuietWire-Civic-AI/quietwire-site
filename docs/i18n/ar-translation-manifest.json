@@ -20,6 +20,15 @@
   "pending_routes": [
     "/ar/work/", "/ar/advisory/", "/ar/patterns/", "/ar/method/", "/ar/field/", "/ar/about/", "/ar/privacy/"
   ],
+  "human_authored_drafts": [
+    {
+      "route": "/ar/advisory/",
+      "authors": ["Ali Adnan", "Khalil"],
+      "received_date": "2026-08-06",
+      "status": "quietwire_semantic_and_publication_review_pending",
+      "source_record": "docs/i18n/reviews/ar-advisory-2026-08-06-ali-khalil.md"
+    }
+  ],
   "review_scope": [
     "visible Arabic homepage language",
     "translation and UX writing",
@@ -34,11 +43,12 @@
     "Arabic Pilot terminology",
     "Arabic Pilot RTL day-range presentation",
     "Arabic Pilot source completeness and missing sections",
-    "Arabic Pilot price and currency bidi formatting"
+    "Arabic Pilot price and currency bidi formatting",
+    "Arabic Advisory human-authored institutional draft and semantic review"
   ],
   "review_reported_date": "2026-08-06",
-  "review_recorded_at_utc": "2026-08-06T18:20:00Z",
-  "review_basis": "Written reviews relayed by Chris Blask from Ali Adnan and Khalil.",
+  "review_recorded_at_utc": "2026-08-06T19:15:00Z",
+  "review_basis": "Written reviews and human-authored Arabic drafts relayed by Chris Blask from Ali Adnan and Khalil.",
   "review_history": [
     {
       "route": "/ar/",
@@ -54,8 +64,13 @@
       "route": "/ar/pilot/",
       "reported_date": "2026-08-06",
       "scope": "complete page language, terminology, RTL day ranges, source completeness, deliverables, fit boundaries, and pricing"
+    },
+    {
+      "route": "/ar/advisory/",
+      "reported_date": "2026-08-06",
+      "scope": "human-authored institutional Arabic draft; QuietWire semantic and publication review pending"
     }
   ],
   "source_alignment": "partial_exact_mapping",
-  "source_alignment_note": "The reviewed Arabic homepage is an earlier compact structure and does not correspond line-for-line to the current public English homepage. The Arabic Appliances and Pilot routes are aligned to their English counterparts after written human review. The Arabic Advisory route remains an English-language review placeholder until human Arabic wording is approved."
+  "source_alignment_note": "The reviewed Arabic homepage is an earlier compact structure and does not correspond line-for-line to the current public English homepage. The Arabic Appliances and Pilot routes are aligned to their English counterparts after written human review. The Arabic Advisory route now contains a human-authored institutional Arabic draft by Ali Adnan and Khalil; it remains pending QuietWire semantic and publication approval."
 }
