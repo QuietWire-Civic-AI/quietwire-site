@@ -16,16 +16,19 @@
   "publication_status": "public_review_preview",
   "review_status": "partial_human_review",
   "reviewers": ["Ali Adnan", "Khalil"],
-  "reviewed_routes": ["/ar/", "/ar/appliances/", "/ar/pilot/"],
+  "reviewed_routes": ["/ar/", "/ar/advisory/", "/ar/appliances/", "/ar/pilot/"],
   "pending_routes": [
-    "/ar/work/", "/ar/advisory/", "/ar/patterns/", "/ar/method/", "/ar/field/", "/ar/about/", "/ar/privacy/"
+    "/ar/work/", "/ar/patterns/", "/ar/method/", "/ar/field/", "/ar/about/", "/ar/privacy/"
   ],
   "human_authored_drafts": [
     {
       "route": "/ar/advisory/",
       "authors": ["Ali Adnan", "Khalil"],
       "received_date": "2026-08-06",
-      "status": "quietwire_semantic_and_publication_review_pending",
+      "status": "human_reviewed_and_approved_for_publication",
+      "approved_date": "2026-08-06",
+      "language_approval": "Ali Adnan",
+      "publication_approval": "Chris Blask",
       "source_record": "docs/i18n/reviews/ar-advisory-2026-08-06-ali-khalil.md"
     }
   ],
@@ -44,11 +47,14 @@
     "Arabic Pilot RTL day-range presentation",
     "Arabic Pilot source completeness and missing sections",
     "Arabic Pilot price and currency bidi formatting",
-    "Arabic Advisory human-authored institutional draft and semantic review"
+    "Arabic Advisory human-authored institutional language",
+    "Arabic Advisory RTL presentation",
+    "Arabic Advisory decision-authority and trust-boundary terminology",
+    "Arabic Advisory technical-node diacritics"
   ],
   "review_reported_date": "2026-08-06",
-  "review_recorded_at_utc": "2026-08-06T19:15:00Z",
-  "review_basis": "Written reviews and human-authored Arabic drafts relayed by Chris Blask from Ali Adnan and Khalil.",
+  "review_recorded_at_utc": "2026-08-06T19:35:00Z",
+  "review_basis": "Written reviews and human-authored Arabic drafts relayed by Chris Blask from Ali Adnan and Khalil, followed by Ali Adnan's final RTL and wording approval and Chris Blask's publication authorization.",
   "review_history": [
     {
       "route": "/ar/",
@@ -68,9 +74,9 @@
     {
       "route": "/ar/advisory/",
       "reported_date": "2026-08-06",
-      "scope": "human-authored institutional Arabic draft; QuietWire semantic and publication review pending"
+      "scope": "human-authored institutional Arabic, rendered RTL review, final technical-node diacritics, and approval for publication"
     }
   ],
   "source_alignment": "partial_exact_mapping",
-  "source_alignment_note": "The reviewed Arabic homepage is an earlier compact structure and does not correspond line-for-line to the current public English homepage. The Arabic Appliances and Pilot routes are aligned to their English counterparts after written human review. The Arabic Advisory route now contains a human-authored institutional Arabic draft by Ali Adnan and Khalil; it remains pending QuietWire semantic and publication approval."
+  "source_alignment_note": "The reviewed Arabic homepage is an earlier compact structure and does not correspond line-for-line to the current public English homepage. The Arabic Appliances and Pilot routes are aligned to their English counterparts after written human review. The Arabic Advisory route is a human-authored institutional Arabic rendering by Ali Adnan and Khalil, reviewed in the RTL layout and approved for publication on 2026-08-06."
 }

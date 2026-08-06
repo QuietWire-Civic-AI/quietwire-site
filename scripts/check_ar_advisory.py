@@ -24,11 +24,13 @@ required_phrases = [
     'قرارات مؤثرة، ومسؤول بشري واضح وخاضع للمساءلة',
     'القدرة على قول «لا» جزء من الخدمة.',
     'أخبرنا بما يجب أن يظل ثابتًا',
+    'عُقدًا محلية',
+    'إحدى عُقد QuietWire',
 ]
 
 for phrase in required_phrases:
     if phrase not in source or phrase not in output:
-        errors.append(f'ar/advisory: human-authored phrase missing from source or output: {phrase}')
+        errors.append(f'ar/advisory: approved phrase missing from source or output: {phrase}')
 
 superseded = [
     'حدّد معنى نجاح الذكاء الاصطناعي قبل أن يحدّده غيرك نيابةً عنك.',
@@ -46,25 +48,31 @@ if not REVIEW.is_file():
     errors.append('ar/advisory: missing review provenance record')
 else:
     review_text = REVIEW.read_text(encoding='utf-8')
-    for name in ('Ali Adnan', 'Khalil'):
+    for name in ('Ali Adnan', 'Khalil', 'Chris Blask'):
         if name not in review_text:
             errors.append(f'ar/advisory: review record does not name {name}')
+    if 'approved for publication' not in review_text:
+        errors.append('ar/advisory: review record does not contain publication approval')
 
 manifest = json.loads(MANIFEST.read_text(encoding='utf-8'))
 drafts = manifest.get('human_authored_drafts', [])
 entry = next((item for item in drafts if item.get('route') == '/ar/advisory/'), None)
 if entry is None:
-    errors.append('ar/advisory: manifest does not record the human-authored draft')
+    errors.append('ar/advisory: manifest does not record the human-authored page')
 else:
     if entry.get('authors') != ['Ali Adnan', 'Khalil']:
         errors.append('ar/advisory: manifest authors are incorrect')
-    if entry.get('status') != 'quietwire_semantic_and_publication_review_pending':
-        errors.append('ar/advisory: manifest approval boundary is incorrect')
+    if entry.get('status') != 'human_reviewed_and_approved_for_publication':
+        errors.append('ar/advisory: manifest approval status is incorrect')
+    if entry.get('language_approval') != 'Ali Adnan':
+        errors.append('ar/advisory: language approval is not attributed to Ali Adnan')
+    if entry.get('publication_approval') != 'Chris Blask':
+        errors.append('ar/advisory: publication approval is not attributed to Chris Blask')
 
-if '/ar/advisory/' not in manifest.get('pending_routes', []):
-    errors.append('ar/advisory: route must remain pending until QuietWire approval')
-if '/ar/advisory/' in manifest.get('reviewed_routes', []):
-    errors.append('ar/advisory: route must not be marked reviewed before approval')
+if '/ar/advisory/' not in manifest.get('reviewed_routes', []):
+    errors.append('ar/advisory: route must be listed as reviewed after approval')
+if '/ar/advisory/' in manifest.get('pending_routes', []):
+    errors.append('ar/advisory: route must not remain pending after approval')
 if manifest.get('human_reviewed') is not False:
     errors.append('ar: partial route review must not mark the full locale human reviewed')
 
@@ -72,4 +80,4 @@ if errors:
     print('\n'.join(errors), file=sys.stderr)
     raise SystemExit(1)
 
-print('PASS: Arabic Advisory human-authored draft, provenance, and publication boundary')
+print('PASS: Arabic Advisory approved wording, provenance, node diacritics, and publication state')
