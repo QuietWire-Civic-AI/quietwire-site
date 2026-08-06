@@ -33,19 +33,26 @@ def canonical_url(page: dict, locale: dict) -> str:
     return CONFIG["base_url"] + locale_path(page, locale)
 
 
-def page_for_key(locale: dict, key: str) -> dict:
+def page_for_key(locale: dict, key: str, required: bool = True) -> dict | None:
     for page in locale["pages"]:
         if page["key"] == key:
             return page
-    raise ValueError(f"locale {locale['id']} has no page key {key}")
+    if required:
+        raise ValueError(f"locale {locale['id']} has no page key {key}")
+    return None
 
 
 def navigation(active: str, shell: dict, locale: dict) -> str:
     links = []
     for item in CONFIG["nav"]:
+        if item.get("locales") and locale["id"] not in item["locales"]:
+            continue
+        page = page_for_key(locale, item["key"], required=False)
+        if page is None:
+            continue
         current = ' aria-current="page"' if item["key"] == active else ""
         label = shell["navigation"]["labels"][item["key"]]
-        href = item["href"] if item["key"] == "discovery" else locale_path(page_for_key(locale, item["key"]), locale)
+        href = locale_path(page, locale)
         links.append(f'<a href="{escape(href)}"{current}>{escape(label)}</a>')
     return "\n".join(links)
 
@@ -53,8 +60,12 @@ def navigation(active: str, shell: dict, locale: dict) -> str:
 def language_links(page: dict, locale: dict) -> tuple[str, str]:
     links = []
     alternates = []
+    available = []
     for other in locales():
-        equivalent = page_for_key(other, page["key"])
+        equivalent = page_for_key(other, page["key"], required=False)
+        if equivalent is None:
+            continue
+        available.append((other, equivalent))
         href = locale_path(equivalent, other)
         name = other["language_name"]
         current = ' aria-current="true"' if other["id"] == locale["id"] else ""
@@ -63,9 +74,10 @@ def language_links(page: dict, locale: dict) -> tuple[str, str]:
             f'lang="{escape(other["id"])}" dir="auto"{current}>{escape(name)}</a>'
         )
         alternates.append(f'<link rel="alternate" hreflang="{escape(other["id"])}" href="{escape(canonical_url(equivalent, other))}">')
-    default_page = page_for_key(next(l for l in locales() if l["id"] == CONFIG["default_locale"]), page["key"])
     default_locale = next(l for l in locales() if l["id"] == CONFIG["default_locale"])
-    alternates.append(f'<link rel="alternate" hreflang="x-default" href="{escape(canonical_url(default_page, default_locale))}">')
+    default_page = page_for_key(default_locale, page["key"], required=False)
+    if default_page is not None:
+        alternates.append(f'<link rel="alternate" hreflang="x-default" href="{escape(canonical_url(default_page, default_locale))}">')
     return " ".join(links), "\n  ".join(alternates)
 
 
@@ -101,7 +113,7 @@ def build() -> None:
             relative_output = (Path(locale["url_prefix"]) / page["output"] if locale["url_prefix"] else Path(page["output"]))
             output = DIST / relative_output
             links, alternates = language_links(page, locale)
-            urls = {item["key"]: locale_path(page_for_key(locale, item["key"]), locale) for item in locale["pages"]}
+            urls = {item["key"]: locale_path(item, locale) for item in locale["pages"]}
             output.parent.mkdir(parents=True, exist_ok=True)
             html = replace(layout, {
                 "lang": escape(locale["id"]),
@@ -111,7 +123,9 @@ def build() -> None:
                 "language_label": shell["navigation"]["language_label"],
                 "current_language": locale["language_name"],
                 "home_url": urls["home"],
-                "work_url": urls["work"], "appliances_url": urls["appliances"], "pilot_url": urls["pilot"],
+                "work_url": urls["work"],
+                "advisory_url": urls.get("advisory", "/advisory/"),
+                "appliances_url": urls["appliances"], "pilot_url": urls["pilot"],
                 "patterns_url": urls["patterns"], "method_url": urls["method"], "field_url": urls["field"],
                 "about_url": urls["about"], "privacy_url": urls["privacy"],
                 "page_title": escape(page["title"]),
@@ -129,6 +143,7 @@ def build() -> None:
                 "cta": shell["navigation"]["cta"], "cta_subject": shell["navigation"]["cta_subject"],
                 "brand_subtitle": shell["brand"]["subtitle"], "footer_subtitle": shell["brand"]["footer_subtitle"],
                 "footer_description": shell["footer"]["description"], "begin": shell["footer"]["begin"],
+                "advisory": shell["footer"].get("advisory", "QuietWire Advisory"),
                 "node_appliances": shell["footer"]["node_appliances"], "pilot": shell["footer"]["pilot"],
                 "patterns": shell["footer"]["patterns"], "explore": shell["footer"]["explore"],
                 "what_we_build": shell["footer"]["what_we_build"], "method": shell["footer"]["method"],
@@ -159,8 +174,7 @@ def build() -> None:
     (DIST / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + "\n".join(f"  <url><loc>{url}</loc></url>" for url in urls)
-        + '\n</urlset>\n',
-        encoding="utf-8"
+        + '\n</urlset>\n', encoding="utf-8"
     )
     manifest = {
         "name": default_shell["metadata"]["manifest_name"],
