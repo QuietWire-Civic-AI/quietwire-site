@@ -10,35 +10,15 @@
   "glossary_version": "1.2.0",
   "created_at_utc": "2026-07-30T17:53:57Z",
   "routes": [
-    "/ar/",
-    "/ar/work/",
-    "/ar/appliances/",
-    "/ar/pilot/",
-    "/ar/patterns/",
-    "/ar/method/",
-    "/ar/field/",
-    "/ar/about/",
-    "/ar/privacy/"
+    "/ar/", "/ar/work/", "/ar/advisory/", "/ar/appliances/", "/ar/pilot/", "/ar/patterns/", "/ar/method/", "/ar/field/", "/ar/about/", "/ar/privacy/"
   ],
   "translation_status": "machine_draft_with_partial_human_review",
   "publication_status": "public_review_preview",
   "review_status": "partial_human_review",
-  "reviewers": [
-    "Ali Adnan",
-    "Khalil"
-  ],
-  "reviewed_routes": [
-    "/ar/",
-    "/ar/appliances/"
-  ],
+  "reviewers": ["Ali Adnan", "Khalil"],
+  "reviewed_routes": ["/ar/", "/ar/appliances/"],
   "pending_routes": [
-    "/ar/work/",
-    "/ar/pilot/",
-    "/ar/patterns/",
-    "/ar/method/",
-    "/ar/field/",
-    "/ar/about/",
-    "/ar/privacy/"
+    "/ar/work/", "/ar/advisory/", "/ar/pilot/", "/ar/patterns/", "/ar/method/", "/ar/field/", "/ar/about/", "/ar/privacy/"
   ],
   "review_scope": [
     "visible Arabic homepage language",
@@ -55,5 +35,5 @@
   "review_recorded_at_utc": "2026-08-01T17:12:53Z",
   "review_basis": "Written review relayed by Chris Blask from Ali Adnan and Khalil.",
   "source_alignment": "pending_exact_mapping",
-  "source_alignment_note": "The reviewed Arabic homepage is an earlier compact structure and does not correspond line-for-line to the current public English homepage. Reviewer-proposed wording was applied to the visible Arabic structure; exact English-source mapping remains pending."
+  "source_alignment_note": "The reviewed Arabic homepage is an earlier compact structure and does not correspond line-for-line to the current public English homepage. The Arabic Advisory route is an explicit English-language review placeholder until human Arabic wording is approved."
 }
