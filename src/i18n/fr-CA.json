@@ -4,10 +4,11 @@
     "toggle_label": "Ouvrir la navigation",
     "home_label": "Accueil de QuietWire",
     "cta": "Amorcer une conversation",
-    "cta_subject": "Conversation%20sur%20un%20noeud%20QuietWire",
+    "cta_subject": "Conversation%20avec%20QuietWire",
     "language_label": "Langue",
     "labels": {
       "work": "Ce que nous construisons",
+      "advisory": "Services-conseils",
       "appliances": "Appareils",
       "pilot": "Projet pilote",
       "patterns": "Modèles",
@@ -15,16 +16,12 @@
       "about": "À propos"
     }
   },
-  "brand": {
-    "subtitle": "infrastructure de cohérence",
-    "footer_subtitle": "force locale, cohérence partagée"
-  },
-  "accessibility": {
-    "skip_to_content": "Passer au contenu"
-  },
+  "brand": {"subtitle": "infrastructure de cohérence", "footer_subtitle": "force locale, cohérence partagée"},
+  "accessibility": {"skip_to_content": "Passer au contenu"},
   "footer": {
     "description": "IA locale, mémoire gouvernée et systèmes attestés pour le travail qui doit demeurer compréhensible.",
     "begin": "Commencer",
+    "advisory": "Services-conseils QuietWire",
     "node_appliances": "Appareils de nœud",
     "pilot": "Projet pilote de 60 jours",
     "patterns": "Modèles de déploiement",
@@ -38,9 +35,5 @@
     "copyright": "© {{year}} QuietWire. Conçu pour rester près de vous.",
     "quiet_principles": "Aucun traceur. Aucune publicité. Aucune attention détournée."
   },
-  "metadata": {
-    "site_name": "QuietWire",
-    "manifest_name": "QuietWire",
-    "manifest_short_name": "QuietWire"
-  }
+  "metadata": {"site_name": "QuietWire", "manifest_name": "QuietWire", "manifest_short_name": "QuietWire"}
 }
