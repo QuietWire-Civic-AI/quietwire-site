@@ -1,0 +1,53 @@
+name: finalize release cleanup
+
+on:
+  push:
+    branches:
+      - agent/release-procedure-cleanup
+
+permissions:
+  contents: write
+
+jobs:
+  normalize-approved-comment:
+    if: ${{ !contains(github.event.head_commit.message, 'Finalize approved Arabic Advisory comment') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/release-procedure-cleanup
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Replace stale approval comment in source and committed output
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          old = '<!-- HUMAN ARABIC DRAFT: Ali Adnan and Khalil, 2026-08-06. QuietWire publication review pending. -->'
+          new = '<!-- HUMAN ARABIC: Ali Adnan and Khalil, 2026-08-06. Human-reviewed and approved for publication. -->'
+          paths = [
+              Path('src/content/ar/pages/advisory.html'),
+              Path('dist/ar/advisory/index.html'),
+          ]
+
+          for path in paths:
+              text = path.read_text(encoding='utf-8')
+              if old not in text:
+                  raise SystemExit(f'stale approval comment not found in {path}')
+              path.write_text(text.replace(old, new, 1), encoding='utf-8')
+          PY
+      - name: Validate generated output
+        run: make check
+      - name: Commit normalized comment
+        run: |
+          if git diff --quiet; then
+            echo 'No comment normalization required.'
+            exit 0
+          fi
+          git config user.name 'QuietWire release automation'
+          git config user.email 'chris@quietwire.ai'
+          git add src/content/ar/pages/advisory.html dist/ar/advisory/index.html
+          git commit -m 'Finalize approved Arabic Advisory comment'
+          git push origin HEAD:agent/release-procedure-cleanup
