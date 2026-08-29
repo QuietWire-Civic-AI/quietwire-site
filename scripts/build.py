@@ -5,6 +5,8 @@ from datetime import datetime, timezone
 from html import escape
 from pathlib import Path
 
+from publications import load_manifest, render_publications
+
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
@@ -97,7 +99,59 @@ def structured_data(site_name: str) -> str:
     return json.dumps(data, separators=(",", ":"))
 
 
+def render_document(
+    layout: str,
+    page: dict,
+    locale: dict,
+    shell: dict,
+    body: str,
+    year: str,
+    language_data: tuple[str, str] | None = None,
+) -> str:
+    links, alternates = language_data if language_data is not None else language_links(page, locale)
+    urls = {item["key"]: locale_path(item, locale) for item in locale["pages"]}
+    return replace(layout, {
+        "lang": escape(locale["id"]),
+        "direction": escape(locale["direction"]),
+        "hreflang": alternates,
+        "language_links": links,
+        "language_label": shell["navigation"]["language_label"],
+        "current_language": locale["language_name"],
+        "home_url": urls["home"],
+        "work_url": urls["work"],
+        "advisory_url": urls.get("advisory", "/advisory/"),
+        "appliances_url": urls["appliances"], "pilot_url": urls["pilot"],
+        "patterns_url": urls["patterns"], "method_url": urls["method"], "field_url": urls["field"],
+        "about_url": urls["about"], "privacy_url": urls["privacy"],
+        "page_title": escape(page["title"]),
+        "page_description": escape(page["description"]),
+        "page_key": escape(page["key"]),
+        "canonical_url": canonical_url(page, locale),
+        "base_url": CONFIG["base_url"],
+        "structured_data": structured_data(shell["metadata"]["site_name"]),
+        "site_name": shell["metadata"]["site_name"],
+        "navigation": navigation(page["key"], shell, locale),
+        "skip_to_content": shell["accessibility"]["skip_to_content"],
+        "home_label": shell["navigation"]["home_label"],
+        "toggle_label": shell["navigation"]["toggle_label"],
+        "primary_label": shell["navigation"]["primary_label"],
+        "cta": shell["navigation"]["cta"], "cta_subject": shell["navigation"]["cta_subject"],
+        "brand_subtitle": shell["brand"]["subtitle"], "footer_subtitle": shell["brand"]["footer_subtitle"],
+        "footer_description": shell["footer"]["description"], "begin": shell["footer"]["begin"],
+        "advisory": shell["footer"].get("advisory", "QuietWire Advisory"),
+        "node_appliances": shell["footer"]["node_appliances"], "pilot": shell["footer"]["pilot"],
+        "patterns": shell["footer"]["patterns"], "explore": shell["footer"]["explore"],
+        "what_we_build": shell["footer"]["what_we_build"], "method": shell["footer"]["method"],
+        "field": shell["footer"]["field"], "about": shell["footer"]["about"],
+        "connect": shell["footer"]["connect"], "privacy": shell["footer"]["privacy"],
+        "copyright": shell["footer"]["copyright"].replace("{{year}}", year),
+        "quiet_principles": shell["footer"]["quiet_principles"], "content": body, "year": year,
+    })
+
+
 def build() -> None:
+    collection = CONFIG["publications_collection"]
+    publication_records = load_manifest(ROOT / collection["manifest"])
     if DIST.exists():
         shutil.rmtree(DIST)
     DIST.mkdir(parents=True)
@@ -112,47 +166,32 @@ def build() -> None:
             body = (ROOT / locale["content_dir"] / "pages" / page["source"]).read_text(encoding="utf-8")
             relative_output = (Path(locale["url_prefix"]) / page["output"] if locale["url_prefix"] else Path(page["output"]))
             output = DIST / relative_output
-            links, alternates = language_links(page, locale)
-            urls = {item["key"]: locale_path(item, locale) for item in locale["pages"]}
             output.parent.mkdir(parents=True, exist_ok=True)
-            html = replace(layout, {
-                "lang": escape(locale["id"]),
-                "direction": escape(locale["direction"]),
-                "hreflang": alternates,
-                "language_links": links,
-                "language_label": shell["navigation"]["language_label"],
-                "current_language": locale["language_name"],
-                "home_url": urls["home"],
-                "work_url": urls["work"],
-                "advisory_url": urls.get("advisory", "/advisory/"),
-                "appliances_url": urls["appliances"], "pilot_url": urls["pilot"],
-                "patterns_url": urls["patterns"], "method_url": urls["method"], "field_url": urls["field"],
-                "about_url": urls["about"], "privacy_url": urls["privacy"],
-                "page_title": escape(page["title"]),
-                "page_description": escape(page["description"]),
-                "page_key": escape(page["key"]),
-                "canonical_url": canonical_url(page, locale),
-                "base_url": CONFIG["base_url"],
-                "structured_data": structured_data(shell["metadata"]["site_name"]),
-                "site_name": shell["metadata"]["site_name"],
-                "navigation": navigation(page["key"], shell, locale),
-                "skip_to_content": shell["accessibility"]["skip_to_content"],
-                "home_label": shell["navigation"]["home_label"],
-                "toggle_label": shell["navigation"]["toggle_label"],
-                "primary_label": shell["navigation"]["primary_label"],
-                "cta": shell["navigation"]["cta"], "cta_subject": shell["navigation"]["cta_subject"],
-                "brand_subtitle": shell["brand"]["subtitle"], "footer_subtitle": shell["brand"]["footer_subtitle"],
-                "footer_description": shell["footer"]["description"], "begin": shell["footer"]["begin"],
-                "advisory": shell["footer"].get("advisory", "QuietWire Advisory"),
-                "node_appliances": shell["footer"]["node_appliances"], "pilot": shell["footer"]["pilot"],
-                "patterns": shell["footer"]["patterns"], "explore": shell["footer"]["explore"],
-                "what_we_build": shell["footer"]["what_we_build"], "method": shell["footer"]["method"],
-                "field": shell["footer"]["field"], "about": shell["footer"]["about"],
-                "connect": shell["footer"]["connect"], "privacy": shell["footer"]["privacy"],
-                "copyright": shell["footer"]["copyright"].replace("{{year}}", year),
-                "quiet_principles": shell["footer"]["quiet_principles"], "content": body, "year": year,
-            })
+            html = render_document(layout, page, locale, shell, body, year)
             output.write_text(html.rstrip() + "\n", encoding="utf-8")
+
+    collection_locale = next(locale for locale in locales() if locale["id"] == collection["locale"])
+    collection_shell = json.loads((ROOT / collection_locale["shell"]).read_text(encoding="utf-8"))
+    collection_page = {
+        "output": collection["output"], "key": collection["key"],
+        "title": collection["title"], "description": collection["description"],
+    }
+    collection_path = locale_path(collection_page, collection_locale)
+    collection_url = canonical_url(collection_page, collection_locale)
+    collection_language_data = (
+        f'<a href="{escape(collection_path)}" hreflang="{escape(collection_locale["id"])}" '
+        f'lang="{escape(collection_locale["id"])}" dir="auto" aria-current="true">'
+        f'{escape(collection_locale["language_name"])}</a>',
+        f'<link rel="alternate" hreflang="{escape(collection_locale["id"])}" href="{escape(collection_url)}">\n  '
+        f'<link rel="alternate" hreflang="x-default" href="{escape(collection_url)}">',
+    )
+    collection_output = DIST / collection["output"]
+    collection_output.parent.mkdir(parents=True, exist_ok=True)
+    collection_html = render_document(
+        layout, collection_page, collection_locale, collection_shell,
+        render_publications(publication_records), year, collection_language_data,
+    )
+    collection_output.write_text(collection_html.rstrip() + "\n", encoding="utf-8")
 
     for app in CONFIG.get("static_apps", []):
         source = SRC / app["source"]
@@ -170,6 +209,7 @@ def build() -> None:
         f'User-agent: *\nAllow: /\n\nSitemap: {CONFIG["base_url"]}/sitemap.xml\n', encoding="utf-8"
     )
     urls = [canonical_url(page, locale) for locale in locales() for page in locale["pages"]]
+    urls.append(collection_url)
     urls.extend(CONFIG["base_url"] + "/" + app["output"].strip("/") + "/" for app in CONFIG.get("static_apps", []))
     (DIST / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
@@ -195,5 +235,5 @@ if __name__ == "__main__":
     build()
     print(
         f"Built {sum(len(locale['pages']) for locale in locales())} pages and "
-        f"{len(CONFIG.get('static_apps', []))} static app(s) in {DIST}"
+        f"1 publications collection and {len(CONFIG.get('static_apps', []))} static app(s) in {DIST}"
     )

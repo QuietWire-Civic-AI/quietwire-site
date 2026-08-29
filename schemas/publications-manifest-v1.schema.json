@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.quietwire.ai/schemas/publications-manifest-v1.schema.json",
+  "title": "QuietWire public-safe publications manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_id", "publications"],
+  "properties": {
+    "schema_id": {"const": "quietwire.publications-manifest.v1"},
+    "publications": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["stable_id", "publication_state", "website_visibility", "title", "authors", "venue", "published_on", "artifact_type", "canonical_url"],
+        "properties": {
+          "stable_id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 96},
+          "publication_state": {"const": "confirmed_public"},
+          "website_visibility": {"const": "listed"},
+          "title": {"type": "string", "minLength": 1, "maxLength": 240},
+          "authors": {"type": "array", "minItems": 1, "maxItems": 8, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 120}},
+          "venue": {"type": "string", "minLength": 1, "maxLength": 120},
+          "published_on": {"type": "string", "format": "date"},
+          "artifact_type": {"enum": ["article", "essay", "interview", "podcast", "report", "video"]},
+          "summary": {"type": "string", "minLength": 1, "maxLength": 500},
+          "canonical_url": {"type": "string", "format": "uri", "maxLength": 2048}
+        }
+      }
+    }
+  }
+}

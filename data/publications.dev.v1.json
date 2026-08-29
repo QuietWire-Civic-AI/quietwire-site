@@ -1,0 +1,17 @@
+{
+  "schema_id": "quietwire.publications-manifest.v1",
+  "publications": [
+    {
+      "stable_id": "chris-blask-2026-05-14-non-orwellian-experiment",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "A Year Into the Non-Orwellian Experiment",
+      "authors": ["Chris Blask"],
+      "venue": "LinkedIn",
+      "published_on": "2026-05-14",
+      "artifact_type": "article",
+      "summary": "QuietWire’s founder reflects on a year of building local AI infrastructure around accountable memory, witness, human stewardship, and narrative integrity.",
+      "canonical_url": "https://www.linkedin.com/pulse/year-non-orwellian-experiment-chris-blask-crwze"
+    }
+  ]
+}
