@@ -47,6 +47,16 @@ not translated labels, so a file can be reopened across interface languages.
 Any such extraction must be proven against the existing generated Discovery
 files before it is enabled.
 
+## Publications
+
+The generated `/publications/` collection is English-source-only in its first
+bounded slice. It sits outside the equivalent ordinary-page inventory, just
+as `/discovery/` does, and therefore does not add unreviewed `/ar/`, `/es/`, or
+`/fr/` routes. Its language selector and hreflang metadata expose only
+`en-CA` plus `x-default`. Localizing the collection shell requires reviewed
+interface language; titles and bylines from external venues are not silently
+translated.
+
 ## Arabic and translation review
 
 Arabic has `url_prefix: "ar"`, `direction: "rtl"`, a complete shell, and

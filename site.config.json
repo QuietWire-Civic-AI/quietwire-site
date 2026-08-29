@@ -75,5 +75,13 @@
     {"label": "Patterns", "href": "/patterns/", "key": "patterns"},
     {"label": "About", "href": "/about/", "key": "about"}
   ],
+  "publications_collection": {
+    "manifest": "data/publications.dev.v1.json",
+    "locale": "en-CA",
+    "output": "publications/index.html",
+    "key": "publications",
+    "title": "Publications — QuietWire",
+    "description": "Confirmed public writing and media from QuietWire and its people, linked to the original venues."
+  },
   "static_apps": [{"source": "discovery", "output": "discovery"}]
 }
