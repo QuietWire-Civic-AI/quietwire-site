@@ -64,6 +64,8 @@ for locale in locales:
             errors.append(f"locale {locale_id}: missing required shell key {key}")
     labels = value_at(shell, "navigation.labels") or {}
     for item in CONFIG.get("nav", []):
+        if item.get("locales") and locale_id not in item["locales"]:
+            continue
         if item["key"] not in labels:
             errors.append(f"locale {locale_id}: missing navigation label {item['key']}")
     routes = []

@@ -53,11 +53,11 @@ def navigation(active: str, shell: dict, locale: dict) -> str:
         if item.get("locales") and locale["id"] not in item["locales"]:
             continue
         page = page_for_key(locale, item["key"], required=False)
-        if page is None:
+        if page is None and not item.get("href"):
             continue
         current = ' aria-current="page"' if item["key"] == active else ""
         label = shell["navigation"]["labels"][item["key"]]
-        href = locale_path(page, locale)
+        href = item["href"] if page is None and item.get("href") else locale_path(page, locale)
         links.append(f'<a href="{escape(href)}"{current}>{escape(label)}</a>')
     return "\n".join(links)
 

@@ -70,9 +70,7 @@
   "nav": [
     {"label": "Work", "href": "/work/", "key": "work"},
     {"label": "Advisory", "href": "/advisory/", "key": "advisory"},
-    {"label": "Appliances", "href": "/appliances/", "key": "appliances"},
-    {"label": "Pilot", "href": "/pilot/", "key": "pilot"},
-    {"label": "Patterns", "href": "/patterns/", "key": "patterns"},
+    {"label": "Library", "href": "/library/", "key": "library", "locales": ["en-CA"]},
     {"label": "About", "href": "/about/", "key": "about"}
   ],
   "publications_collection": {
