@@ -1,0 +1,8 @@
+{
+  "manifest": "exports/editions.v1.json",
+  "locale": "en-CA",
+  "output": "editions/index.html",
+  "key": "editions",
+  "title": "QuietWire Editions",
+  "description": "First-party original writing and media published under QuietWire’s own custody."
+}
