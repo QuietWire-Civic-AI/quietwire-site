@@ -1,0 +1,72 @@
+{
+  "schema_id": "quietwire.media-appearances-index.v0",
+  "status": "research-index",
+  "generated_at": "2026-08-30",
+  "authority_note": "Research/index checkpoint only. Inclusion does not itself authorize publication, rendering, or Teddy release.",
+  "series": [
+    {
+      "id": "the-inevitability-curve",
+      "kind": "series",
+      "title": "The Inevitability Curve",
+      "publisher": "Techstrong",
+      "canonical_url": "https://techstrong.tv/videos/the-inevitability-curve",
+      "ownership": "external",
+      "access": "public",
+      "record_state": "confirmed",
+      "corpus_note": "Canonical Techstrong series page enumerates 20 published episodes in 2025.",
+      "lineage": {
+        "origin_claim_year": 1992,
+        "origin_claim_source": "Chris Blask, live continuity statement 2026-08-30",
+        "note": "Chris states he coined the term in 1992 and that the concept lineage has been intentional and linear. Earliest documentary evidence remains to be attached separately."
+      }
+    },
+    {
+      "id": "techstrong-gang",
+      "kind": "series",
+      "title": "Techstrong Gang",
+      "publisher": "Techstrong",
+      "ownership": "external",
+      "access": "public",
+      "record_state": "confirmed-series-pending-episode-census",
+      "cadence_note": "Chris reports essentially weekly participation through 2025 and 2026, usually Tuesday. Individual appearances require source confirmation rather than calendar inference."
+    }
+  ],
+  "collections": [
+    {
+      "id": "inevitability-curve-2025",
+      "series_id": "the-inevitability-curve",
+      "target_count": 20,
+      "confirmed_count": 20,
+      "backfill_state": "episode-metadata-pending"
+    },
+    {
+      "id": "techstrong-gang-2025",
+      "series_id": "techstrong-gang",
+      "coverage": "2025",
+      "backfill_state": "exact-episode-census-pending",
+      "note": "Prior discovery pass identified at least 40 2025 episode records whose descriptions explicitly name Chris Blask; exact source-page enumeration still required."
+    },
+    {
+      "id": "techstrong-gang-2026",
+      "series_id": "techstrong-gang",
+      "coverage": "2026 through 2026-08-30",
+      "backfill_state": "exact-episode-census-pending"
+    }
+  ],
+  "known_external_collections": [
+    {"id": "parliament-proc-2026-civic-resilience", "kind": "public-testimony", "record_state": "confirmed"},
+    {"id": "still-cyber-techstrong-2026", "kind": "panel-appearance", "record_state": "confirmed"},
+    {"id": "rsa-conference", "kind": "conference-collection", "record_state": "confirmed-multiple"},
+    {"id": "oasis-borderless-cyber-2021", "kind": "conference-appearance", "record_state": "confirmed"},
+    {"id": "cybeats-scryb-state-of-cybersecurity", "kind": "webinar-series", "record_state": "confirmed-partial"},
+    {"id": "cs2ai", "kind": "seminar-panel-collection", "record_state": "mixed-public-member-access"},
+    {"id": "security-weekly-sc-media", "kind": "video-podcast-interview", "record_state": "confirmed"},
+    {"id": "ics-isac-archive", "kind": "historical-institutional-media", "record_state": "confirmed-partial"}
+  ],
+  "next_actions": [
+    "Enumerate every Techstrong Gang source page for 2025 and 2026 and confirm Chris participation per episode.",
+    "Enumerate all twenty Inevitability Curve episodes with exact source metadata.",
+    "Attach earliest surviving documentary evidence for the 1992 Inevitability Curve origin claim in an appropriate provenance lane.",
+    "Promote only validated public-safe records into a future media appearances manifest."
+  ]
+}
