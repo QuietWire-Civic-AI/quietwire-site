@@ -124,10 +124,8 @@ collection = config["publications_collection"]
 manifest_path = ROOT / collection["manifest"]
 records = load_manifest(manifest_path)
 errors: list[str] = []
-if ".dev." not in manifest_path.name:
-    errors.append("publications: first-slice input must remain visibly identified as a development fixture")
-if len(records) != 1:
-    errors.append(f"publications: development fixture must contain exactly one record, found {len(records)}")
+if not records:
+    errors.append("publications: curated public manifest must contain at least one listed record")
 output_path = ROOT / "dist" / collection["output"]
 if not output_path.is_file():
     errors.append(f"publications: missing generated route {output_path}")
@@ -159,5 +157,5 @@ if errors:
     raise SystemExit(1)
 print("PASS: publications v1 contract requires confirmed_public plus explicit listed website visibility")
 print("PASS: publications v1 contract rejects malformed, duplicate, candidate, private, unlisted, and body-bearing records")
-print("PASS: one public development fixture renders metadata-only at /publications/, newest first")
+print(f"PASS: {len(records)} curated public records render metadata-only at /publications/, newest first")
 print("PASS: publications remains an explicit English-source route without fabricated translations")

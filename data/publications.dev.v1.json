@@ -2,16 +2,160 @@
   "schema_id": "quietwire.publications-manifest.v1",
   "publications": [
     {
+      "stable_id": "chris-blask-2026-08-19-token-exhaustion-attacks",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "Token-Exhaustion Attacks: When Attention Becomes the Target",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "CYBR.SEC.Media",
+      "published_on": "2026-08-19",
+      "artifact_type": "article",
+      "summary": "Frames narrative attacks as resource-exhaustion attacks against finite human and institutional attention, borrowing cybersecurity concepts such as amplification, rate limiting, and incident triage.",
+      "canonical_url": "https://www.cybrsecmedia.com/the-token-exhaustion-attack/"
+    },
+    {
+      "stable_id": "chris-blask-2026-08-10-hacker-summer-camp",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "How Hacker Summer Camp Mentally Rehydrates Us",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "CYBR.SEC.Media",
+      "published_on": "2026-08-10",
+      "artifact_type": "article",
+      "summary": "Argues that security gatherings restore shared professional context, relationships, and judgment—the human connective tissue that automated systems cannot replace.",
+      "canonical_url": "https://www.cybrsecmedia.com/how-hacker-summer-camp-mentally-rehydrates-us/"
+    },
+    {
+      "stable_id": "chris-blask-2026-07-28-model-wasnt-rogue",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "The Model Wasn’t Rogue. The Control Plane Was",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "Security Boulevard",
+      "published_on": "2026-07-28",
+      "artifact_type": "article",
+      "summary": "Uses an agentic-security incident to argue that trustworthy AI depends on bounded authority, local custody, observable control planes, and recoverable evidence rather than model labels.",
+      "canonical_url": "https://securityboulevard.com/2026/07/the-model-wasnt-rogue-the-control-plane-was/"
+    },
+    {
+      "stable_id": "chris-blask-2026-07-13-above-the-packet",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "Above the Packet: Cybersecurity’s New Meaning Layer",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "CYBR.SEC.Media",
+      "published_on": "2026-07-13",
+      "artifact_type": "article",
+      "summary": "Tracks how a software-safety idea moved from conversation to schema, validator, and standards alignment, arguing for a cybersecurity layer that preserves meaning, relationships, and evidence.",
+      "canonical_url": "https://www.cybrsecmedia.com/above-the-packet-field-notes-from-the-meaning-layer/"
+    },
+    {
+      "stable_id": "chris-blask-2026-07-01-when-agents-knock",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "When Agents Knock: PACT, AI Browsers, and the Next Web Perimeter",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "CYBR.SEC.Media",
+      "published_on": "2026-07-01",
+      "artifact_type": "article",
+      "summary": "Examines agentic web access as a new perimeter problem: how to distinguish legitimate delegated agents from abuse without turning a few token issuers into gatekeepers of the open web.",
+      "canonical_url": "https://www.cybrsecmedia.com/when-agents-knock-pact-ai-browsers-and-the-next-web-perimeter/"
+    },
+    {
+      "stable_id": "chris-blask-2026-06-16-we-know-reality-by-what-returns",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "We Know Reality by What Returns",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "CYBR.SEC.Media",
+      "published_on": "2026-06-16",
+      "artifact_type": "article",
+      "summary": "Explores trust as continuity confirmed through repeated, coherent return—linking human relationships, critical infrastructure, provenance, memory, and community correction in an AI age.",
+      "canonical_url": "https://www.cybrsecmedia.com/we-know-reality-by-what-returns/"
+    },
+    {
+      "stable_id": "chris-blask-2026-06-12-attentive-human-confirmation",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "Attentive Human Confirmation: What “Human in the Loop” Actually Means",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "LinkedIn",
+      "published_on": "2026-06-12",
+      "artifact_type": "article",
+      "summary": "Defines meaningful human-in-the-loop governance as attentive human authority at consequential decision boundaries, rather than ceremonial review after autonomous action.",
+      "canonical_url": "https://www.linkedin.com/pulse/attentive-human-confirmation-what-loop-actually-means-chris-blask-6jucc"
+    },
+    {
+      "stable_id": "chris-blask-2026-06-08-trust-is-not-a-cloud-service",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "Trust Is Not a Cloud Service: What Cybersecurity Can Learn from Local AI Stewards",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "CYBR.SEC.Media",
+      "published_on": "2026-06-08",
+      "artifact_type": "article",
+      "summary": "Argues for locally governed AI stewards that preserve operational memory and context close to the work, with explicit boundaries for consent, privacy, retention, access, and human authority.",
+      "canonical_url": "https://www.cybrsecmedia.com/trust-is-not-a-cloud-service-what-cybersecurity-can-learn-from-local-ai-stewards/"
+    },
+    {
       "stable_id": "chris-blask-2026-05-14-non-orwellian-experiment",
       "publication_state": "confirmed_public",
       "website_visibility": "listed",
       "title": "A Year Into the Non-Orwellian Experiment",
-      "authors": ["Chris Blask"],
+      "authors": [
+        "Chris Blask"
+      ],
       "venue": "LinkedIn",
       "published_on": "2026-05-14",
       "artifact_type": "article",
       "summary": "QuietWire’s founder reflects on a year of building local AI infrastructure around accountable memory, witness, human stewardship, and narrative integrity.",
       "canonical_url": "https://www.linkedin.com/pulse/year-non-orwellian-experiment-chris-blask-crwze"
+    },
+    {
+      "stable_id": "beall-blask-reynolds-2026-03-10-narrative-integrity-risk",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "Narrative Integrity Risk: The Next Frontier in Financial Stability",
+      "authors": [
+        "Chris Beall",
+        "Chris Blask",
+        "Jen Rosiere Reynolds"
+      ],
+      "venue": "Lawfare",
+      "published_on": "2026-03-10",
+      "artifact_type": "article",
+      "summary": "Argues that AI-amplified narrative manipulation is already a financial-stability and governance risk that belongs in C-suite and board-level risk management.",
+      "canonical_url": "https://www.lawfaremedia.org/article/narrative-integrity-risk--the-next-frontier-in-financial-stability"
+    },
+    {
+      "stable_id": "chris-blask-2025-05-28-mental-denial-of-service",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "Mental Denial of Service: Narrative Malware and the Future of Resilience",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "Security Boulevard",
+      "published_on": "2025-05-28",
+      "artifact_type": "article",
+      "summary": "Traces narrative malware from the Good Times hoax to modern cognitive attacks, arguing that manipulative content can consume attention and disrupt institutions without exploiting software.",
+      "canonical_url": "https://securityboulevard.com/2025/05/mental-denial-of-service-narrative-malware-and-the-future-of-resilience/"
     }
   ]
 }

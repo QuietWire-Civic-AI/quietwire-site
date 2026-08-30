@@ -13,10 +13,11 @@ A static, local-first public website for QuietWire.
 - Shared structure lives in `src/layout.html` and `site.config.json`.
 - `dist/` is committed so a web server can serve it immediately.
 - Builds are deterministic enough to package into content-addressed releases.
-- Publications are generated from a fail-closed, public-safe manifest; the
-  checked-in v1 input is a development fixture, not an Internal sync path.
-  Confirmed publication fact and explicit `listed` website visibility are
-  separate required decisions.
+- Publications are generated from a fail-closed, public-safe manifest. The
+  checked-in v1 input is now the current curated public handoff snapshot copied
+  from an approved Internal export; the public repo and host still receive no
+  private Internal credentials or provenance fields. Confirmed publication fact
+  and explicit `listed` website visibility remain separate required decisions.
 
 ## Build
 
@@ -52,7 +53,7 @@ src/assets/           CSS, JavaScript, and local graphics
 scripts/build.py      dependency-free static builder
 scripts/check.py      link, metadata, and tracker checks
 scripts/publications.py public-safe manifest validator and renderer
-data/publications.dev.v1.json one-record development build fixture
+data/publications.dev.v1.json current curated public-safe handoff snapshot (legacy first-slice filename)
 schemas/              machine-readable public manifest contract
 scripts/release.py    content-addressed release packager
 dist/                 ready-to-serve output
@@ -67,5 +68,5 @@ Discovery remains English-only at `/discovery/`; it has no `/ar/discovery/`
 route. Arabic translation governance is recorded in `docs/i18n/`.
 
 Publications is an English-source collection at `/publications/`. It has no
-fabricated localized counterparts. Its contract and future synchronization
+fabricated localized counterparts. Its contract and synchronization handoff
 boundary are documented in `docs/PUBLICATIONS_MANIFEST.md`.
