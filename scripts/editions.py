@@ -297,7 +297,7 @@ def render_edition(record: dict, base_url: str) -> str:
         '<p><a class="text-link" href="/editions/">All QuietWire Editions <span aria-hidden="true">←</span></a></p></div>'
         '</div></section>'
         '<section class="section section-cream"><div class="shell">'
-        '<article class="detail-grid"><div class="detail-number">Edition<br>01</div><div>'
+        '<article class="detail-grid"><div class="detail-number">QuietWire<br>Edition</div><div>'
         f'<p class="section-kicker">By {authors}</p>'
         f'<div class="large-copy">{record["body_html"].rstrip()}</div>'
         '<hr>'
