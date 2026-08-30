@@ -12,8 +12,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python3 scripts/build.py
+      - run: make build
       - run: python3 scripts/check_locales.py
       - run: python3 scripts/check.py
+      - run: python3 scripts/check_media_appearances.py
       - name: Verify committed build output
         run: git diff --exit-code -- dist
