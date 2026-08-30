@@ -27,9 +27,13 @@ This v1 framework does not claim the current index is exhaustive.
 
 ## Historical lineage: The Inevitability Curve
 
-Chris states that he coined the term `The Inevitability Curve` in 1992. The 2025 Techstrong series is therefore not treated as a newly invented title or an accidental recurrence. It is a later public expression of a concept with an intentional, linear history extending back to 1992.
+Chris's current first-person recollection places the origin of the term `The Inevitability Curve` in approximately **1991–1992**. He recalls coining it while trying to persuade his boss that everyone on Earth was going to get on the Internet. The premise was that if that connected future was effectively inevitable, a line already joined the present to that notional future; people in the future would be able to look backward and see the exact shape of the path. The immediate engineering conclusion was that the organization should go ahead and build a firewall.
 
-That history should be represented as provenance rather than collapsed into a single publication date. The 2025 series has its own publication record; the concept lineage has an earlier origin claim that should eventually be tied to underlying documentary evidence where available.
+Chris recalls using the term and underlying concept continuously ever since. The 2025 Techstrong series is therefore treated as a later public expression of that longstanding concept, not as the origin of the phrase.
+
+This is historical recollection, not yet an independently documented 1991/1992 artifact. The exact year must remain uncertain until underlying evidence supports greater precision. The complete captured recollection and evidence posture are preserved in `docs/INEVITABILITY_CURVE_ORIGIN_NOTE.md`.
+
+That history should be represented as provenance rather than collapsed into a single publication date. The 2025 series has its own publication record; the concept lineage has an earlier origin recollection that should eventually be tied to underlying documentary evidence where available.
 
 ## Object model
 
@@ -135,6 +139,18 @@ Recommended `record_state` values:
 
 A record may be historically real while its recording remains unavailable or access-restricted.
 
+## Source classes
+
+The research index deliberately distinguishes evidence classes:
+
+- `publisher_primary`: canonical or publisher-controlled episode/event page;
+- `publisher_distribution`: publisher-owned YouTube/Vimeo/RSS/podcast distribution;
+- `institutional_primary`: official Parliament, standards body, conference, or other institutional record;
+- `third_party_index`: podcast/search/archive index useful for discovery but not preferred over publisher evidence;
+- `first_person_recollection`: Chris's live recollection, retained as recollection until corroborated by documentary evidence.
+
+A first-person recollection can guide discovery and preserve relationship/history. It must not silently become a source-confirmed date or media artifact.
+
 ## Authority boundary
 
 The media system must preserve these distinctions:
@@ -144,6 +160,7 @@ participation fact != publication ownership
 external canonical URL != QuietWire canonical URL
 recording exists != recording is publicly accessible
 series membership != editorial feature selection
+human recollection != publisher-confirmed episode metadata
 manifest inclusion != homepage inclusion
 repo merge != Teddy production release
 ```
@@ -154,21 +171,25 @@ QuietWire-owned media can receive first-party canonical pages and first-party tr
 
 ## Techstrong Gang corpus posture
 
-Chris reports that Techstrong Gang has run essentially every Tuesday through 2025 and 2026, with Chris participating pretty well every Tuesday. Public search confirms a large recurring corpus, but the exact episode-by-episode census should be completed from Techstrong's own archive rather than inferred solely from search-engine indexing.
+Chris recalls participating essentially every week through 2025 and 2026, usually on Tuesdays. That recollection is useful continuity evidence, but it is not used to synthesize episode records.
 
-For this reason the first manifest should distinguish:
+The publisher evidence shows why this distinction matters. Techstrong currently describes `Techstrong Gang` as a Monday-through-Friday daily roundtable, and the recovered 2025/2026 source records that explicitly name Chris occur on multiple weekdays — including Mondays, Tuesdays, Wednesdays, Thursdays, and Fridays. The index therefore preserves Chris's cadence recollection separately while allowing source-confirmed dates to govern individual episode records.
 
-- episodes individually confirmed from Techstrong source pages;
-- expected recurring Tuesday slots still awaiting exact source-page backfill;
-- dates where there was no episode, Chris was absent, publication moved, or metadata differs.
+For the first manifest distinguish:
+
+- episodes individually confirmed from Techstrong source pages or publisher distribution records;
+- source-confirmed appearances whose exact canonical episode page/date still needs backfill;
+- dates where there was no episode, Chris was absent, publication moved, or publisher metadata differs;
+- cadence recollection as a provenance note, not a calendar generator.
 
 Do not synthesize an appearance merely because a Tuesday exists on the calendar.
 
-The recurring-series record may carry a human-supplied cadence note such as:
+The recurring-series record may carry both notes, for example:
 
 ```json
 {
-  "cadence_note": "Historically weekly, usually Tuesday; individual appearances require source confirmation."
+  "recollection_note": "Chris recalls essentially weekly participation through 2025 and 2026, usually Tuesday.",
+  "source_observation": "Recovered publisher records show Chris appearances across multiple weekdays; individual records use source-confirmed dates."
 }
 ```
 
@@ -179,7 +200,7 @@ The recovered Techstrong series page enumerates 20 published episodes in 2025. T
 - one series object: `the-inevitability-curve`;
 - twenty child episode records;
 - Techstrong as external canonical publisher for those recordings;
-- a separate historical-lineage note recording Chris's 1992 origin of the term, pending attachment of the earliest documentary evidence available.
+- a separate historical-lineage note recording Chris's approximately 1991–1992 origin recollection, pending attachment of the earliest documentary evidence available.
 
 The historical-lineage note must not rewrite the 2025 publication dates.
 
@@ -190,7 +211,7 @@ The following collections are known and suitable for structured backfill.
 | Collection | Current evidence | Target classification |
 |---|---|---|
 | The Inevitability Curve | 20 Techstrong episodes, 2025 | series + episodes |
-| Techstrong Gang | recurring 2025-2026 appearances; exact census pending | external recurring series + episodes |
+| Techstrong Gang | recurring 2025-2026 appearances; source-confirmed census in progress | external recurring series + episodes |
 | Parliament of Canada PROC | 2026 civic resilience testimony with official video/transcript | public testimony |
 | Still Cyber / Techstrong | 2026 panel appearance | panel appearance |
 | RSA Conference | multiple 2018, 2021, 2023 sessions | conference appearances |
@@ -253,21 +274,23 @@ If implemented, prefer a parallel public-safe contract rather than overloading P
 
 ```text
 docs/MEDIA_APPEARANCES_V1.md
+docs/INEVITABILITY_CURVE_ORIGIN_NOTE.md
 schemas/media-appearances-manifest-v1.schema.json
+data/media-appearances.index.v0.json
 data/media-appearances.v1.json
 scripts/media_appearances.py
 ```
 
 Later rendering can feed `/library/` and any dedicated media/series pages from the same validated in-memory records.
 
-The public manifest should contain only public-safe metadata. Research notes, ambiguous candidates, private recordings, credentials, and internal curation history belong outside the public website repository.
+The research index may preserve uncertainty and discovery provenance. A future public manifest must contain only validated public-safe metadata. Private recordings, credentials, unpublished material, and internal curation history remain outside the public website repository.
 
 ## Next evidence work
 
-1. Enumerate Techstrong Gang source pages for every 2025 and 2026 Tuesday/episode, confirming Chris's participation per episode.
-2. Capture exact title, source date, canonical URL, participants, and media URL/ID.
-3. Enumerate all 20 Inevitability Curve episode records from the canonical Techstrong series page.
-4. Recover earliest surviving documentary evidence for the 1992 `The Inevitability Curve` concept origin and store that in the appropriate historical/provenance lane, not as a fabricated 1992 media publication.
+1. Continue enumerating Techstrong Gang source pages for 2025 and 2026 and confirm Chris's participation per episode without calendar inference.
+2. Capture exact title, source date, canonical URL, participants, and media URL/ID where publisher evidence exposes them.
+3. Keep all twenty Inevitability Curve episode records source-linked in the research index.
+4. Recover earliest surviving documentary evidence for the approximately 1991–1992 `The Inevitability Curve` concept origin and store that in the appropriate historical/provenance lane, not as a fabricated media publication.
 5. Continue source-first backfill for Parliament, RSAC, OASIS, Cybeats/Scryb, CS2AI, Security Weekly, and ICS-ISAC.
 
 ## Release boundary
