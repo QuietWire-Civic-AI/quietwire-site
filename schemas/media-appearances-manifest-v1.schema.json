@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.quietwire.ai/schemas/media-appearances-manifest-v1.schema.json",
+  "title": "QuietWire public-safe media and appearances manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_id", "series", "items"],
+  "properties": {
+    "schema_id": {"const": "quietwire.media-appearances-manifest.v1"},
+    "series": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["series_id", "publication_state", "website_visibility", "title", "publisher", "summary", "canonical_path", "source_url", "role_label"],
+        "properties": {
+          "series_id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 96},
+          "publication_state": {"const": "confirmed_public"},
+          "website_visibility": {"const": "listed"},
+          "title": {"type": "string", "minLength": 1, "maxLength": 240},
+          "publisher": {"type": "string", "minLength": 1, "maxLength": 120},
+          "summary": {"type": "string", "minLength": 1, "maxLength": 700},
+          "canonical_path": {"type": "string", "pattern": "^/library/media/[a-z0-9]+(?:-[a-z0-9]+)*/$", "maxLength": 180},
+          "source_url": {"type": "string", "format": "uri", "maxLength": 2048},
+          "role_label": {"type": "string", "minLength": 1, "maxLength": 180},
+          "lineage_note": {"type": "string", "minLength": 1, "maxLength": 1200}
+        }
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["stable_id", "publication_state", "website_visibility", "kind", "title", "event_date", "venue", "participants", "canonical_url"],
+        "properties": {
+          "stable_id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 120},
+          "publication_state": {"const": "confirmed_public"},
+          "website_visibility": {"const": "listed"},
+          "kind": {"enum": ["episode", "appearance", "public_testimony", "panel", "conference_session"]},
+          "title": {"type": "string", "minLength": 1, "maxLength": 260},
+          "event_date": {"type": "string", "format": "date"},
+          "venue": {"type": "string", "minLength": 1, "maxLength": 160},
+          "participants": {"type": "array", "minItems": 1, "maxItems": 12, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 120}},
+          "canonical_url": {"type": "string", "format": "uri", "maxLength": 2048},
+          "series_id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 96},
+          "episode_number": {"type": "integer", "minimum": 1},
+          "summary": {"type": "string", "minLength": 1, "maxLength": 700},
+          "canonical_path": {"type": "string", "pattern": "^/library/media/[a-z0-9]+(?:-[a-z0-9]+)*/$", "maxLength": 180},
+          "media_url": {"type": "string", "format": "uri", "maxLength": 2048},
+          "transcript_url": {"type": "string", "format": "uri", "maxLength": 2048}
+        }
+      }
+    }
+  }
+}
