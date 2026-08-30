@@ -6,6 +6,7 @@ from html import escape
 from pathlib import Path
 
 from editions import load_manifest as load_editions_manifest, render_edition, render_editions_landing
+from home_library import render_home_library
 from library import render_library
 from publications import load_manifest, render_publications
 
@@ -179,11 +180,18 @@ def build() -> None:
     year = str(datetime.now(timezone.utc).year)
     default_locale = next(locale for locale in locales() if locale["id"] == CONFIG["default_locale"])
     default_shell = json.loads((ROOT / default_locale["shell"]).read_text(encoding="utf-8"))
+    home_library_shelf = ""
 
     for locale in locales():
         shell = json.loads((ROOT / locale["shell"]).read_text(encoding="utf-8"))
         for page in locale["pages"]:
             body = (ROOT / locale["content_dir"] / "pages" / page["source"]).read_text(encoding="utf-8")
+            if locale["id"] == default_locale["id"] and page["key"] == "home":
+                marker = "{{home_library_shelf}}"
+                if marker not in body:
+                    raise ValueError("English home page is missing the home Library shelf marker")
+                home_library_shelf = render_home_library(CONFIG["home_library"], edition_records, publication_records)
+                body = body.replace(marker, home_library_shelf)
             relative_output = (Path(locale["url_prefix"]) / page["output"] if locale["url_prefix"] else Path(page["output"]))
             output = DIST / relative_output
             output.parent.mkdir(parents=True, exist_ok=True)
@@ -262,6 +270,9 @@ def build() -> None:
         shutil.copytree(source, output)
 
     (DIST / "404.html").write_text((DIST / "index.html").read_text(encoding="utf-8").replace(
+        "\n\n" + home_library_shelf + "\n\n",
+        "\n\n"
+    ).replace(
         "Coherence infrastructure for organizations with a story to protect.",
         "This wire does not lead anywhere yet."
     ).replace(
