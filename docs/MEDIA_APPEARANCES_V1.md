@@ -25,6 +25,16 @@ The first corpus includes:
 
 This v1 framework does not claim the current index is exhaustive.
 
+## Current corpus checkpoint
+
+The research index at `data/media-appearances.index.v0.json` now contains **88 Techstrong records** recovered during the 2026-08-30 source-first pass:
+
+- **20** `The Inevitability Curve` episodes, completing the canonical 2025 Techstrong series;
+- **40** Techstrong Gang records from 2025 where the publisher archive confirmed or identified Chris participation;
+- **28** Techstrong Gang records from 2026 recovered through 2026-08-30.
+
+The count is a research checkpoint, not a claim that the Gang census is complete. Records whose exact dates, canonical URLs, or identity details still need source confirmation remain explicitly marked as such. Known publisher metadata conflicts remain in the index rather than being normalized away.
+
 ## Historical lineage: The Inevitability Curve
 
 Chris's current first-person recollection places the origin of the term `The Inevitability Curve` in approximately **1991–1992**. He recalls coining it while trying to persuade his boss that everyone on Earth was going to get on the Internet. The premise was that if that connected future was effectively inevitable, a line already joined the present to that notional future; people in the future would be able to look backward and see the exact shape of the path. The immediate engineering conclusion was that the organization should go ahead and build a firewall.
@@ -195,14 +205,18 @@ The recurring-series record may carry both notes, for example:
 
 ## The Inevitability Curve corpus posture
 
-The recovered Techstrong series page enumerates 20 published episodes in 2025. These should be represented as:
+The recovered Techstrong series page enumerates 20 published episodes in 2025. These are now represented in the research index as:
 
 - one series object: `the-inevitability-curve`;
 - twenty child episode records;
 - Techstrong as external canonical publisher for those recordings;
+- Chris Blask as host;
+- exact canonical source URLs for the series and individual episodes where confirmed;
 - a separate historical-lineage note recording Chris's approximately 1991–1992 origin recollection, pending attachment of the earliest documentary evidence available.
 
-The historical-lineage note must not rewrite the 2025 publication dates.
+The historical-lineage note does not rewrite the 2025 publication dates.
+
+One publisher metadata discrepancy is explicitly preserved on episode 20: Techstrong's guest field says `Amelie Karan` while its body copy says `Emily`.
 
 ## First recovered corpus index
 
@@ -210,8 +224,8 @@ The following collections are known and suitable for structured backfill.
 
 | Collection | Current evidence | Target classification |
 |---|---|---|
-| The Inevitability Curve | 20 Techstrong episodes, 2025 | series + episodes |
-| Techstrong Gang | recurring 2025-2026 appearances; source-confirmed census in progress | external recurring series + episodes |
+| The Inevitability Curve | 20 Techstrong episodes, 2025; all indexed | series + episodes |
+| Techstrong Gang | 40 recovered 2025 records + 28 recovered 2026 records; census continues | external recurring series + episodes |
 | Parliament of Canada PROC | 2026 civic resilience testimony with official video/transcript | public testimony |
 | Still Cyber / Techstrong | 2026 panel appearance | panel appearance |
 | RSA Conference | multiple 2018, 2021, 2023 sessions | conference appearances |
@@ -287,9 +301,9 @@ The research index may preserve uncertainty and discovery provenance. A future p
 
 ## Next evidence work
 
-1. Continue enumerating Techstrong Gang source pages for 2025 and 2026 and confirm Chris's participation per episode without calendar inference.
-2. Capture exact title, source date, canonical URL, participants, and media URL/ID where publisher evidence exposes them.
-3. Keep all twenty Inevitability Curve episode records source-linked in the research index.
+1. Continue resolving exact dates and canonical source URLs for the 40 identified 2025 Techstrong Gang records.
+2. Continue the source-first 2026 Gang census beyond the 28 currently indexed records through 2026-08-30.
+3. Recheck `The Inevitability Curve` episode 12 guest metadata if its individual publisher page becomes fetchable again.
 4. Recover earliest surviving documentary evidence for the approximately 1991–1992 `The Inevitability Curve` concept origin and store that in the appropriate historical/provenance lane, not as a fabricated media publication.
 5. Continue source-first backfill for Parliament, RSAC, OASIS, Cybeats/Scryb, CS2AI, Security Weekly, and ICS-ISAC.
 
