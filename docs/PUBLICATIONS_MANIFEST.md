@@ -5,11 +5,14 @@ public-safe, deliberately curated list of confirmed publications. Its structural
 `schemas/publications-manifest-v1.schema.json`; `scripts/publications.py` is
 the dependency-free, fail-closed validator used by the build.
 
-The checked-in `data/publications.dev.v1.json` file is one development fixture
-containing one independently public article. It is not an export from
-QuietWire Internal and it is not a synchronization design. A later bounded
-integration may replace this build input with deterministic sanitizer output,
-without giving this repository or the public host access to Internal.
+The checked-in `data/publications.dev.v1.json` path retains its first-slice
+filename for compatibility, but its content is no longer merely a one-record
+development fixture. It is the current public-safe handoff snapshot copied from
+an explicitly curated Internal export. The copy is intentional: this public
+repository and the public host do not receive credentials for the private
+Internal repository. A later deterministic synchronization mechanism may
+replace the manual handoff while preserving the same contract and authority
+boundary.
 
 ## Public-safe record
 
@@ -47,6 +50,18 @@ public-manifest contract.
 The renderer sorts validated records by publication date and stable ID,
 newest first. It copies only the allowlisted metadata and summary into static
 HTML; full works remain at their canonical venues.
+
+## Handoff boundary
+
+The current batch is prepared in Internal as one-record-per-publication source
+records plus a sanitized export containing exactly the website allowlist fields.
+The site repository receives only that sanitized JSON snapshot. Internal
+curation notes, evidence notes, credentials, private history, and draft material
+remain outside this repository.
+
+Updating the handoff snapshot does not itself activate production. The normal
+site checks, review/merge boundary, and explicit immutable Teddy release remain
+separate steps.
 
 ## Locale boundary
 
