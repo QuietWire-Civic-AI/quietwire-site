@@ -6,6 +6,7 @@ from html import escape
 from pathlib import Path
 
 from editions import load_manifest as load_editions_manifest, render_edition, render_editions_landing
+from library import render_library
 from publications import load_manifest, render_publications
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -157,6 +158,7 @@ def render_document(
         "patterns": shell["footer"]["patterns"], "explore": shell["footer"]["explore"],
         "what_we_build": shell["footer"]["what_we_build"], "method": shell["footer"]["method"],
         "field": shell["footer"]["field"], "about": shell["footer"]["about"],
+        "library_link": '\n        <a href="/library/">Library</a>' if locale["id"] == CONFIG["default_locale"] else "",
         "connect": shell["footer"]["connect"], "privacy": shell["footer"]["privacy"],
         "copyright": shell["footer"]["copyright"].replace("{{year}}", year),
         "quiet_principles": shell["footer"]["quiet_principles"], "content": body, "year": year,
@@ -220,6 +222,20 @@ def build() -> None:
     )
     editions_output.write_text(editions_html.rstrip() + "\n", encoding="utf-8")
 
+    library_collection = CONFIG["library_collection"]
+    library_page = {
+        "output": library_collection["output"], "key": library_collection["key"],
+        "title": library_collection["title"], "description": library_collection["description"],
+    }
+    library_output = DIST / library_collection["output"]
+    library_output.parent.mkdir(parents=True, exist_ok=True)
+    library_html = render_document(
+        layout, library_page, editions_locale, editions_shell,
+        render_library(edition_records, publication_records), year,
+        single_locale_language_data(library_page, editions_locale),
+    )
+    library_output.write_text(library_html.rstrip() + "\n", encoding="utf-8")
+
     edition_urls: list[str] = []
     for record in edition_records:
         relative_output = record["canonical_path"].lstrip("/") + "index.html"
@@ -258,6 +274,7 @@ def build() -> None:
     urls = [canonical_url(page, locale) for locale in locales() for page in locale["pages"]]
     urls.append(collection_url)
     urls.append(editions_url)
+    urls.append(CONFIG["base_url"] + "/library/")
     urls.extend(edition_urls)
     urls.extend(CONFIG["base_url"] + "/" + app["output"].strip("/") + "/" for app in CONFIG.get("static_apps", []))
     (DIST / "sitemap.xml").write_text(
