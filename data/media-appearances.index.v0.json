@@ -1,0 +1,256 @@
+{
+  "schema_id": "quietwire.media-appearances-index.v0",
+  "status": "research-index",
+  "generated_at": "2026-08-30",
+  "authority_note": "Research/index checkpoint only. Inclusion does not itself authorize publication, rendering, homepage feature selection, or Teddy release. Source-confirmed metadata outranks recollection; recollection remains preserved as recollection.",
+  "source_class_definitions": {
+    "publisher_primary": "Canonical or publisher-controlled series, episode, or event page.",
+    "publisher_distribution": "Publisher-controlled distribution such as YouTube, Vimeo, Apple Podcasts, or Podbean.",
+    "institutional_primary": "Official Parliament, standards body, conference, or other institutional record.",
+    "third_party_index": "Discovery/index evidence; useful for finding a source but not preferred over publisher or institutional evidence.",
+    "first_person_recollection": "Live recollection supplied by Chris Blask. Preserved as recollection until corroborated by documentary evidence."
+  },
+  "evidence_sources": {
+    "inevitability-curve-series": {
+      "source_class": "publisher_primary",
+      "url": "https://techstrong.tv/videos/the-inevitability-curve",
+      "note": "Canonical Techstrong series page; enumerates all 20 2025 episodes and identifies Chris Blask as host."
+    },
+    "techstrong-gang-2025-season": {
+      "source_class": "publisher_primary",
+      "url": "https://ott.techstrong.tv/techstrong-gang/season%3A2",
+      "note": "Techstrong 2025 season archive; 230 episodes. Used to identify source descriptions that explicitly name Chris Blask."
+    },
+    "techstrong-gang-current": {
+      "source_class": "publisher_primary",
+      "url": "https://techstrong.tv/videos/techstrong-gang",
+      "note": "Current Techstrong Gang publisher archive; Techstrong describes the program as a weekday briefing."
+    },
+    "techstrong-gang-live-landing": {
+      "source_class": "publisher_primary",
+      "url": "https://www.techstrong.tv/gang",
+      "note": "Current Techstrong Gang landing page used for recent title/date/guest confirmation."
+    },
+    "techstrong-gang-ott-current": {
+      "source_class": "publisher_primary",
+      "url": "https://ott.techstrong.tv/techstrong-gang",
+      "note": "Techstrong OTT series archive; publisher says new episodes drop Monday through Friday."
+    }
+  },
+  "lineage_notes": [
+    {
+      "id": "inevitability-curve-origin",
+      "subject": "The Inevitability Curve",
+      "origin_year_range": [1991, 1992],
+      "source_class": "first_person_recollection",
+      "captured_at": "2026-08-30",
+      "source_note": "Chris Blask recalls coining the term around 1991–1992 while arguing that everyone on Earth would eventually get on the Internet. If that future was inevitable, a line already connected the present to it and future observers would be able to look back and see its exact shape. The immediate engineering argument was to go ahead and build a firewall. Chris recalls using the concept continuously thereafter.",
+      "origin_note_path": "docs/INEVITABILITY_CURVE_ORIGIN_NOTE.md",
+      "documentary_state": "earliest-documentary-evidence-pending"
+    }
+  ],
+  "series": [
+    {
+      "id": "the-inevitability-curve",
+      "kind": "series",
+      "title": "The Inevitability Curve",
+      "publisher": "Techstrong",
+      "canonical_url": "https://techstrong.tv/videos/the-inevitability-curve",
+      "ownership": "external",
+      "access": "public",
+      "record_state": "confirmed",
+      "corpus_note": "Canonical Techstrong series page enumerates 20 published episodes in 2025. Chris Blask is host.",
+      "lineage_note_id": "inevitability-curve-origin"
+    },
+    {
+      "id": "techstrong-gang",
+      "kind": "series",
+      "title": "Techstrong Gang",
+      "publisher": "Techstrong",
+      "canonical_url": "https://techstrong.tv/videos/techstrong-gang",
+      "ownership": "external",
+      "access": "public",
+      "record_state": "confirmed",
+      "recollection_note": "Chris recalls essentially weekly participation through 2025 and 2026, usually Tuesday.",
+      "source_observation": "Techstrong describes the show as a weekday/daily roundtable, and recovered source-confirmed Chris appearances occur across multiple weekdays. Individual episode records therefore use publisher evidence rather than calendar inference."
+    }
+  ],
+  "collections": [
+    {
+      "id": "inevitability-curve-2025",
+      "series_id": "the-inevitability-curve",
+      "coverage": "2025",
+      "indexed_count": 20,
+      "target_count": 20,
+      "backfill_state": "episode-core-metadata-complete"
+    },
+    {
+      "id": "techstrong-gang-2025",
+      "series_id": "techstrong-gang",
+      "coverage": "2025",
+      "indexed_count": 40,
+      "backfill_state": "40 source-confirmed or source-identified Chris records indexed; exact dates/URLs still pending for some"
+    },
+    {
+      "id": "techstrong-gang-2026",
+      "series_id": "techstrong-gang",
+      "coverage": "2026 through 2026-08-30",
+      "indexed_count": 28,
+      "backfill_state": "source-confirmed partial census; continue publisher-archive backfill"
+    }
+  ],
+  "record_count": 88,
+  "record_defaults": {
+    "kind": "episode",
+    "publisher": "Techstrong",
+    "access": "public",
+    "rights": "external",
+    "participant": "Chris Blask",
+    "techstrong_gang_role": "panelist",
+    "inevitability_curve_role": "host"
+  },
+  "record_fields": [
+    "id",
+    "series_id",
+    "event_date",
+    "title",
+    "episode_number",
+    "record_state",
+    "canonical_url",
+    "guest",
+    "metadata_note",
+    "evidence_ref"
+  ],
+  "records": [
+    ["inevitability-curve-2025-01", "the-inevitability-curve", "2025-01-10", "The Evolution of Information Warfare – The Inevitability Curve EP1", 1, "confirmed", "https://techstrong.tv/videos/the-inevitability-curve/the-evolution-of-information-warfare-the-inevitability-curve-ep1", "Winn Schwartau", null, "inevitability-curve-series"],
+    ["inevitability-curve-2025-02", "the-inevitability-curve", "2025-01-12", "AI and Critical Infrastructure – The Inevitability Curve EP2", 2, "confirmed", "https://techstrong.tv/videos/the-inevitability-curve/ai-and-critical-infrastructure-the-inevitability-curve-ep2", "Tim Roxey", null, "inevitability-curve-series"],
+    ["inevitability-curve-2025-03", "the-inevitability-curve", "2025-01-14", "Navigating the SaaSpocalypse – The Inevitability Curve EP3", 3, "confirmed", "https://techstrong.tv/videos/the-inevitability-curve/navigating-the-saaspocalypse-the-inevitability-curve-ep3", "Roy Pereira", null, "inevitability-curve-series"],
+    ["inevitability-curve-2025-04", "the-inevitability-curve", "2025-01-15", "The Emergency Response Curve – The Inevitability Curve EP4", 4, "confirmed", "https://techstrong.tv/videos/the-inevitability-curve/the-emergency-response-curve-the-inevitability-curve-ep4", "Rakesh Bharania", null, "inevitability-curve-series"],
+    ["inevitability-curve-2025-05", "the-inevitability-curve", "2025-01-16", "The Arc of Communications – The Inevitability Curve EP5", 5, "confirmed", "https://techstrong.tv/videos/the-inevitability-curve/the-arc-of-communications-the-inevitability-curve-ep5", "Peter Jukes", null, "inevitability-curve-series"],
+    ["inevitability-curve-2025-06", "the-inevitability-curve", "2025-01-17", "The Arc of Warfare – The Inevitability Curve EP6", 6, "confirmed", "https://techstrong.tv/videos/the-inevitability-curve/the-arc-of-warfare-the-inevitability-curve-ep6", "Stuart Phillips", null, "inevitability-curve-series"],
+    ["inevitability-curve-2025-07", "the-inevitability-curve", "2025-01-18", "Disaster Response and FinTech – The Inevitability Curve EP7", 7, "confirmed", "https://techstrong.tv/videos/the-inevitability-curve/disaster-response-and-fintech-the-inevitability-curve-ep7", "Emerson Tan", null, "inevitability-curve-series"],
+    ["inevitability-curve-2025-08", "the-inevitability-curve", "2025-01-19", "AI and the Future of Policy Enforcement – The Inevitability Curve EP8", 8, "confirmed", "https://techstrong.tv/videos/the-inevitability-curve/ai-and-the-future-of-policy-enforcement-the-inevitability-curve-ep8", "Micky Dennedy", null, "inevitability-curve-series"],
+    ["inevitability-curve-2025-09", "the-inevitability-curve", "2025-01-20", "Journalism and Content – The Inevitability Curve EP9", 9, "confirmed", "https://techstrong.tv/videos/the-inevitability-curve/journalism-and-content-the-inevitability-curve-ep9", "Deb Radcliff", null, "inevitability-curve-series"],
+    ["inevitability-curve-2025-10", "the-inevitability-curve", "2025-01-21", "The Human in Cybersecurity – The Inevitability Curve EP10", 10, "confirmed", "https://techstrong.tv/videos/the-inevitability-curve/the-human-in-cybersecurity-the-inevitability-curve-ep10", "Chris Blow", null, "inevitability-curve-series"],
+    ["inevitability-curve-2025-11", "the-inevitability-curve", "2025-01-28", "The Profitability of Corporate Altruism – The Inevitability Curve EP11", 11, "confirmed", "https://techstrong.tv/videos/the-inevitability-curve/the-profitability-of-corporate-altruism-the-inevitability-curve-ep11", "Bill McGee", null, "inevitability-curve-series"],
+    ["inevitability-curve-2025-12", "the-inevitability-curve", "2025-01-28", "Marine Systems and Cyber Conflict – The Inevitability Curve EP12", 12, "confirmed-series-page-guest-from-prior-crawl", "https://techstrong.tv/videos/the-inevitability-curve/marine-systems-and-cyber-conflict-the-inevitability-curve-ep12", "Heather McMahon", "Canonical series page confirms title/date; guest name comes from the earlier source crawl and should be rechecked if the individual page becomes fetchable again.", "inevitability-curve-series"],
+    ["inevitability-curve-2025-13", "the-inevitability-curve", "2025-01-28", "Software Supply Chains and ISACs – The Inevitability Curve EP13", 13, "confirmed", "https://techstrong.tv/videos/the-inevitability-curve/software-supply-chains-and-isacs-the-inevitability-curve-ep13", "Phil Englert", null, "inevitability-curve-series"],
+    ["inevitability-curve-2025-14", "the-inevitability-curve", "2025-05-15", "Bending Towards the G in GRC – The Inevitability Curve EP14", 14, "confirmed", "https://techstrong.tv/videos/the-inevitability-curve/bending-towards-the-g-in-grc-the-inevitability-curve-ep14", "Yoav Raiter", null, "inevitability-curve-series"],
+    ["inevitability-curve-2025-15", "the-inevitability-curve", "2025-05-15", "Seeking the Recursive BOM of Truth – The Inevitability Curve EP15", 15, "confirmed", "https://techstrong.tv/videos/the-inevitability-curve/seeking-the-recursive-bom-of-truth-the-inevitability-curve-ep15", "Dennis Devlin", null, "inevitability-curve-series"],
+    ["inevitability-curve-2025-16", "the-inevitability-curve", "2025-05-15", "Bending Towards Visibility – The Inevitability Curve EP16", 16, "confirmed", "https://techstrong.tv/videos/the-inevitability-curve/bending-towards-visibility-the-inevitability-curve-ep16", "Blaine McNutt", null, "inevitability-curve-series"],
+    ["inevitability-curve-2025-17", "the-inevitability-curve", "2025-05-15", "Bending the Risk Curve – The Inevitability Curve EP17", 17, "confirmed", "https://techstrong.tv/videos/the-inevitability-curve/bending-the-risk-curve-the-inevitability-curve-ep17", "Mike Dugent", null, "inevitability-curve-series"],
+    ["inevitability-curve-2025-18", "the-inevitability-curve", "2025-06-06", "The Evolution of AI in Cybersecurity – The Inevitability Curve Podcast Ep18", 18, "confirmed", "https://techstrong.tv/videos/the-inevitability-curve/the-evolution-of-ai-in-cybersecurity-the-inevitability-curve-podcast-ep18", "Casey Ellis", null, "inevitability-curve-series"],
+    ["inevitability-curve-2025-19", "the-inevitability-curve", "2025-06-12", "Hacking the Policy Curve – The Inevitability Curve Podcast Ep19", 19, "confirmed", "https://techstrong.tv/videos/the-inevitability-curve/hacking-the-policy-curve-the-inevitability-curve-podcast-ep19", "Ken Swick", null, "inevitability-curve-series"],
+    ["inevitability-curve-2025-20", "the-inevitability-curve", "2025-06-19", "Do AI Dogs Wag Electric Tails | The Inevitability Curve Ep. 20", 20, "metadata-conflict", "https://techstrong.tv/videos/the-inevitability-curve/do-ai-dogs-wag-electric-tails-the-inevitability-curve-ep-20", "Amelie Karan", "Publisher guest field says 'Amelie Karan' while body copy says 'Emily'; preserve the conflict until source clarification.", "inevitability-curve-series"],
+
+    ["tsg-2025-ep992", "techstrong-gang", null, "2025 in Review: IT, Cybersecurity, and AI’s Impact on Society | TSG Ep. 992", 992, "confirmed-participation-date-pending", null, null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-ep988", "techstrong-gang", "2025-12-17", "AI Agent Affordability, ServiceNow’s Armis Interest, and NVIDIA Buys SchedMD | TSG Ep. 988", 988, "confirmed", "https://techstrong.tv/videos/techstrong-gang/ai-agent-affordability-servicenow-armis-nvidia-schedmd", null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-ep983", "techstrong-gang", null, "A: AI Child Safety Concerns, Humanoid Robots, and AI PCs | TSG Ep. 983", 983, "confirmed-participation-date-pending", "https://techstrong.tv/videos/techstrong-gang/ai-child-safety-humanoid-robots-ai-pcs", null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-ep975", "techstrong-gang", "2025-12-01", "Gratitude for Technology: AI and Quantum Progress | TSG Ep. 975", 975, "confirmed", null, null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-ep970", "techstrong-gang", null, "NVIDIA’s New AI Physics Models and the Rise of AI Ministers | TSG Ep. 970", 970, "confirmed-participation-date-pending", "https://techstrong.tv/videos/techstrong-gang/nvidia-ai-physics-models-rise-ai-ministers", null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-11-05", "techstrong-gang", "2025-11-05", "TSG 11.05.25_FULL", null, "confirmed", null, null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-ep955", "techstrong-gang", null, "Exploring Quantum Economics & AI Politics | TSG Ep. 955", 955, "confirmed-participation-date-pending", null, null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-ep950", "techstrong-gang", null, "AI’s Data Quality Revolution & NBA’s Smart Play with AI | TSG Ep. 950", 950, "confirmed-participation-date-pending", null, null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-ep945", "techstrong-gang", "2025-10-15", "Broadcom & OpenAI: Reshaping the AI Chip Market | TSG Ep. 945", 945, "confirmed", "https://ott.techstrong.tv/techstrong-gang/season%3A2/videos/broadcom-openai-reshaping-the-ai-chip-market-tsg-ep-945", null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-ep940", "techstrong-gang", null, "AI Infrastructure, Data Center Fires & Outsourcing Risks | TSG Ep. 940", 940, "confirmed-participation-date-pending", "https://techstrong.tv/videos/techstrong-gang/ai-infrastructure-data-center-fires-outsourcing-risks", null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-ep930", "techstrong-gang", null, "AI Investments, Nvidia–OpenAI Deal & Cybersecurity Risks | TSG Ep. 930", 930, "confirmed-participation-date-pending", "https://techstrong.tv/videos/techstrong-gang/ai-investments-nvidia-openai-cybersecurity-risks-tsg", null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-ep926", "techstrong-gang", null, "AI in HR: Workday’s Big Bet on Automation & the Future of Work | TSG Ep. 926", 926, "candidate-identity-confirmation", null, null, "Archive description recovered a participant named 'Chris'; exact identity as Chris Blask should be reconfirmed before promotion to a public-safe manifest.", "techstrong-gang-2025-season"],
+    ["tsg-2025-ep915", "techstrong-gang", null, "Data Centers Face Backlash & AI PCs Struggle to Deliver | TSG Ep. 915", 915, "confirmed-participation-date-pending", null, null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-ep911", "techstrong-gang", null, "The Future of Semiconductors and Mainframe Technology | TSG Ep. 911", 911, "confirmed-participation-date-pending", null, null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-ep901", "techstrong-gang", null, "Navigating Corporate Leadership and Political Ideologies | TSG Ep. 901", 901, "confirmed-participation-date-pending", null, null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-ep896", "techstrong-gang", null, "AI Coding, Exploits & Agent Security: The Risks of Going Too Fast | TSG Ep. 896", 896, "confirmed-participation-date-pending", null, null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-ep891", "techstrong-gang", "2025-07-30", "Visa Shifts, AI Labor & Tech as a Public Utility | TSG Ep. 891", 891, "confirmed", "https://techstrong.tv/videos/techstrong-gang/h1b-visa-reform-ai-workforce-connectivity-techstrong-gang-ep-891", null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-ep886", "techstrong-gang", null, "Risky Business: Tech CEOs Under Pressure & Microsoft SharePoint Fiasco | TSG Ep. 886", 886, "confirmed-participation-date-pending", null, null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-ep881", "techstrong-gang", null, "Arm’s Rise, AWS Vibecoding, and Deepfake Threats to Trust in Government | TSG Ep. 881", 881, "confirmed-participation-date-pending", null, null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-ep876", "techstrong-gang", null, "Tariffs, AI Power Plays & Cybercrime Crackdowns | TSG Ep. 876", 876, "confirmed-participation-date-pending", null, null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-ep872", "techstrong-gang", null, "Facial Recognition, Deepfakes & Open Source: What’s the Cost? | TSG Ep. 872", 872, "confirmed-participation-date-pending", null, null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-ep867", "techstrong-gang", null, "AI Breakthroughs & Autonomous Vehicles: What’s Driving the Future of Tech? | TSG Ep. 867", 867, "confirmed-participation-date-pending", "https://ott.techstrong.tv/techstrong-gang/season%3A2/videos/ai-breakthroughs-autonomous-vehicles-what-s-driving-the-future-of-tech-tsg-ep-867", null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-ep852", "techstrong-gang", null, "How AI and Broadcom Are Shaking Up Tech | TSG Ep. 852", 852, "confirmed-participation-date-pending", null, null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-05-28", "techstrong-gang", "2025-05-28", "Techstrong Gang - May 28, 2025", null, "confirmed", null, null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-05-27", "techstrong-gang", "2025-05-27", "Techstrong Gang - May 27, 2025", null, "confirmed", null, null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-05-14", "techstrong-gang", "2025-05-14", "Techstrong Gang - May 14, 2025", null, "confirmed", null, null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-05-08", "techstrong-gang", "2025-05-08", "Techstrong Gang - May 8, 2025", null, "confirmed", null, null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-04-28", "techstrong-gang", "2025-04-28", "Techstrong Gang - April 28, 2025", null, "confirmed", null, null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-04-23", "techstrong-gang", "2025-04-23", "Techstrong Gang - April 23, 2025", null, "confirmed", null, null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-04-09", "techstrong-gang", "2025-04-09", "Techstrong Gang - April 9, 2025", null, "confirmed", null, null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-03-12", "techstrong-gang", "2025-03-12", "Techstrong Gang - March 12, 2025", null, "confirmed", "https://ott.techstrong.tv/techstrong-gang/season%3A2/videos/techstrong-gang-march-12-2025", null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-03-06", "techstrong-gang", "2025-03-06", "Techstrong Gang - March 6, 2025", null, "confirmed", null, null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-02-26", "techstrong-gang", "2025-02-26", "Techstrong Gang - February 26, 2025", null, "metadata-conflict", "https://ott.techstrong.tv/techstrong-gang-1/videos/techstrong-gang-february-26-2025", null, "Publisher page title names a 2025 date but its displayed internal date is 27-Feb-2024. Retain title-derived event date as provisional and preserve the conflict.", "techstrong-gang-2025-season"],
+    ["tsg-2025-02-24", "techstrong-gang", "2025-02-24", "Techstrong Gang - February 24, 2025", null, "metadata-conflict", "https://ott.techstrong.tv/techstrong-gang-1/videos/techstrong-gang-february-24-2025", null, "Publisher page title names a 2025 date but its displayed internal date is 27-Feb-2024. Retain title-derived event date as provisional and preserve the conflict.", "techstrong-gang-2025-season"],
+    ["tsg-2025-02-21", "techstrong-gang", "2025-02-21", "Techstrong Gang - February 21, 2025", null, "confirmed", null, null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-02-13", "techstrong-gang", "2025-02-13", "Techstrong Gang - February 13, 2025", null, "confirmed", null, null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-02-11", "techstrong-gang", "2025-02-11", "Techstrong Gang - February 11, 2025", null, "confirmed", null, null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-01-27", "techstrong-gang", "2025-01-27", "Techstrong Gang - January 27, 2025", null, "confirmed", null, null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-01-15", "techstrong-gang", "2025-01-15", "Techstrong Gang - January 15, 2025", null, "confirmed", null, null, null, "techstrong-gang-2025-season"],
+    ["tsg-2025-01-10", "techstrong-gang", "2025-01-10", "Techstrong Gang - January 10, 2025", null, "confirmed", null, null, null, "techstrong-gang-2025-season"],
+
+    ["tsg-2026-ep994", "techstrong-gang", null, "AI PCs Without GPUs, NVIDIA’s Autonomous Push, and the Legacy of Lou Gerstner | TSG Ep. 994", 994, "confirmed-participation-date-pending", null, null, null, "techstrong-gang-current"],
+    ["tsg-2026-ep999", "techstrong-gang", null, "Google’s AI Shopping Protocol, AI Coding Advances, and Quantum Funding | TSG Ep. 999", 999, "confirmed-participation-date-pending", null, null, null, "techstrong-gang-current"],
+    ["tsg-2026-ep1001", "techstrong-gang", "2026-01-20", "DevOps Dozen 2025 and the State of the DevOps Community | TSG Ep. 1001", 1001, "confirmed", "https://techstrong.tv/videos/techstrong-gang/devops-dozen-2026-state-of-devops-community", null, null, "techstrong-gang-current"],
+    ["tsg-2026-ep1006", "techstrong-gang", null, "AI Agent Security Risks, CUDA Portability, and Kubernetes Adoption at Scale | TSG Ep. 1006", 1006, "confirmed-participation-date-pending", null, null, null, "techstrong-gang-current"],
+    ["tsg-2026-ep1015", "techstrong-gang", "2026-02-09", "AI at Scale: The $1T Chip Surge, Cybersecurity, and Mars | TSG Ep. 1015", 1015, "confirmed", "https://techstrong.tv/videos/techstrong-gang/ai-at-scale-1t-chip-surge-cybersecurity-mars-tsg-1015", null, null, "techstrong-gang-current"],
+    ["tsg-2026-ep1021", "techstrong-gang", "2026-02-17", "OpenAI Goes Agentic, Drone Crackdowns, and AI Inference Surge | TSG Ep. 1021", 1021, "confirmed", null, null, null, "techstrong-gang-current"],
+    ["tsg-2026-ep1026", "techstrong-gang", "2026-02-24", "The AI Divide 88 Nations Choose Growth Over Guardrails | TSG Ep. 1026", 1026, "confirmed", "https://techstrong.tv/videos/techstrong-gang/the-ai-divide-88-nations-choose-growth-over-guardrails-tsg-ep-1026", null, null, "techstrong-gang-current"],
+    ["tsg-2026-03-03", "techstrong-gang", "2026-03-03", "Techstrong Gang - 3/3/2026", 1031, "confirmed", null, null, null, "techstrong-gang-current"],
+    ["tsg-2026-03-10", "techstrong-gang", "2026-03-10", "CIOs Pivot to AI Innovation, Microsoft AI Pricing & Cybercrime Strategy | TSG Ep. 1036", 1036, "confirmed", null, null, null, "techstrong-gang-current"],
+    ["tsg-2026-03-17", "techstrong-gang", "2026-03-17", "NVIDIA’s Agentic AI Push, AI Coding and Big Tech Scams", null, "confirmed", null, null, null, "techstrong-gang-current"],
+    ["tsg-2026-04-14", "techstrong-gang", "2026-04-14", "Techstrong Gang - 4/14/2026", null, "confirmed", null, null, null, "techstrong-gang-current"],
+    ["tsg-2026-04-27", "techstrong-gang", "2026-04-27", "Techstrong Gang - 4/27/2026", null, "confirmed", null, null, null, "techstrong-gang-current"],
+    ["tsg-2026-04-29", "techstrong-gang", "2026-04-29", "Techstrong Gang - 4/29/2026", null, "confirmed", null, null, null, "techstrong-gang-current"],
+    ["tsg-2026-04-30", "techstrong-gang", "2026-04-30", "AI the Liar, Salesforce Sells Agents and Cybersecurity Wants Seniors", null, "confirmed", null, null, null, "techstrong-gang-current"],
+    ["tsg-2026-05-05", "techstrong-gang", "2026-05-05", "3-Day Patch Rule, AI Model Reviews and Biosecurity Fears", null, "confirmed", null, null, null, "techstrong-gang-current"],
+    ["tsg-2026-05-12", "techstrong-gang", "2026-05-12", "Apple’s Foldable Bet, OpenAI’s Enterprise Push and AI Agent Risks", null, "confirmed", null, null, null, "techstrong-gang-current"],
+    ["tsg-2026-05-26", "techstrong-gang", "2026-05-26", "AI, Profit Takes Over and Systems Engineering Returns | Techstrong Gang", null, "confirmed", "https://ott.techstrong.tv/videos/ai-profit-takes-over-and-systems-engineering-returns-techstrong-gang", null, null, "techstrong-gang-current"],
+    ["tsg-2026-06-02", "techstrong-gang", "2026-06-02", "Techstrong Gang - 6/2/2026", null, "confirmed", null, null, null, "techstrong-gang-current"],
+    ["tsg-2026-06-23", "techstrong-gang", "2026-06-23", "Techstrong Gang - 6/23/2026", null, "confirmed", null, null, null, "techstrong-gang-current"],
+    ["tsg-2026-06-30", "techstrong-gang", "2026-06-30", "Techstrong Gang - 6/30/2026", null, "confirmed", null, null, null, "techstrong-gang-current"],
+    ["tsg-2026-07-01", "techstrong-gang", "2026-07-01", "Techstrong Gang - 7/1/2026", null, "confirmed", null, null, null, "techstrong-gang-current"],
+    ["tsg-2026-07-28", "techstrong-gang", "2026-07-28", "MCP’s Stateless Leap, the Hugging Face AI Breach, and Security’s Shift From Components to Relationships", null, "confirmed", "https://ott.techstrong.tv/techstrong-gang-1/videos/mcp-s-stateless-leap-the-hugging-face-ai-breach-and-security-s-shift-from-components-to-relationships", null, null, "techstrong-gang-current"],
+    ["tsg-2026-08-04", "techstrong-gang", "2026-08-04", "AI Is Now a Weapon: Supply-Chain Attacks, Rogue Agents and the EU AI Act Crackdown", null, "confirmed", null, null, null, "techstrong-gang-current"],
+    ["tsg-2026-08-11", "techstrong-gang", "2026-08-11", "OpenAI Pauses Astra Model as Cybersecurity Industry Faces a Reckoning", null, "confirmed", null, null, null, "techstrong-gang-current"],
+    ["tsg-2026-08-18", "techstrong-gang", "2026-08-18", "AI Infrastructure Race: Alliances, Power Fights and a $7B Deal", null, "confirmed", "https://www.techstrong.tv/gang", null, null, "techstrong-gang-live-landing"],
+    ["tsg-2026-ibm-arm", "techstrong-gang", null, "IBM’s Arm Chip Bet, Hugging Face’s Sale Talks, and AI’s Evidence Gap", null, "confirmed-participation-date-pending", null, null, null, "techstrong-gang-current"],
+    ["tsg-2026-openai-cuts-prices", "techstrong-gang", null, "OpenAI Cuts Prices, Huang Calls Out CEOs and Cyber Hits $521B", null, "confirmed-participation-date-pending", null, null, null, "techstrong-gang-current"],
+    ["tsg-2026-copilot-agentic", "techstrong-gang", null, "Copilot Goes Agentic, Bots Outnumber Humans and Trivy Warns", null, "confirmed-participation-date-pending", null, null, null, "techstrong-gang-current"]
+  ],
+  "metadata_conflicts": [
+    {
+      "id": "tsg-2025-february-page-date-conflict",
+      "records": ["tsg-2025-02-24", "tsg-2025-02-26"],
+      "note": "Publisher page titles name February 24/26, 2025, while the page metadata displays 27-Feb-2024. Do not silently normalize away the discrepancy."
+    },
+    {
+      "id": "tsg-2026-apr30-may04-feed-duplicate",
+      "records": ["tsg-2026-04-30"],
+      "note": "A publisher-distribution crawl exposed the same 'AI the Liar, Salesforce Sells Agents and Cybersecurity Wants Seniors' content again under a May 4 feed position. Treat as a likely duplicate/feed-date anomaly until the canonical publisher page resolves it; do not create a second episode record yet."
+    },
+    {
+      "id": "inevitability-curve-ep20-guest-name",
+      "records": ["inevitability-curve-2025-20"],
+      "note": "Techstrong guest metadata says 'Amelie Karan'; body text says 'Emily'. Preserve both facts until source clarification."
+    },
+    {
+      "id": "techstrong-gang-cadence-recollection-vs-source",
+      "records": [],
+      "note": "Chris recalls the Gang cadence as essentially weekly and mostly Tuesdays. Techstrong currently describes a Monday-through-Friday daily/weekday series and source-confirmed Chris appearances occur on multiple weekdays. Preserve both; never generate appearances from calendar expectation."
+    }
+  ],
+  "known_external_collections": [
+    {"id": "parliament-proc-2026-civic-resilience", "kind": "public-testimony", "record_state": "confirmed"},
+    {"id": "still-cyber-techstrong-2026", "kind": "panel-appearance", "record_state": "confirmed"},
+    {"id": "rsa-conference", "kind": "conference-collection", "record_state": "confirmed-multiple"},
+    {"id": "oasis-borderless-cyber-2021", "kind": "conference-appearance", "record_state": "confirmed"},
+    {"id": "cybeats-scryb-state-of-cybersecurity", "kind": "webinar-series", "record_state": "confirmed-partial"},
+    {"id": "cs2ai", "kind": "seminar-panel-collection", "record_state": "mixed-public-member-access"},
+    {"id": "security-weekly-sc-media", "kind": "video-podcast-interview", "record_state": "confirmed"},
+    {"id": "ics-isac-archive", "kind": "historical-institutional-media", "record_state": "confirmed-partial"}
+  ],
+  "next_actions": [
+    "Continue the Techstrong Gang 2025 census by resolving missing exact dates and canonical episode URLs for the already identified Chris appearances.",
+    "Continue the Techstrong Gang 2026 publisher-archive census through 2026-08-30 and add omitted source-confirmed Chris appearances.",
+    "Recheck Inevitability Curve EP12 guest metadata if the individual publisher page becomes fetchable again.",
+    "Attach earliest surviving documentary evidence for the approximately 1991–1992 Inevitability Curve origin recollection in the appropriate provenance lane.",
+    "Backfill Parliament, Still Cyber, RSA, OASIS, Cybeats/Scryb, CS2AI, Security Weekly, and ICS-ISAC as individual records.",
+    "Promote only validated public-safe records into a future media-appearances manifest; research-index inclusion alone is not publication approval."
+  ]
+}

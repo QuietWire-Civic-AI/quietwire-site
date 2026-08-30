@@ -1,0 +1,12 @@
+{
+  "manifest": "data/media-appearances.v1.json",
+  "locale": "en-CA",
+  "output": "library/media/index.html",
+  "title": "Watch & Listen — QuietWire",
+  "description": "QuietWire conversations, public appearances, testimony, panels, and externally published media, preserved with source provenance.",
+  "library_shelf": [
+    {"kind": "series", "id": "the-inevitability-curve"},
+    {"kind": "series", "id": "techstrong-gang"},
+    {"kind": "item", "id": "parliament-proc-2026-civic-resilience"}
+  ]
+}

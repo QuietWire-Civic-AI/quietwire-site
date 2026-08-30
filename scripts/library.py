@@ -8,6 +8,7 @@ from html import escape
 
 MAX_EDITION_SHELF = 3
 MAX_PUBLICATION_SHELF = 3
+MEDIA_SHELF_MARKER = "<!-- quietwire-media-shelf -->"
 
 
 def _date_label(value: str) -> str:
@@ -68,6 +69,7 @@ def render_library(editions: list[dict], publications: list[dict]) -> str:
         '<div class="section-heading"><div><p class="section-kicker">First-party originals</p>'
         '<h2>Recent Editions</h2></div><a class="text-link" href="/editions/">All Editions →</a></div>'
         f'<div class="library-grid">{edition_cards}</div></div></section>'
+        f'{MEDIA_SHELF_MARKER}'
         '<section class="section section-cream"><div class="shell library-shelf" data-reveal>'
         '<div class="section-heading"><div><p class="section-kicker">Writing &amp; media</p>'
         '<h2>Recent Publications</h2></div><a class="text-link" href="/publications/">All Publications →</a></div>'
