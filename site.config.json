@@ -88,5 +88,12 @@
     "title": "Library — QuietWire",
     "description": "QuietWire’s writing, media, and first-party publishing surface."
   },
+  "home_library": {
+    "items": [
+      {"kind": "edition", "id": "own-the-origin"},
+      {"kind": "publication", "id": "chris-blask-2026-08-19-token-exhaustion-attacks"},
+      {"kind": "publication", "id": "chris-blask-2026-07-28-model-wasnt-rogue"}
+    ]
+  },
   "static_apps": [{"source": "discovery", "output": "discovery"}]
 }
