@@ -261,8 +261,8 @@ def render_editions_landing(records: list[dict]) -> str:
         authors = escape(", ".join(record["authors"]))
         cards.append(
             f'<article class="publication-card" data-edition-id="{escape(record["edition_id"])}">'
-            f'<div class="publication-meta"><span>QuietWire Edition</span>'
-            f'<time datetime="{record["source_date"]}">Source {_date_label(record["source_date"])}</time></div>'
+            f'<div class="publication-meta"><span>QuietWire Edition</span> · '
+            f'<time datetime="{record["source_date"]}">Source artifact: {_date_label(record["source_date"])}</time></div>'
             f'<h2>{escape(record["title"])}</h2>'
             f'<p class="publication-byline">By {authors} · QuietWire Editions</p>'
             f'<p class="publication-summary">{escape(record["summary"])}</p>'
