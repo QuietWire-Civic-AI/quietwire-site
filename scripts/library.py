@@ -59,7 +59,7 @@ def render_library(editions: list[dict], publications: list[dict]) -> str:
         '<section class="section section-cream"><div class="shell library-feature" data-reveal>'
         '<p class="section-kicker">Featured Edition</p>'
         f'<article class="library-feature-card" data-library-featured-edition="{escape(featured["edition_id"])}">'
-        f'<div><div class="publication-meta"><span>QuietWire Edition</span>'
+        f'<div><div class="publication-meta"><span>QuietWire Edition</span> · '
         f'<time datetime="{featured["source_date"]}">{_date_label(featured["source_date"])}</time></div>'
         f'<h2>{escape(featured["title"])}</h2><p>{escape(featured["summary"])}</p></div>'
         f'<a class="button" href="{escape(featured["canonical_path"], quote=True)}">Read the featured Edition</a>'
