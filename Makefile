@@ -3,6 +3,7 @@ build:
 	python3 scripts/build.py
 check: build
 	python3 scripts/check_publications.py
+	python3 scripts/check_editions.py
 	python3 scripts/check_locales.py
 	python3 scripts/check.py
 	python3 scripts/check_ar_pilot.py
