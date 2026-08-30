@@ -83,5 +83,12 @@
     "title": "Publications — QuietWire",
     "description": "Confirmed public writing and media from QuietWire and its people, linked to the original venues."
   },
+  "library_collection": {
+    "locale": "en-CA",
+    "output": "library/index.html",
+    "key": "library",
+    "title": "Library — QuietWire",
+    "description": "QuietWire’s writing, media, and first-party publishing surface."
+  },
   "static_apps": [{"source": "discovery", "output": "discovery"}]
 }

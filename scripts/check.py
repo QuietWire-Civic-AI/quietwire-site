@@ -58,6 +58,7 @@ required += [
 ]
 required += [app['output'].rstrip('/') + '/index.html' for app in config.get('static_apps', [])]
 required.append(config['publications_collection']['output'])
+required.append(config['library_collection']['output'])
 for rel in required:
     if not (DIST/rel).exists(): errors.append(f'missing {rel}')
 if errors:
