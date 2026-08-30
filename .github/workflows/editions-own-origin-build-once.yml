@@ -1,0 +1,30 @@
+name: Editions Own the Origin build once
+
+on:
+  push:
+    branches:
+      - editions/own-the-origin-20260830
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: editions/own-the-origin-20260830
+      - name: Build and validate site
+        run: make check
+      - name: Commit deterministic generated output
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- dist
+          if git diff --cached --quiet; then
+            echo "No generated changes to commit"
+            exit 0
+          fi
+          git commit -m "chore(site): build Own the Origin Edition"
+          git push origin HEAD:editions/own-the-origin-20260830
