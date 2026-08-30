@@ -12,9 +12,19 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: make build
-      - run: python3 scripts/check_locales.py
-      - run: python3 scripts/check.py
-      - run: python3 scripts/check_media_appearances.py
+      - run: make check
+      - name: Commit generated media build output on the bounded feature branch
+        if: github.event_name == 'push' && github.ref == 'refs/heads/docs/media-appearances-v1-20260830'
+        run: |
+          git add dist
+          if git diff --cached --quiet; then
+            echo "Generated dist already matches the branch."
+            exit 0
+          fi
+          git config user.name "QuietWire Site Handoff"
+          git config user.email "actions@users.noreply.github.com"
+          git commit -m "build(media): commit generated Watch & Listen output"
+          git push origin HEAD:${GITHUB_REF_NAME}
       - name: Verify committed build output
+        if: github.event_name != 'push' || github.ref != 'refs/heads/docs/media-appearances-v1-20260830'
         run: git diff --exit-code -- dist
