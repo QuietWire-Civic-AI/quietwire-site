@@ -5,12 +5,14 @@ from datetime import datetime, timezone
 from html import escape
 from pathlib import Path
 
+from editions import load_manifest as load_editions_manifest, render_edition, render_editions_landing
 from publications import load_manifest, render_publications
 
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 CONFIG = json.loads((ROOT / "site.config.json").read_text(encoding="utf-8"))
+EDITIONS_CONFIG = json.loads((ROOT / "data" / "editions-site.v1.json").read_text(encoding="utf-8"))
 
 
 def replace(template: str, values: dict[str, str]) -> str:
@@ -83,6 +85,18 @@ def language_links(page: dict, locale: dict) -> tuple[str, str]:
     return " ".join(links), "\n  ".join(alternates)
 
 
+def single_locale_language_data(page: dict, locale: dict) -> tuple[str, str]:
+    path = locale_path(page, locale)
+    url = canonical_url(page, locale)
+    return (
+        f'<a href="{escape(path)}" hreflang="{escape(locale["id"])}" '
+        f'lang="{escape(locale["id"])}" dir="auto" aria-current="true">'
+        f'{escape(locale["language_name"])}</a>',
+        f'<link rel="alternate" hreflang="{escape(locale["id"])}" href="{escape(url)}">\n  '
+        f'<link rel="alternate" hreflang="x-default" href="{escape(url)}">',
+    )
+
+
 def structured_data(site_name: str) -> str:
     data = {
         "@context": "https://schema.org",
@@ -152,6 +166,9 @@ def render_document(
 def build() -> None:
     collection = CONFIG["publications_collection"]
     publication_records = load_manifest(ROOT / collection["manifest"])
+    editions_collection = EDITIONS_CONFIG
+    edition_records = load_editions_manifest(ROOT / editions_collection["manifest"])
+
     if DIST.exists():
         shutil.rmtree(DIST)
     DIST.mkdir(parents=True)
@@ -160,6 +177,7 @@ def build() -> None:
     year = str(datetime.now(timezone.utc).year)
     default_locale = next(locale for locale in locales() if locale["id"] == CONFIG["default_locale"])
     default_shell = json.loads((ROOT / default_locale["shell"]).read_text(encoding="utf-8"))
+
     for locale in locales():
         shell = json.loads((ROOT / locale["shell"]).read_text(encoding="utf-8"))
         for page in locale["pages"]:
@@ -176,22 +194,51 @@ def build() -> None:
         "output": collection["output"], "key": collection["key"],
         "title": collection["title"], "description": collection["description"],
     }
-    collection_path = locale_path(collection_page, collection_locale)
     collection_url = canonical_url(collection_page, collection_locale)
-    collection_language_data = (
-        f'<a href="{escape(collection_path)}" hreflang="{escape(collection_locale["id"])}" '
-        f'lang="{escape(collection_locale["id"])}" dir="auto" aria-current="true">'
-        f'{escape(collection_locale["language_name"])}</a>',
-        f'<link rel="alternate" hreflang="{escape(collection_locale["id"])}" href="{escape(collection_url)}">\n  '
-        f'<link rel="alternate" hreflang="x-default" href="{escape(collection_url)}">',
-    )
     collection_output = DIST / collection["output"]
     collection_output.parent.mkdir(parents=True, exist_ok=True)
     collection_html = render_document(
         layout, collection_page, collection_locale, collection_shell,
-        render_publications(publication_records), year, collection_language_data,
+        render_publications(publication_records), year, single_locale_language_data(collection_page, collection_locale),
     )
     collection_output.write_text(collection_html.rstrip() + "\n", encoding="utf-8")
+
+    editions_locale = next(locale for locale in locales() if locale["id"] == editions_collection["locale"])
+    editions_shell = json.loads((ROOT / editions_locale["shell"]).read_text(encoding="utf-8"))
+    editions_page = {
+        "output": editions_collection["output"],
+        "key": editions_collection["key"],
+        "title": editions_collection["title"],
+        "description": editions_collection["description"],
+    }
+    editions_url = canonical_url(editions_page, editions_locale)
+    editions_output = DIST / editions_collection["output"]
+    editions_output.parent.mkdir(parents=True, exist_ok=True)
+    editions_html = render_document(
+        layout, editions_page, editions_locale, editions_shell,
+        render_editions_landing(edition_records), year, single_locale_language_data(editions_page, editions_locale),
+    )
+    editions_output.write_text(editions_html.rstrip() + "\n", encoding="utf-8")
+
+    edition_urls: list[str] = []
+    for record in edition_records:
+        relative_output = record["canonical_path"].lstrip("/") + "index.html"
+        edition_page = {
+            "output": relative_output,
+            "key": "edition",
+            "title": f'{record["title"]} — QuietWire Editions',
+            "description": record["summary"],
+        }
+        if locale_path(edition_page, editions_locale) != record["canonical_path"]:
+            raise ValueError(f'Edition route mismatch for {record["edition_id"]}')
+        edition_output = DIST / relative_output
+        edition_output.parent.mkdir(parents=True, exist_ok=True)
+        edition_html = render_document(
+            layout, edition_page, editions_locale, editions_shell,
+            render_edition(record, CONFIG["base_url"]), year, single_locale_language_data(edition_page, editions_locale),
+        )
+        edition_output.write_text(edition_html.rstrip() + "\n", encoding="utf-8")
+        edition_urls.append(canonical_url(edition_page, editions_locale))
 
     for app in CONFIG.get("static_apps", []):
         source = SRC / app["source"]
@@ -210,6 +257,8 @@ def build() -> None:
     )
     urls = [canonical_url(page, locale) for locale in locales() for page in locale["pages"]]
     urls.append(collection_url)
+    urls.append(editions_url)
+    urls.extend(edition_urls)
     urls.extend(CONFIG["base_url"] + "/" + app["output"].strip("/") + "/" for app in CONFIG.get("static_apps", []))
     (DIST / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
@@ -231,9 +280,11 @@ def build() -> None:
     (DIST / "site.webmanifest").write_text(json.dumps(manifest, indent=2)+"\n", encoding="utf-8")
     (DIST / "CNAME").write_text("www.quietwire.ai\n", encoding="utf-8")
 
+
 if __name__ == "__main__":
     build()
     print(
-        f"Built {sum(len(locale['pages']) for locale in locales())} pages and "
-        f"1 publications collection and {len(CONFIG.get('static_apps', []))} static app(s) in {DIST}"
+        f"Built {sum(len(locale['pages']) for locale in locales())} pages, "
+        f"1 publications collection, 1 Editions collection, and "
+        f"{len(CONFIG.get('static_apps', []))} static app(s) in {DIST}"
     )
