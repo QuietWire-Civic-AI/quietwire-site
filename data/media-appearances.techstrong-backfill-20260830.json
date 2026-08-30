@@ -1,0 +1,149 @@
+{
+  "schema_id": "quietwire.media-appearances-techstrong-backfill.v0",
+  "status": "research-backfill",
+  "captured_at": "2026-08-30",
+  "applies_to": "data/media-appearances.index.v0.json",
+  "authority_note": "Research correction/backfill only. This file does not authorize publication, rendering, feature selection, or Teddy release. Apply corrections before promoting any record into a future public-safe manifest.",
+  "effective_checkpoint": {
+    "inevitability_curve_2025": {
+      "records": 20,
+      "state": "complete against canonical Techstrong series page"
+    },
+    "techstrong_gang_2025": {
+      "records": 41,
+      "source_explicit_chris_blask": 40,
+      "candidate_identity_records": 1,
+      "state": "publisher season pages 1-10 swept; one previously missed source-explicit record added here"
+    },
+    "techstrong_gang_2026": {
+      "records": 31,
+      "state": "source-confirmed partial census through 2026-08-30 after applying three additions and three corrections below"
+    },
+    "effective_techstrong_records": 92
+  },
+  "evidence_sources": {
+    "techstrong-gang-2025-full-season": {
+      "source_class": "publisher_primary",
+      "url": "https://ott.techstrong.tv/techstrong-gang/season%3A2",
+      "note": "2025 publisher season archive. All ten paginated archive pages were inspected for Chris Blask identification; publisher typo 'Chis Blask' on episode 906 is preserved as source evidence rather than silently corrected."
+    },
+    "techstrong-gang-2026-release-page-2": {
+      "source_class": "publisher_primary",
+      "url": "https://ott.techstrong.tv/techstrong-gang-1?html=1&page=2&sort=release_date",
+      "note": "Publisher release-date archive page confirming multiple June/July 2026 Chris Blask appearances."
+    },
+    "techstrong-gang-topic-devops": {
+      "source_class": "publisher_primary",
+      "url": "https://techstrong.tv/topics/devops",
+      "note": "Publisher topic chronology used to confirm 2026-06-30 and 2026-07-01 dates for two Gang records."
+    },
+    "techstrong-youtube-openai-cuts-prices": {
+      "source_class": "publisher_distribution",
+      "url": "https://www.youtube.com/watch?v=KuCOC9d-XIY",
+      "note": "Techstrong publisher distribution record used to confirm 2026-06-16 for 'OpenAI Cuts Prices, Huang Calls Out CEOs and Cyber Hits $521B'."
+    }
+  },
+  "add_records": [
+    {
+      "id": "tsg-2025-ep906",
+      "series_id": "techstrong-gang",
+      "event_date": null,
+      "title": "Navigating IT Spending and AI's Impact on Enterprise Software",
+      "episode_number": 906,
+      "record_state": "confirmed-participation-date-pending",
+      "canonical_url": null,
+      "participants": ["Chris Blask"],
+      "evidence_ref": "techstrong-gang-2025-full-season",
+      "metadata_note": "Publisher description identifies 'Chis Blask', an apparent typographical error. Identity is treated as Chris Blask while preserving the publisher typo in this note. Exact event date and canonical episode URL remain to be source-confirmed."
+    },
+    {
+      "id": "tsg-2026-ai-regulation-fight",
+      "series_id": "techstrong-gang",
+      "event_date": null,
+      "title": "AI Regulation Fight, Women Engineers and Anthropic Security Signals",
+      "episode_number": null,
+      "record_state": "confirmed-participation-date-pending",
+      "canonical_url": "https://ott.techstrong.tv/techstrong-gang-1/videos/ai-regulation-fight-women-engineers-and-anthropic-security-signals",
+      "participants": ["Chris Blask", "Kate Scarcella", "Sid Nag"],
+      "evidence_ref": "techstrong-gang-2026-release-page-2",
+      "metadata_note": "Publisher release archive explicitly names Chris Blask; exact source date still pending."
+    },
+    {
+      "id": "tsg-2026-apple-pushes-ai",
+      "series_id": "techstrong-gang",
+      "event_date": null,
+      "title": "Apple Pushes AI, OpenAI Files and SpaceX Teams With Google",
+      "episode_number": null,
+      "record_state": "confirmed-participation-date-pending",
+      "canonical_url": "https://ott.techstrong.tv/techstrong-gang-1/videos/apple-pushes-ai-openai-files-and-spacex-teams-with-google",
+      "participants": ["Chris Blask", "Kate Scarcella", "Sid Nag"],
+      "evidence_ref": "techstrong-gang-2026-release-page-2",
+      "metadata_note": "Publisher release archive explicitly names Chris Blask; exact source date still pending."
+    },
+    {
+      "id": "tsg-2026-anthropic-goes-big",
+      "series_id": "techstrong-gang",
+      "event_date": null,
+      "title": "Anthropic Goes Big, NVIDIA Expands AI and Microsoft’s Security Fight Escalates",
+      "episode_number": null,
+      "record_state": "confirmed-participation-date-pending",
+      "canonical_url": "https://ott.techstrong.tv/techstrong-gang-1/videos/anthropic-goes-big-nvidia-expands-ai-and-microsoft-s-security-fight-escalates",
+      "participants": ["Anne Ahola Ward", "Sid Nag", "Chris Blask", "Kate Scarcella"],
+      "evidence_ref": "techstrong-gang-2026-release-page-2",
+      "metadata_note": "Publisher release archive explicitly names Chris Blask; exact source date still pending."
+    }
+  ],
+  "correct_records": [
+    {
+      "id": "tsg-2026-06-30",
+      "set": {
+        "event_date": "2026-06-30",
+        "title": "Open Source AI, OpenAI Copyright Fight and PACT Protocol",
+        "record_state": "confirmed",
+        "participants": ["Kate Scarcella", "Chris Blask"]
+      },
+      "evidence_refs": ["techstrong-gang-2026-release-page-2", "techstrong-gang-topic-devops"],
+      "note": "The core index used a generic date-title placeholder. Publisher chronology identifies the specific episode on that date. This is a correction, not a second episode record."
+    },
+    {
+      "id": "tsg-2026-07-01",
+      "set": {
+        "event_date": "2026-07-01",
+        "title": "AI Job Interviews, AI Coding Costs and Human Creativity",
+        "record_state": "confirmed",
+        "participants": ["Andi Mann", "Jeff Reich", "Chris Blask", "Jon Swartz"]
+      },
+      "evidence_refs": ["techstrong-gang-2026-release-page-2", "techstrong-gang-topic-devops"],
+      "note": "The core index used a generic date-title placeholder. Publisher chronology identifies the specific episode on that date. This is a correction, not a second episode record."
+    },
+    {
+      "id": "tsg-2026-openai-cuts-prices",
+      "set": {
+        "event_date": "2026-06-16",
+        "record_state": "confirmed",
+        "title": "OpenAI Cuts Prices, Huang Calls Out CEOs and Cyber Hits $521B",
+        "participants": ["Chris Blask", "Jon Swartz", "Kate Scarcella"]
+      },
+      "evidence_refs": ["techstrong-gang-2026-release-page-2", "techstrong-youtube-openai-cuts-prices"],
+      "note": "Core record had participation confirmed but date pending. Publisher distribution confirms 2026-06-16."
+    }
+  ],
+  "do_not_duplicate": [
+    {
+      "core_id": "tsg-2026-06-30",
+      "discovered_title": "Open Source AI, OpenAI Copyright Fight and PACT Protocol",
+      "reason": "same source-confirmed date; update placeholder rather than create duplicate"
+    },
+    {
+      "core_id": "tsg-2026-07-01",
+      "discovered_title": "AI Job Interviews, AI Coding Costs and Human Creativity",
+      "reason": "same source-confirmed date; update placeholder rather than create duplicate"
+    }
+  ],
+  "remaining_uncertainties": [
+    "Exact source dates remain unresolved for the newly added 2026 AI Regulation Fight, Apple Pushes AI, and Anthropic Goes Big records.",
+    "Exact source date and canonical episode URL remain unresolved for 2025 episode 906.",
+    "The core 2025 episode 926 record remains a candidate identity record because the recovered publisher description says only 'Chris' rather than explicitly 'Chris Blask'.",
+    "Additional 2026 publisher pages still require source-first inspection; 31 is an effective checkpoint, not a claim of exhaustive participation."
+  ]
+}
