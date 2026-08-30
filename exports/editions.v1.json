@@ -1,0 +1,18 @@
+{
+  "schema_id": "quietwire.editions-manifest.v1",
+  "editions": [
+    {
+      "edition_id": "foundry-wakes",
+      "release_state": "approved",
+      "website_visibility": "listed",
+      "title": "Foundry Wakes",
+      "slug": "foundry-wakes",
+      "authors": ["Chris Blask"],
+      "source_date": "2025-09-11",
+      "artifact_type": "article",
+      "summary": "From the early QuietWire Editions archive: a short note marking the moment the original attested content-automation scaffolding woke up, restored as the seed for the canonical-first publishing path.",
+      "canonical_path": "/editions/foundry-wakes/",
+      "body_file": "exports/editions/foundry-wakes.html"
+    }
+  ]
+}
