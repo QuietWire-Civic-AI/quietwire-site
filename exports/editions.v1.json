@@ -2,6 +2,19 @@
   "schema_id": "quietwire.editions-manifest.v1",
   "editions": [
     {
+      "edition_id": "own-the-origin",
+      "release_state": "approved",
+      "website_visibility": "listed",
+      "title": "Own the Origin",
+      "slug": "own-the-origin",
+      "authors": ["Chris Blask"],
+      "source_date": "2026-08-29",
+      "artifact_type": "essay",
+      "summary": "Why first-party canonical publication matters in an AI world: preserve the origin, make downstream copies legible, and let distribution remain the mesh.",
+      "canonical_path": "/editions/own-the-origin/",
+      "body_file": "exports/editions/own-the-origin.html"
+    },
+    {
       "edition_id": "foundry-wakes",
       "release_state": "approved",
       "website_visibility": "listed",
