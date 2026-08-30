@@ -1,21 +1,23 @@
 # Techstrong corpus checkpoint — 2026-08-30
 
-Status: research checkpoint. Not a public manifest and not a publication/release act.
+Status: research checkpoint plus bounded public-web promotion. The research corpus is not itself a public manifest or a production-release act.
 
 ## Where the corpus lives
 
-The working media corpus is split into:
+The media work is deliberately split by authority:
 
 - `data/media-appearances.index.v0.json` — primary research index populated during the first source pass;
 - `data/media-appearances.techstrong-backfill-20260830.json` — corrections and records found during the subsequent full-season/release-page sweep;
+- `data/media-appearances.v1.json` — separately curated, fail-closed public-safe subset consumed by the website;
+- `data/media-site.v1.json` — explicit website curation, including the three-card Library shelf;
 - `docs/MEDIA_APPEARANCES_V1.md` — media/appearance architecture and authority boundary;
 - `docs/INEVITABILITY_CURVE_ORIGIN_NOTE.md` — Chris Blask's approximately 1991–1992 first-person origin recollection, kept separate from later documentary/publication evidence.
 
-The backfill is intentionally additive/corrective so the research history remains inspectable. A future implementation should consolidate validated records into a new public-safe manifest rather than treating either research file as publication authority.
+The research backfill remains additive/corrective so the research history stays inspectable. The website does **not** read either research file at build/runtime. Promotion to `data/media-appearances.v1.json` is an explicit curation boundary.
 
-## Effective Techstrong checkpoint
+## Effective Techstrong research checkpoint
 
-After applying the backfill to the primary index:
+After applying the backfill to the primary research index:
 
 | Corpus | Effective records | Evidence posture |
 |---|---:|---|
@@ -24,7 +26,17 @@ After applying the backfill to the primary index:
 | Techstrong Gang (2026 through Aug. 30) | 31 | source-confirmed partial census; more archive inspection may add records |
 | **Total Techstrong records** | **92** | research checkpoint |
 
-### 2025 Gang sweep
+## Public web promotion
+
+The first public-safe web slice promotes:
+
+- all 20 `The Inevitability Curve` episodes, with conservative handling of unresolved guest metadata;
+- a deliberately selected subset of source-confirmed Techstrong Gang appearances rather than all recovered Gang research records;
+- three standalone external records: the 2026 Parliament civic-resilience testimony, `Surviving the Cyber Core Collapse`, and the 2023 RSAC session `The World on SBOMs`.
+
+The generated web surface is under `/library/media/`, with a bounded `Watch & Listen` shelf inside `/library/`. External venues remain canonical. There are no embedded third-party video players in v1.
+
+## 2025 Gang sweep
 
 All ten paginated pages of the 2025 Techstrong Gang season archive were inspected for Chris Blask participation.
 
@@ -40,7 +52,7 @@ One existing 2025 record remains deliberately weaker:
 
 The effective 2025 posture is therefore **40 explicit + 1 candidate**, not 41 equally strong confirmations.
 
-### 2026 corrections and additions
+## 2026 corrections and additions
 
 The release-date archive supplied three additional source-explicit Chris appearances that were not in the primary index:
 
@@ -62,15 +74,15 @@ Chris recalls his Gang participation as essentially weekly through 2025 and 2026
 
 Techstrong currently describes the program as a Monday-through-Friday daily roundtable, and source-confirmed Chris appearances occur across multiple weekdays. The corpus therefore stores Chris's cadence recollection as continuity evidence but never generates an episode from a Tuesday on the calendar. Individual records are governed by publisher evidence.
 
-This is a useful example of the intended provenance model: recollection and source evidence can both be true and useful without being flattened into one claim.
+This is a useful example of the intended provenance model: recollection and source evidence can both be useful without being flattened into one claim.
 
 ## The Inevitability Curve
 
-All 20 published 2025 Techstrong episodes are in the primary research index.
+All 20 published 2025 Techstrong episodes are in the research index and the first public-safe web manifest.
 
 The series remains a 2025 publication corpus. Its conceptual origin is a separate historical lineage: Chris recalls coining `The Inevitability Curve` around 1991–1992 while arguing that universal Internet connectivity was an inevitable future state whose path could already be anticipated, with the immediate practical conclusion that the organization should build a firewall.
 
-That recollection is preserved in `docs/INEVITABILITY_CURVE_ORIGIN_NOTE.md`. Earliest documentary evidence remains a separate provenance task; the 2025 series must not be backdated.
+That recollection is preserved in `docs/INEVITABILITY_CURVE_ORIGIN_NOTE.md`. Earliest documentary evidence remains a separate provenance task; the 2025 series is not backdated.
 
 ## Known source anomalies preserved
 
@@ -81,13 +93,14 @@ The research corpus deliberately retains rather than silently repairs several pu
 - Techstrong has overlapping/mixed season/archive surfaces and at least one apparent duplicate episode-number condition around TSG 999;
 - publisher feed/archive ordering can differ from event-date chronology.
 
-These are reasons to keep `event_date`, `source_published_at`, canonical URL, and evidence source as distinct fields in the future manifest.
+These are reasons to keep `event_date`, `source_published_at`, canonical URL, and evidence source as distinct fields in research. The public-safe manifest omits unresolved details rather than exporting them as settled fact.
 
 ## Next corpus work
 
 1. Resolve exact dates and canonical URLs for remaining source-identified Gang records rather than inferring them.
-2. Continue the 2026 archive census beyond the currently recovered 31 appearances.
-3. Backfill the other confirmed media collections as individual records: Parliament, Still Cyber, RSA Conference, OASIS Borderless Cyber, Cybeats/Scryb, CS2AI, Security Weekly and ICS-ISAC.
-4. Design the fail-closed public-safe media manifest only after the research index is sufficiently stable.
+2. Continue the 2026 archive census as useful.
+3. Backfill the other confirmed media collections as individual research records: Parliament, Still Cyber, RSA Conference, OASIS Borderless Cyber, Cybeats/Scryb, CS2AI, Security Weekly and ICS-ISAC.
+4. Promote only deliberately reviewed public-safe records into the website manifest.
+5. Recover documentary evidence for the early Inevitability Curve lineage where available.
 
-No public site routes, Library rendering, publication eligibility, or Teddy production state are changed by this checkpoint.
+The current draft branch changes generated website output, but no merge or Teddy production release is implied. Production activation remains a separate explicit release act.
