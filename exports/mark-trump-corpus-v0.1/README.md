@@ -11,7 +11,20 @@ Mark's current workflow already distinguishes searchable full text from metadata
 ## Start here
 
 - [`manifest.csv`](manifest.csv) — machine-friendly first tranche, 25 records.
+- [`dbom-apache2-pins.csv`](dbom-apache2-pins.csv) — immutable source/license pins for the three DBoM records that Mark's intake classified as separate full-text candidates.
 - Canonical source links are preferred over copied third-party content.
+
+## Intake feedback — 2026-09-02
+
+Mark returned a rights-aware intake report for this tranche. His system classified all 25 records as body-free `Future References`, with **0 Corpus imports** from the first pass. It identified the three DBoM documents as candidates for separate full-text review once the source revision and Apache-2.0 license were pinned together.
+
+QuietWire therefore verified the following DBoM revision and license as one immutable source state:
+
+- repository: `QuietWire-Civic-AI/dbom-core`
+- revision: `110c804fea79302d3d0c59bf6300a91518e75313`
+- license at that revision: `Apache-2.0`
+
+The three pinned candidates are recorded in `dbom-apache2-pins.csv`. This pin makes the source/license state inspectable; Mark's library remains responsible for its own admission/publication decision.
 
 ## What is in v0.1
 
