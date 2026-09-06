@@ -2,8 +2,6 @@ name: site
 on:
   push:
   pull_request:
-permissions:
-  contents: write
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,16 +13,5 @@ jobs:
         with:
           python-version: '3.12'
       - run: make check
-      - name: Refresh committed build output on refit branch
-        if: github.event_name == 'push' && github.ref == 'refs/heads/feature/labs-work-information-architecture'
-        run: |
-          if git diff --quiet -- dist; then
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dist
-          git commit -m "build(site): refresh committed output for Labs refit"
-          git push origin HEAD:feature/labs-work-information-architecture
       - name: Verify committed build output
         run: git diff --exit-code -- dist
