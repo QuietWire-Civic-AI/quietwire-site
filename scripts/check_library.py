@@ -70,6 +70,15 @@ class LibraryParser(HTMLParser):
             self.nav_depth -= 1
 
 
+expected_english_nav = [
+    ("/work/", "Work"),
+    ("/advisory/", "Advisory"),
+    ("/labs/", "Labs"),
+    ("/library/", "Library"),
+    ("/about/", "About"),
+    ("mailto:hello@quietwire.ai?subject=QuietWire%20conversation", "Start a conversation"),
+]
+
 if not output_path.is_file():
     errors.append("library: missing generated /library/ route")
 else:
@@ -86,12 +95,8 @@ else:
         errors.append("library: Publications shelf is not bounded or does not match validated records")
     if "/editions/" not in parser.links or "/publications/" not in parser.links:
         errors.append("library: missing Editions or Publications collection link")
-    if (parser.nav_links != [
-        ("/work/", "Work"), ("/advisory/", "Advisory"),
-        ("/library/", "Library"), ("/about/", "About"),
-        ("mailto:hello@quietwire.ai?subject=QuietWire%20conversation", "Start a conversation"),
-    ]):
-        errors.append("library: primary navigation topology is not Work, Advisory, Library, About, CTA")
+    if parser.nav_links != expected_english_nav:
+        errors.append("library: primary navigation topology is not Work, Advisory, Labs, Library, About, CTA")
     if 'aria-current="page"' not in text[text.find('href="/library/"') - 30:text.find('href="/library/"') + 100]:
         errors.append("library: primary Library link is missing aria-current=page")
     if "QuietWire Edition</span> · <time" not in text:
@@ -115,7 +120,6 @@ for prefix in ("ar", "es", "fr"):
             errors.append(f"library: English footer label injected into {page}")
 
 english_pages = sorted(path for path in DIST.rglob("*.html") if not any(part in {"ar", "es", "fr", "discovery"} for part in path.relative_to(DIST).parts))
-expected_english_nav = [("/work/", "Work"), ("/advisory/", "Advisory"), ("/library/", "Library"), ("/about/", "About"), ("mailto:hello@quietwire.ai?subject=QuietWire%20conversation", "Start a conversation")]
 for page in english_pages:
     text = page.read_text(encoding="utf-8")
     parser = LibraryParser(); parser.feed(text)
