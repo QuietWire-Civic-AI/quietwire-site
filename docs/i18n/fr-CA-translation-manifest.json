@@ -19,5 +19,6 @@
   "reviewed_routes": [],
   "pending_routes": ["/fr/", "/fr/work/", "/fr/advisory/", "/fr/appliances/", "/fr/pilot/", "/fr/patterns/", "/fr/method/", "/fr/field/", "/fr/about/", "/fr/privacy/"],
   "source_alignment": "complete_route_and_structure_mapping",
-  "source_alignment_note": "All ten French-Canadian routes were machine-drafted from the English source structure. Human linguistic and cultural review remains pending."
+  "source_alignment_note": "All ten French-Canadian routes were machine-drafted from the English source structure. Human linguistic and cultural review remains pending.",
+  "source_drift_after_2026_09_06": "English Home and Work were intentionally reframed around Advisory, Labs, Work, and Library while the existing Canadian-French route bodies were preserved. The French draft therefore remains a draft of its recorded source commit, not a representation of the new English Labs surface or current Home/Work information architecture."
 }
