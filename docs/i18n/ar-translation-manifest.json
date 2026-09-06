@@ -78,5 +78,6 @@
     }
   ],
   "source_alignment": "partial_exact_mapping",
-  "source_alignment_note": "The reviewed Arabic homepage is an earlier compact structure and does not correspond line-for-line to the current public English homepage. The Arabic Appliances and Pilot routes are aligned to their English counterparts after written human review. The Arabic Advisory route is a human-authored institutional Arabic rendering by Ali Adnan and Khalil, reviewed in the RTL layout and approved for publication on 2026-08-06."
+  "source_alignment_note": "The reviewed Arabic homepage is an earlier compact structure and does not correspond line-for-line to the current public English homepage. The Arabic Appliances and Pilot routes are aligned to their English counterparts after written human review. The Arabic Advisory route is a human-authored institutional Arabic rendering by Ali Adnan and Khalil, reviewed in the RTL layout and approved for publication on 2026-08-06.",
+  "source_drift_after_2026_09_06": "English Home and Work were intentionally reframed around Advisory, Labs, Work, and Library while the existing Arabic route bodies were preserved. Previously reviewed Arabic wording remains reviewed for its recorded scope; the new English information architecture is not yet represented as an Arabic Labs route or full structural refresh."
 }
