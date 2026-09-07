@@ -14,4 +14,6 @@ jobs:
           python-version: '3.12'
       - run: make check
       - name: Verify committed build output
-        run: git diff --exit-code -- dist
+        run: |
+          git diff --exit-code -- dist
+          test -z "$(git status --porcelain --untracked-files=all -- dist)"

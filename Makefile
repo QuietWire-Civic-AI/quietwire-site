@@ -2,11 +2,13 @@
 build:
 	python3 scripts/build.py
 	python3 scripts/build_media.py
+	python3 scripts/build_authors.py
 check: build
 	python3 scripts/check_publications.py
 	python3 scripts/check_editions.py
 	python3 scripts/check_library.py
 	python3 scripts/check_media_appearances.py
+	python3 scripts/check_authors.py
 	python3 scripts/check_home_library.py
 	python3 scripts/check_locales.py
 	python3 scripts/check.py
