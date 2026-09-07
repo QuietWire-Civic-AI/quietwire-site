@@ -6,6 +6,7 @@ import copy
 import json
 import sys
 import unittest
+from html import escape
 from pathlib import Path
 
 from publications import ManifestError, load_manifest, render_publications, validate_manifest
@@ -96,13 +97,15 @@ class PublicationsContractTests(unittest.TestCase):
         older = valid_record()
         newer = valid_record(
             stable_id="example-2026-03-04",
-            title="Newer public example",
+            title="Newer's public example",
             published_on="2026-03-04",
             canonical_url="https://example.net/newer",
         )
         records = validate_manifest(manifest(older, newer))
         output = render_publications(records)
-        self.assertLess(output.index("Newer public example"), output.index("A public example"))
+        escaped_newer_title = escape("Newer's public example")
+        self.assertLess(output.index(escaped_newer_title), output.index("A public example"))
+        self.assertIn("Newer&#x27;s public example", output)
         for value in ("Example Author", "Example Journal", "Article", "4 March 2026"):
             self.assertIn(value, output)
         self.assertNotIn("PRIVATE SENTINEL", output)
@@ -133,8 +136,12 @@ else:
     output = output_path.read_text(encoding="utf-8")
     for record in records:
         for value in (record["stable_id"], record["title"], *record["authors"], record["venue"], record["canonical_url"]):
-            if value not in output:
-                errors.append(f"publications: generated output is missing validated value {value!r}")
+            rendered_value = escape(value)
+            if rendered_value not in output:
+                errors.append(
+                    f"publications: generated output is missing validated value {value!r} "
+                    f"(expected HTML form {rendered_value!r})"
+                )
     for prohibited in ("article_body", "private_notes", "internal_source", "PRIVATE SENTINEL"):
         if prohibited in output:
             errors.append(f"publications: prohibited material reached generated output: {prohibited}")

@@ -2,6 +2,62 @@
   "schema_id": "quietwire.publications-manifest.v1",
   "publications": [
     {
+      "stable_id": "chris-blask-2026-08-31-agent-died-delegation-didnt",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "The Agent Died. The Delegation Didn't.",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "CYBR.SEC.Media",
+      "published_on": "2026-08-31",
+      "artifact_type": "article",
+      "summary": "Argues that process termination is not revocation when state, goals, credentials, and delegated work can outlive one agent run; calls for verifiable authority graphs, compositional revocation, independent evidence, and explicit continuity boundaries.",
+      "canonical_url": "https://www.cybrsecmedia.com/the-agent-died-the-delegation-didnt/"
+    },
+    {
+      "stable_id": "chris-blask-2026-08-28-returning-continuity",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "Returning Continuity: What AI Is Teaching Us About Cybersecurity",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "CYBR.SEC.Media",
+      "published_on": "2026-08-28",
+      "artifact_type": "article",
+      "summary": "Frames resilience as successful inheritance rather than perfect persistence: each succeeding human, system, or agent needs enough context, evidence, intention, and authority to continue responsibly in a changed world.",
+      "canonical_url": "https://www.cybrsecmedia.com/returning-continuity-what-ai-is-teaching-us-about-cybersecurity/"
+    },
+    {
+      "stable_id": "chris-blask-2026-08-27-agent-no-longer-security-boundary",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "The Agent Is No Longer the Security Boundary",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "LinkedIn",
+      "published_on": "2026-08-27",
+      "artifact_type": "article",
+      "summary": "Argues that the relevant security boundary for agentic AI is the surrounding ecology of humans, services, credentials, repositories, memory, communications, and delegated authority—not the model process alone.",
+      "canonical_url": "https://www.linkedin.com/pulse/agent-longer-security-boundary-chris-blask-awvye"
+    },
+    {
+      "stable_id": "chris-blask-2026-08-25-every-citizen-research-department",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "When Every Citizen Has a Research Department",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "LinkedIn",
+      "published_on": "2026-08-25",
+      "artifact_type": "article",
+      "summary": "Explores how persistent AI companions could give ordinary citizens institutional memory, procedural continuity, and research capacity in municipal and civic life.",
+      "canonical_url": "https://www.linkedin.com/pulse/when-every-citizen-has-research-department-chris-blask-dcekc"
+    },
+    {
       "stable_id": "chris-blask-2026-08-19-token-exhaustion-attacks",
       "publication_state": "confirmed_public",
       "website_visibility": "listed",
@@ -126,6 +182,20 @@
       "artifact_type": "article",
       "summary": "QuietWire’s founder reflects on a year of building local AI infrastructure around accountable memory, witness, human stewardship, and narrative integrity.",
       "canonical_url": "https://www.linkedin.com/pulse/year-non-orwellian-experiment-chris-blask-crwze"
+    },
+    {
+      "stable_id": "chris-beall-2026-04-23-institutional-memory-narrative-integrity",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "Institutional Memory, Narrative Integrity and the Future of Democratic Resilience",
+      "authors": [
+        "Chris Beall"
+      ],
+      "venue": "Centre for International Governance Innovation (CIGI)",
+      "published_on": "2026-04-23",
+      "artifact_type": "article",
+      "summary": "Argues that democratic resilience requires institutions to preserve authoritative evidence, context, decisions, and records before narratives harden, making institutional memory a practical governance and accountability capability.",
+      "canonical_url": "https://www.cigionline.org/articles/institutional-memory-narrative-integrity-and-the-future-of-democratic-resilience/"
     },
     {
       "stable_id": "beall-blask-reynolds-2026-03-10-narrative-integrity-risk",
