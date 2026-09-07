@@ -1,0 +1,111 @@
+{
+  "schema_id": "quietwire.authors-manifest.v1",
+  "authors": [
+    {
+      "author_id": "chris-blask",
+      "name": "Chris Blask",
+      "affiliation": "Founder and CEO, QuietWire",
+      "summary": "Writes about cybersecurity, AI systems, continuity, narrative integrity, civic infrastructure, provenance, and the human judgement needed to govern consequential technology.",
+      "profile_url": "https://www.linkedin.com/in/chrisblask/",
+      "selected_work": [
+        {
+          "kind": "Series",
+          "title": "The Inevitability Curve",
+          "venue": "Techstrong",
+          "summary": "A long-form conversation series following technology, security, institutions, policy, communications, risk, and the futures already pressing on the present.",
+          "url": "/library/media/the-inevitability-curve/"
+        },
+        {
+          "kind": "Series",
+          "title": "Techstrong Gang",
+          "venue": "Techstrong",
+          "summary": "Selected recurring roundtable appearances on AI, cybersecurity, infrastructure, governance, software supply chains, and industry change.",
+          "url": "/library/media/techstrong-gang/"
+        },
+        {
+          "kind": "Public testimony",
+          "title": "Current State of Civic Resilience in Canada",
+          "venue": "House of Commons of Canada",
+          "summary": "Opening statement and committee testimony during the Standing Committee on Procedure and House Affairs study of civic resilience in Canada.",
+          "url": "/library/media/civic-resilience-parliament-2026/"
+        }
+      ]
+    },
+    {
+      "author_id": "chris-beall",
+      "name": "Chris Beall",
+      "affiliation": "President, QuietWire",
+      "summary": "Works across institutional memory, narrative integrity, information integrity, democratic resilience, cross-sector coordination, platform governance, and sovereign local AI infrastructure.",
+      "profile_url": "https://ca.linkedin.com/in/chris-beall-7b2389114",
+      "selected_work": [
+        {
+          "kind": "Public conversation",
+          "title": "A Conversation With Audrey Tang",
+          "venue": "Centre for International Governance Innovation (CIGI)",
+          "summary": "A Global Platform Governance Network conversation on transparency, deliberative democracy, public response, and countering misinformation.",
+          "url": "https://www.cigionline.org/events/global-platform-governance-network-meeting-february-2021/"
+        },
+        {
+          "kind": "Public program",
+          "title": "Global Platform Governance Network Deep Dive: Research",
+          "venue": "Centre for International Governance Innovation (CIGI)",
+          "summary": "A public GPGN research discussion with Chris Beall, Taylor Owen, and Ben Scott on the research infrastructure needed for platform governance.",
+          "url": "https://www.cigionline.org/multimedia/global-platform-governance-network-deep-dive-research/"
+        },
+        {
+          "kind": "Field note",
+          "title": "QuietWire's Sovereign Nodes & Human Coordination Layer",
+          "venue": "LinkedIn",
+          "summary": "A public explanation of sovereign nodes, mesh-by-consent, institutional memory, and coordination without centralizing authority.",
+          "url": "https://www.linkedin.com/posts/chris-beall-7b2389114_quietwire-informationintegrity-civictech-activity-7430690750394163200--8yF"
+        },
+        {
+          "kind": "Field note",
+          "title": "Integrated threats require integrated defence",
+          "venue": "LinkedIn",
+          "summary": "Mongolia field reflections connecting cyber, influence operations, synthetic media, shared language, decision infrastructure, and coordinated defence.",
+          "url": "https://www.linkedin.com/posts/chris-beall-7b2389114_our-adversaries-are-integrated-but-our-defence-activity-7472311584854405120-DF5G"
+        },
+        {
+          "kind": "Field note",
+          "title": "Project CONNIE",
+          "venue": "LinkedIn",
+          "summary": "An early public statement of the horizontal coordination problem: helping existing democratic-information networks work together without creating another centralized network.",
+          "url": "https://www.linkedin.com/posts/chris-beall-7b2389114_infointegrity-activity-7172618906459709440-7xMV"
+        }
+      ],
+      "additional_publications": [
+        {
+          "title": "A Systems Approach to Data Governance: The Global Platform Governance Model",
+          "venue": "Centre for International Governance Innovation (CIGI)",
+          "published_on": "2024-11-12",
+          "summary": "Argues for a systems approach to digital and data governance that treats platforms, institutions, data, users, and social effects as an interacting environment.",
+          "url": "https://www.cigionline.org/articles/a-systems-approach-to-data-governance-the-global-platform-governance-model/"
+        },
+        {
+          "title": "In the Age of Connection, Disconnected Digital Governance Isn't Working",
+          "venue": "Centre for International Governance Innovation (CIGI)",
+          "published_on": "2020-12-28",
+          "summary": "With Robert Fay, argues for coordinated international digital governance rather than fragmented national and platform responses.",
+          "url": "https://www.cigionline.org/articles/age-connection-disconnected-digital-governance-isnt-working/"
+        }
+      ]
+    },
+    {
+      "author_id": "ashraf-al-hajj",
+      "name": "Ashraf Al Hajj",
+      "affiliation": "CTO and Co-founder, QuietWire",
+      "summary": "Builds software, cybersecurity systems, and multi-agent AI architectures, with a focus on governed autonomy, persistent context, testing, and human accountability.",
+      "profile_url": "https://www.linkedin.com/in/ashraf-al-hajj/",
+      "selected_work": [
+        {
+          "kind": "Field note",
+          "title": "AI Autonomy in Software Development: A Multi-Agent Approach",
+          "venue": "LinkedIn",
+          "summary": "Explains Ashraf's Canon-orchestrated multi-agent development approach and the principle that AI autonomy requires specifications, coordination, persistent context, validation, and human accountability.",
+          "url": "https://www.linkedin.com/posts/ashraf-al-hajj_artificialintelligence-softwaredevelopment-activity-7490958740175695872-lW2r"
+        }
+      ]
+    }
+  ]
+}
