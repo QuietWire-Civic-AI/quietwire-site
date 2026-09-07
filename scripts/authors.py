@@ -174,10 +174,14 @@ def author_publications(author: dict, publications: list[dict]) -> list[dict]:
 def render_authors_landing(authors: list[dict], publications: list[dict]) -> str:
     cards = []
     for author in authors:
-        count = len(author_publications(author, publications)) + len(author["additional_publications"])
+        count = (
+            len(author_publications(author, publications))
+            + len(author["additional_publications"])
+            + len(author["selected_work"])
+        )
         cards.append(
             f'<article class="library-card" data-author-id="{escape(author["author_id"])}">'
-            f'<div class="publication-meta"><span>Author</span><span>{count} indexed publication{"s" if count != 1 else ""}</span></div>'
+            f'<div class="publication-meta"><span>Author</span><span>{count} indexed public item{"s" if count != 1 else ""}</span></div>'
             f'<h2>{escape(author["name"])}</h2><p>{escape(author["affiliation"])}</p>'
             f'<p>{escape(author["summary"])}</p>'
             f'<a class="text-link" href="/library/authors/{escape(author["author_id"], quote=True)}/">Explore {escape(author["name"])} <span aria-hidden="true">→</span></a>'
