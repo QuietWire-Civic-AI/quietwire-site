@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+from html import escape
 from pathlib import Path
 
 from authors import author_publications, load_manifest as load_authors_manifest
@@ -37,10 +38,10 @@ for author in AUTHORS:
         if f'data-author-publication-id="{publication["stable_id"]}"' not in text:
             errors.append(f'authors: {author["author_id"]} missing publication {publication["stable_id"]}')
     for selected in author["selected_work"]:
-        if selected["url"] not in text or selected["title"] not in text:
+        if selected["url"] not in text or escape(selected["title"]) not in text:
             errors.append(f'authors: {author["author_id"]} missing selected work {selected["title"]}')
     for additional in author["additional_publications"]:
-        if additional["url"] not in text or additional["title"] not in text:
+        if additional["url"] not in text or escape(additional["title"]) not in text:
             errors.append(f'authors: {author["author_id"]} missing additional publication {additional["title"]}')
 
 library = (DIST / "library" / "index.html").read_text(encoding="utf-8")
