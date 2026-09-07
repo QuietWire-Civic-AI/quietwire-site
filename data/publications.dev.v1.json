@@ -2,6 +2,20 @@
   "schema_id": "quietwire.publications-manifest.v1",
   "publications": [
     {
+      "stable_id": "chris-blask-2026-09-05-prosthetics-ai-creativity",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "What Prosthetics Taught Me About AI Creativity",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "LinkedIn",
+      "published_on": "2026-09-05",
+      "artifact_type": "article",
+      "summary": "Uses physical prosthetics as a lens on AI creativity and cognitive prosthetics, arguing that creativity emerges from systems of memory, attention, feedback, tools, and human intent rather than from a language model in isolation.",
+      "canonical_url": "https://www.linkedin.com/posts/chrisblask_i-spent-years-thinking-about-prosthetics-activity-7502085108141735936-L0PB"
+    },
+    {
       "stable_id": "chris-blask-2026-08-31-agent-died-delegation-didnt",
       "publication_state": "confirmed_public",
       "website_visibility": "listed",
