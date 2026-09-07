@@ -8,6 +8,7 @@ from html import escape
 
 MAX_EDITION_SHELF = 3
 MAX_PUBLICATION_SHELF = 3
+AUTHORS_SHELF_MARKER = "<!-- quietwire-authors-shelf -->"
 MEDIA_SHELF_MARKER = "<!-- quietwire-media-shelf -->"
 
 
@@ -55,12 +56,13 @@ def render_library(editions: list[dict], publications: list[dict]) -> str:
         '<h1>Library</h1>'
         '<p class="hero-lede">A visitor-facing home for QuietWire writing, media, and first-party publishing.</p></div>'
         '<div class="hero-aside" data-reveal><p>Start with the latest confirmed public writing, then explore '
-        'QuietWire Editions, our canonical first-party work, and public conversations.</p></div>'
+        'authors, QuietWire Editions, and public conversations.</p></div>'
         '</div></section>'
         '<section class="section section-cream"><div class="shell library-shelf" data-reveal>'
         '<div class="section-heading"><div><p class="section-kicker">Writing &amp; media</p>'
         '<h2>Recent Publications</h2></div><a class="text-link" href="/publications/">All Publications →</a></div>'
         f'<div class="library-grid">{publication_cards}</div></div></section>'
+        f'{AUTHORS_SHELF_MARKER}'
         '<section class="section section-cream"><div class="shell library-feature" data-reveal>'
         '<p class="section-kicker">Featured Edition</p>'
         f'<article class="library-feature-card" data-library-featured-edition="{escape(featured["edition_id"])}">'
