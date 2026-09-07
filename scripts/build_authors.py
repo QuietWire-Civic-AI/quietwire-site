@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+from datetime import datetime, timezone
 from html import escape
 from pathlib import Path
 
@@ -39,7 +40,7 @@ def build_authors() -> None:
     locale = next(item for item in locales() if item["id"] == CONFIG["default_locale"])
     shell = json.loads((ROOT / locale["shell"]).read_text(encoding="utf-8"))
     layout = (ROOT / "src" / "layout.html").read_text(encoding="utf-8")
-    year = "2026"
+    year = str(datetime.now(timezone.utc).year)
 
     landing_page = {
         "output": str(AUTHORS_OUTPUT),
