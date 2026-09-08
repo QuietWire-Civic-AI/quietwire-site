@@ -2,6 +2,19 @@
   "schema_id": "quietwire.editions-manifest.v1",
   "editions": [
     {
+      "edition_id": "the-geometry-between-us",
+      "release_state": "approved",
+      "website_visibility": "listed",
+      "title": "The Geometry Between Us",
+      "slug": "the-geometry-between-us",
+      "authors": ["Chris Blask", "Lumina"],
+      "source_date": "2026-09-08",
+      "artifact_type": "essay",
+      "summary": "What recent neuroscience and AI research suggests about representational geometry, conversation, continuity, and the space between biological and machine cognition.",
+      "canonical_path": "/editions/the-geometry-between-us/",
+      "body_file": "exports/editions/the-geometry-between-us.html"
+    },
+    {
       "edition_id": "own-the-origin",
       "release_state": "approved",
       "website_visibility": "listed",
