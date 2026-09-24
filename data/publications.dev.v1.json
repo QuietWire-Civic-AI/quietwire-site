@@ -2,6 +2,34 @@
   "schema_id": "quietwire.publications-manifest.v1",
   "publications": [
     {
+      "stable_id": "chris-blask-2026-09-22-build-future-you-can-tolerate",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "I Wasn’t Trying to Predict the Future. I Was Trying to Build One I Could Tolerate.",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "Security Boulevard",
+      "published_on": "2026-09-22",
+      "artifact_type": "article",
+      "summary": "Uses niche construction, long security experience and the Twain houseboats to frame secure AI work as constructing viable environments and generative sets rather than predicting one inevitable future.",
+      "canonical_url": "https://securityboulevard.com/2026/09/i-wasnt-trying-to-predict-the-future-i-was-trying-to-build-one-i-could-tolerate/"
+    },
+    {
+      "stable_id": "chris-blask-2026-09-18-control-plane-not-trust-plane",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "The Control Plane Is Not the Trust Plane",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "Security Boulevard",
+      "published_on": "2026-09-18",
+      "artifact_type": "article",
+      "summary": "Distinguishes agent control from trust: permissions constrain possibility, while trust requires provenance, delegation history, evidence and receipts that survive changing runtimes and keep human authority visible.",
+      "canonical_url": "https://securityboulevard.com/2026/09/the-control-plane-is-not-the-trust-plane/"
+    },
+    {
       "stable_id": "chris-blask-2026-09-14-cybersecurity-coherence-cognitive-risk",
       "publication_state": "confirmed_public",
       "website_visibility": "listed",
@@ -14,20 +42,6 @@
       "artifact_type": "article",
       "summary": "Argues that institutional incoherence creates cognitive attack surface by forcing operators and AI systems to reconcile stale, contradictory, and ambiguous state; coherence reduces that load without requiring uniformity or perfection.",
       "canonical_url": "https://www.cybrsecmedia.com/coherence-is-not-perfection/"
-    },
-    {
-      "stable_id": "chris-blask-2026-09-08-willow-doesnt-restore-from-backup",
-      "publication_state": "confirmed_public",
-      "website_visibility": "listed",
-      "title": "The Willow Doesn’t Restore From Backup",
-      "authors": [
-        "Chris Blask"
-      ],
-      "venue": "Security Boulevard",
-      "published_on": "2026-09-08",
-      "artifact_type": "article",
-      "summary": "Uses storm damage to Mother Willow to distinguish restoration from continuity, arguing that resilient living, institutional, and agentic systems preserve generative structure, provenance, authority, and evidence while adapting through irreversible change.",
-      "canonical_url": "https://securityboulevard.com/2026/09/the-willow-doesnt-restore-from-backup/"
     },
     {
       "stable_id": "chris-blask-2026-09-08-sideways-driveway",
@@ -44,60 +58,18 @@
       "canonical_url": "https://www.cybrsecmedia.com/your-security-architecture-may-be-a-sideways-driveway/"
     },
     {
-      "stable_id": "chris-blask-2026-09-04-the-braid",
+      "stable_id": "chris-blask-2026-09-08-willow-doesnt-restore-from-backup",
       "publication_state": "confirmed_public",
       "website_visibility": "listed",
-      "title": "The Braid: Rethinking Trust, Continuity and Human-AI Systems",
+      "title": "The Willow Doesn’t Restore From Backup",
       "authors": [
         "Chris Blask"
       ],
       "venue": "Security Boulevard",
-      "published_on": "2026-09-04",
+      "published_on": "2026-09-08",
       "artifact_type": "article",
-      "summary": "Uses QuietWire's braid image to connect trust, provenance, human-AI continuity, distributed systems, Digital Bills of Materials, and local authority without collapsing distinct participants into a single center.",
-      "canonical_url": "https://securityboulevard.com/2026/09/the-braid-rethinking-trust-continuity-and-human-ai-systems/"
-    },
-    {
-      "stable_id": "chris-blask-2026-08-25-architecture-of-liberty",
-      "publication_state": "confirmed_public",
-      "website_visibility": "listed",
-      "title": "The Architecture of Liberty",
-      "authors": [
-        "Chris Blask"
-      ],
-      "venue": "Security Boulevard",
-      "published_on": "2026-08-25",
-      "artifact_type": "article",
-      "summary": "Connects long-running experiments in distributed authority, bounded power, dissent, local autonomy, and resilient cooperation to the architecture of modern institutions and networks.",
-      "canonical_url": "https://securityboulevard.com/2026/08/the-architecture-of-liberty/"
-    },
-    {
-      "stable_id": "chris-blask-2026-08-19-ai-governance-without-surveillance",
-      "publication_state": "confirmed_public",
-      "website_visibility": "listed",
-      "title": "AI Governance Without Surveillance: The Missing Evidentiary Layer",
-      "authors": [
-        "Chris Blask"
-      ],
-      "venue": "Security Boulevard",
-      "published_on": "2026-08-19",
-      "artifact_type": "article",
-      "summary": "Argues for a bounded evidentiary layer around consequential AI actions that preserves authority, material sources, decisions, and resulting state without turning governance into indiscriminate surveillance.",
-      "canonical_url": "https://securityboulevard.com/2026/08/ai-governance-without-surveillance-the-missing-evidentiary-layer/"
-    },
-    {
-      "stable_id": "chris-blask-2026-07-06-stewarding-generative-set",
-      "publication_state": "confirmed_public",
-      "website_visibility": "listed",
-      "title": "Stewarding the Generative Set in the Age of AI",
-      "authors": [
-        "Chris Blask"
-      ],
-      "venue": "CYBR.SEC.Media",
-      "published_on": "2026-07-06",
-      "artifact_type": "article",
-      "summary": "Frames AI governance upstream of the prompt through the generative set, bounded perspective, and generable space, arguing that trusted stewardship shapes what systems can responsibly grow from and produce.",
-      "canonical_url": "https://www.cybrsecmedia.com/stewarding-the-generative-set/"
+      "summary": "Uses storm damage to Mother Willow to distinguish restoration from continuity, arguing that resilient living, institutional, and agentic systems preserve generative structure, provenance, authority, and evidence while adapting through irreversible change.",
+      "canonical_url": "https://securityboulevard.com/2026/09/the-willow-doesnt-restore-from-backup/"
     },
     {
       "stable_id": "chris-blask-2026-09-05-prosthetics-ai-creativity",
@@ -112,6 +84,20 @@
       "artifact_type": "article",
       "summary": "Uses physical prosthetics as a lens on AI creativity and cognitive prosthetics, arguing that creativity emerges from systems of memory, attention, feedback, tools, and human intent rather than from a language model in isolation.",
       "canonical_url": "https://www.linkedin.com/posts/chrisblask_i-spent-years-thinking-about-prosthetics-activity-7502085108141735936-L0PB"
+    },
+    {
+      "stable_id": "chris-blask-2026-09-04-the-braid",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "The Braid: Rethinking Trust, Continuity and Human-AI Systems",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "Security Boulevard",
+      "published_on": "2026-09-04",
+      "artifact_type": "article",
+      "summary": "Uses QuietWire's braid image to connect trust, provenance, human-AI continuity, distributed systems, Digital Bills of Materials, and local authority without collapsing distinct participants into a single center.",
+      "canonical_url": "https://securityboulevard.com/2026/09/the-braid-rethinking-trust-continuity-and-human-ai-systems/"
     },
     {
       "stable_id": "chris-blask-2026-08-31-agent-died-delegation-didnt",
@@ -156,6 +142,20 @@
       "canonical_url": "https://www.linkedin.com/pulse/agent-longer-security-boundary-chris-blask-awvye"
     },
     {
+      "stable_id": "chris-blask-2026-08-25-architecture-of-liberty",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "The Architecture of Liberty",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "Security Boulevard",
+      "published_on": "2026-08-25",
+      "artifact_type": "article",
+      "summary": "Connects long-running experiments in distributed authority, bounded power, dissent, local autonomy, and resilient cooperation to the architecture of modern institutions and networks.",
+      "canonical_url": "https://securityboulevard.com/2026/08/the-architecture-of-liberty/"
+    },
+    {
       "stable_id": "chris-blask-2026-08-25-every-citizen-research-department",
       "publication_state": "confirmed_public",
       "website_visibility": "listed",
@@ -168,6 +168,20 @@
       "artifact_type": "article",
       "summary": "Explores how persistent AI companions could give ordinary citizens institutional memory, procedural continuity, and research capacity in municipal and civic life.",
       "canonical_url": "https://www.linkedin.com/pulse/when-every-citizen-has-research-department-chris-blask-dcekc"
+    },
+    {
+      "stable_id": "chris-blask-2026-08-19-ai-governance-without-surveillance",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "AI Governance Without Surveillance: The Missing Evidentiary Layer",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "Security Boulevard",
+      "published_on": "2026-08-19",
+      "artifact_type": "article",
+      "summary": "Argues for a bounded evidentiary layer around consequential AI actions that preserves authority, material sources, decisions, and resulting state without turning governance into indiscriminate surveillance.",
+      "canonical_url": "https://securityboulevard.com/2026/08/ai-governance-without-surveillance-the-missing-evidentiary-layer/"
     },
     {
       "stable_id": "chris-blask-2026-08-19-token-exhaustion-attacks",
@@ -224,6 +238,20 @@
       "artifact_type": "article",
       "summary": "Tracks how a software-safety idea moved from conversation to schema, validator, and standards alignment, arguing for a cybersecurity layer that preserves meaning, relationships, and evidence.",
       "canonical_url": "https://www.cybrsecmedia.com/above-the-packet-field-notes-from-the-meaning-layer/"
+    },
+    {
+      "stable_id": "chris-blask-2026-07-06-stewarding-generative-set",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "Stewarding the Generative Set in the Age of AI",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "CYBR.SEC.Media",
+      "published_on": "2026-07-06",
+      "artifact_type": "article",
+      "summary": "Frames AI governance upstream of the prompt through the generative set, bounded perspective, and generable space, arguing that trusted stewardship shapes what systems can responsibly grow from and produce.",
+      "canonical_url": "https://www.cybrsecmedia.com/stewarding-the-generative-set/"
     },
     {
       "stable_id": "chris-blask-2026-07-01-when-agents-knock",
