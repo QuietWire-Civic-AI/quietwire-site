@@ -72,13 +72,6 @@
           "description": "Practical patterns for clinics, shops, offices, public access, education, and cultural memory."
         },
         {
-          "source": "commons.html",
-          "output": "commons/index.html",
-          "key": "commons",
-          "title": "A Civic Commons — QuietWire",
-          "description": "QuietWire is beginning to use the idea of a civic commons to describe an emerging community around non-exploitative civic technology, shared learning, local control, and accountable collaboration."
-        },
-        {
           "source": "about.html",
           "output": "about/index.html",
           "key": "about",
@@ -353,14 +346,6 @@
       "label": "Labs",
       "href": "/labs/",
       "key": "labs",
-      "locales": [
-        "en-CA"
-      ]
-    },
-    {
-      "label": "Community",
-      "href": "/commons/",
-      "key": "commons",
       "locales": [
         "en-CA"
       ]
