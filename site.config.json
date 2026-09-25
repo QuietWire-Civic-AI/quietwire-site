@@ -18,10 +18,6 @@
         {"source": "method.html", "output": "method/index.html", "key": "method", "title": "How We Build Trust — QuietWire", "description": "A local-first, evidence-bearing method for AI, memory, and operational continuity."},
         {"source": "field.html", "output": "field/index.html", "key": "field", "title": "Field Patterns — QuietWire", "description": "Practical patterns for clinics, shops, offices, public access, education, and cultural memory."},
         {"source": "about.html", "output": "about/index.html", "key": "about", "title": "About QuietWire", "description": "Canadian-held, globally rooted infrastructure for memory, evidence, dignity, and continuity."},
-        {"source": "quietmemory.html", "output": "quietmemory/index.html", "key": "quietmemory", "title": "QuietMemory — Memory You Can Keep", "description": "Durable, pair-scoped continuity for a human and AI companion, with governed read, search, proposal, and append-only commit."},
-        {"source": "quietmemory-support.html", "output": "quietmemory/support/index.html", "key": "quietmemory_support", "title": "QuietMemory Support — QuietWire", "description": "Support for QuietMemory connection, pair access, continuity retrieval, governed writes, revocation, and privacy requests."},
-        {"source": "quietmemory-privacy.html", "output": "quietmemory/privacy/index.html", "key": "quietmemory_privacy", "title": "QuietMemory Privacy — QuietWire", "description": "How QuietMemory processes pair-scoped continuity, authentication metadata, governed writes, and service operations."},
-        {"source": "quietmemory-terms.html", "output": "quietmemory/terms/index.html", "key": "quietmemory_terms", "title": "QuietMemory Terms — QuietWire", "description": "Working terms for the hosted QuietMemory V1 continuity service."},
         {"source": "privacy.html", "output": "privacy/index.html", "key": "privacy", "title": "Privacy — QuietWire", "description": "How this website and QuietWire approach privacy and local custody."}
       ]
     },
@@ -77,6 +73,12 @@
     {"label": "Labs", "href": "/labs/", "key": "labs", "locales": ["en-CA"]},
     {"label": "Library", "href": "/library/", "key": "library", "locales": ["en-CA"]},
     {"label": "About", "href": "/about/", "key": "about"}
+  ],
+  "single_locale_pages": [
+    {"locale": "en-CA", "source": "quietmemory.html", "output": "quietmemory/index.html", "key": "quietmemory", "title": "QuietMemory — Memory You Can Keep", "description": "Durable, pair-scoped continuity for a human and AI companion, with governed read, search, proposal, and append-only commit."},
+    {"locale": "en-CA", "source": "quietmemory-support.html", "output": "quietmemory/support/index.html", "key": "quietmemory_support", "title": "QuietMemory Support — QuietWire", "description": "Support for QuietMemory connection, pair access, continuity retrieval, governed writes, revocation, and privacy requests."},
+    {"locale": "en-CA", "source": "quietmemory-privacy.html", "output": "quietmemory/privacy/index.html", "key": "quietmemory_privacy", "title": "QuietMemory Privacy — QuietWire", "description": "How QuietMemory processes pair-scoped continuity, authentication metadata, governed writes, and service operations."},
+    {"locale": "en-CA", "source": "quietmemory-terms.html", "output": "quietmemory/terms/index.html", "key": "quietmemory_terms", "title": "QuietMemory Terms — QuietWire", "description": "Working terms for the hosted QuietMemory V1 continuity service."}
   ],
   "publications_collection": {
     "manifest": "data/publications.dev.v1.json",
