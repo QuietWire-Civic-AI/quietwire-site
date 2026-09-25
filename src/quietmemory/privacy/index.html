@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en-CA" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QuietMemory Privacy — QuietWire</title>
+  <meta name="description" content="How QuietMemory processes pair-scoped continuity, authentication metadata, governed writes, and service operations.">
+  <meta name="theme-color" content="#0a1212">
+  <link rel="canonical" href="https://www.quietwire.ai/quietmemory/privacy/">
+  <link rel="stylesheet" href="/assets/site.css">
+  <link rel="icon" href="/assets/favicon.ico" sizes="any">
+  <script>document.documentElement.classList.add("has-js")</script>
+</head>
+<body class="page-quietmemory-privacy">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header" data-header><div class="shell header-inner">
+<a class="brand" href="/" aria-label="QuietWire home"><img src="/assets/quietwire-mark.png" width="46" height="46" alt=""><span class="brand-copy"><strong>QuietWire</strong><small>coherence infrastructure</small></span></a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle><span class="sr-only">Open navigation</span><span></span><span></span></button>
+<nav id="site-nav" class="site-nav" aria-label="Primary" data-nav><a href="/work/">Work</a><a href="/advisory/">Advisory</a><a href="/labs/">Labs</a><a href="/library/">Library</a><a href="/about/">About</a><a class="nav-cta" href="mailto:hello@quietwire.ai?subject=QuietWire%20conversation">Start a conversation</a></nav>
+</div></header>
+
+<main id="main">
+<section class="page-hero section-dark compact-hero"><div class="shell"><p class="eyebrow"><span></span> QuietMemory privacy</p><h1>Continuity belongs inside an explicit trust boundary.</h1><p class="hero-lede">This notice describes the data QuietMemory needs to operate the hosted V1 service and the boundaries we intend to preserve around human/companion continuity.</p></div></section>
+<section class="section section-cream"><div class="shell prose" data-reveal>
+<h2>What QuietMemory processes</h2><p>QuietMemory may process authentication identifiers supplied by the configured identity provider, the server-side binding between that authenticated principal and a permitted human/companion pair, pair profile information, memory content deliberately stored in the pair's continuity store, write proposals and receipts, and limited operational logs needed for security, reliability, abuse prevention, and support.</p>
+<h2>How memory is used</h2><p>Pair memory is used to provide the continuity functions the authenticated user requests: identify the connected pair, search and read permitted continuity, prepare an append-only memory proposal, and commit an explicitly selected proposal through the governed write path. QuietWire does not use QuietMemory content for behavioral advertising and does not sell QuietMemory content to advertisers.</p>
+<h2>Pair isolation</h2><p>Authorization is resolved on the server side from a validated authenticated identity to one permitted pair context. A model is not allowed to choose another pair merely by supplying a name, path, or pair identifier. Administrative ability to operate infrastructure is not treated as ordinary semantic permission to read a person's continuity.</p>
+<h2>Service operators</h2><p>Hosted V1 runs on infrastructure operated by QuietWire and therefore authorized operators may have technical access necessary for security, recovery, maintenance, support, or legal obligations. QuietWire's operating policy is to minimize routine semantic access and to keep private continuity separate from organization-wide memory unless material is deliberately promoted.</p>
+<h2>Third-party services</h2><p>Authentication is currently provided through an external identity service. When QuietMemory is used from ChatGPT or another model client, that client receives the tool responses needed to satisfy the user's request and processes them under its own terms and privacy practices. Those providers may process data in jurisdictions where they operate.</p>
+<h2>Writes and history</h2><p>QuietMemory's first public release uses append-only governed writes. A proposal does not itself change the continuity store; a successful commit creates a durable record. Git history and operational receipts may preserve earlier states even after later correction. QuietMemory V1 does not expose a general-purpose deletion tool to the model.</p>
+<h2>Correction, deletion, and access requests</h2><p>Verified users may contact QuietWire to ask about their pair data, correct an inaccurate service-side binding, revoke access, or request deletion or another privacy action. Because continuity may include provenance records, security logs, or backups, we will explain what can be changed in active service and what may need to be retained for a limited operational or legal purpose rather than silently claiming instant erasure everywhere.</p>
+<h2>Data minimization</h2><p>Do not place secrets, credentials, or unrelated sensitive material into a memory merely because the model can store text. The service is designed to preserve useful continuity, not to become an indiscriminate archive of everything a person has ever said.</p>
+<h2>Contact</h2><p>Privacy questions: <a href="mailto:hello@quietwire.ai?subject=QuietMemory%20privacy">hello@quietwire.ai</a>.</p><p>Last updated: 25 September 2026.</p>
+<p><a href="/quietmemory/">QuietMemory overview</a> · <a href="/quietmemory/support/">Support</a> · <a href="/quietmemory/terms/">Terms</a></p>
+</div></section>
+</main>
+
+<footer class="site-footer"><div class="shell footer-grid">
+<div><a class="brand footer-brand" href="/"><img src="/assets/quietwire-mark.png" width="42" height="42" alt=""><span class="brand-copy"><strong>QuietWire</strong><small>local strength, shared coherence</small></span></a><p>Local AI, governed memory, and attested systems for work that has to remain understandable.</p></div>
+<div class="footer-links"><strong>QuietMemory</strong><a href="/quietmemory/">Overview</a><a href="/quietmemory/support/">Support</a><a href="/quietmemory/privacy/">Privacy</a><a href="/quietmemory/terms/">Terms</a></div>
+<div class="footer-links"><strong>Explore</strong><a href="/work/">What we build</a><a href="/library/">Library</a><a href="/about/">About</a></div>
+<div class="footer-links"><strong>Connect</strong><a href="mailto:hello@quietwire.ai">hello@quietwire.ai</a></div>
+</div><div class="shell footer-base"><span>© 2026 QuietWire.</span><span>No trackers. No advertising. No borrowed attention.</span></div></footer>
+<script src="/assets/site.js" defer></script>
+</body></html>

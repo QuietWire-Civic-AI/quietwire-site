@@ -98,6 +98,7 @@
   },
   "static_apps": [
     {"source": "discovery", "output": "discovery"},
-    {"source": "labs", "output": "labs"}
+    {"source": "labs", "output": "labs"},
+    {"source": "quietmemory", "output": "quietmemory"}
   ]
 }
