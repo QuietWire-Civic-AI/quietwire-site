@@ -75,8 +75,8 @@
           "source": "commons.html",
           "output": "commons/index.html",
           "key": "commons",
-          "title": "Civic Commons — QuietWire",
-          "description": "A public-interest space for shared learning, evidence, relationships, and bounded collaboration without surrendering local identity, authority, or control."
+          "title": "A Civic Commons — QuietWire",
+          "description": "QuietWire is beginning to use the idea of a civic commons to describe an emerging community around non-exploitative civic technology, shared learning, local control, and accountable collaboration."
         },
         {
           "source": "about.html",
@@ -358,7 +358,7 @@
       ]
     },
     {
-      "label": "Commons",
+      "label": "Community",
       "href": "/commons/",
       "key": "commons",
       "locales": [
