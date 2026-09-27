@@ -44,6 +44,22 @@ Labs is currently an English-only first-party surface under `src/labs/`, copied 
 make check
 ```
 
+## Sync an approved Publications export
+
+The public site never reads the private Internal repository directly. After an
+authorized steward has produced the sanitized `publications.v1.json` export,
+sync it explicitly:
+
+```bash
+python3 scripts/sync_publications.py /path/to/publications.v1.json
+make check
+```
+
+The sync command validates the fail-closed public contract, no-ops when the
+approved export already matches the checked-in site snapshot, and writes a
+deterministic hash receipt at `data/publications-sync-receipt.v1.json`. It
+performs no network access and no Teddy production activation.
+
 ## Preview
 
 ```bash
@@ -75,8 +91,11 @@ src/assets/           CSS, JavaScript, and local graphics
 scripts/build.py      dependency-free static builder
 scripts/check.py      link, metadata, locale, and tracker checks
 scripts/publications.py public-safe external-publications validator and renderer
+scripts/sync_publications.py bounded approved-export -> site snapshot sync with hash receipt
+scripts/check_sync_publications.py self-checks for the bounded sync path
 scripts/editions.py   public-safe first-party Editions validator and renderer
 data/publications.dev.v1.json current curated public-safe Publications handoff snapshot (legacy first-slice filename)
+data/publications-sync-receipt.v1.json deterministic sync receipt after the sync command is run
 data/editions-site.v1.json small website-side Editions collection configuration
 exports/editions.v1.json approved public-safe Editions metadata handoff
 exports/editions/      approved non-executable first-party body fragments

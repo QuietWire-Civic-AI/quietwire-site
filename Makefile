@@ -4,6 +4,7 @@ build:
 	python3 scripts/build_media.py
 	python3 scripts/build_authors.py
 check: build
+	python3 scripts/check_sync_publications.py
 	python3 scripts/check_publications.py
 	python3 scripts/check_editions.py
 	python3 scripts/check_library.py

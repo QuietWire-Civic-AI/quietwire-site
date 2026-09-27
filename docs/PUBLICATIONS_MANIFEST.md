@@ -10,9 +10,13 @@ filename for compatibility, but its content is no longer merely a one-record
 development fixture. It is the current public-safe handoff snapshot copied from
 an explicitly curated Internal export. The copy is intentional: this public
 repository and the public host do not receive credentials for the private
-Internal repository. A later deterministic synchronization mechanism may
-replace the manual handoff while preserving the same contract and authority
-boundary.
+Internal repository. The bounded deterministic synchronization command is now
+`scripts/sync_publications.py`. It accepts an explicitly supplied approved
+public-safe export, validates it with the same fail-closed contract, no-ops when
+the bytes already match, updates only the checked-in publication snapshot when
+they differ, and emits `data/publications-sync-receipt.v1.json` containing
+source/destination SHA-256 hashes, record count, and validation state. It
+performs no network access and no production activation.
 
 ## Public-safe record
 
@@ -58,6 +62,18 @@ records plus a sanitized export containing exactly the website allowlist fields.
 The site repository receives only that sanitized JSON snapshot. Internal
 curation notes, evidence notes, credentials, private history, and draft material
 remain outside this repository.
+
+Normal bounded handoff:
+
+```bash
+python3 scripts/sync_publications.py /path/to/approved/publications.v1.json
+make check
+```
+
+The source path is supplied by the human/companion operating context; the site
+repository does not gain private-Internal credentials. The sync receipt is
+deterministic and contains hashes only, so repeating an unchanged handoff does
+not create data-file churn.
 
 Updating the handoff snapshot does not itself activate production. The normal
 site checks, review/merge boundary, and explicit immutable Teddy release remain
