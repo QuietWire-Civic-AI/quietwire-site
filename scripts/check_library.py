@@ -72,7 +72,7 @@ class LibraryParser(HTMLParser):
 
 expected_english_nav = [
     ("/work/", "Work"),
-    ("/advisory/", "Advisory"),
+    ("/advisory/", "Research & Advisory"),
     ("/labs/", "Labs"),
     ("/library/", "Library"),
     ("/about/", "About"),
@@ -96,7 +96,7 @@ else:
     if "/editions/" not in parser.links or "/publications/" not in parser.links:
         errors.append("library: missing Editions or Publications collection link")
     if parser.nav_links != expected_english_nav:
-        errors.append("library: primary navigation topology is not Work, Advisory, Labs, Library, About, CTA")
+        errors.append("library: primary navigation topology is not Work, Research & Advisory, Labs, Library, About, CTA")
     if 'aria-current="page"' not in text[text.find('href="/library/"') - 30:text.find('href="/library/"') + 100]:
         errors.append("library: primary Library link is missing aria-current=page")
     if "QuietWire Edition</span> · <time" not in text:
