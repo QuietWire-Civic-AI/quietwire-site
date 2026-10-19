@@ -8,7 +8,7 @@
     "language_label": "Language",
     "labels": {
       "work": "Work",
-      "advisory": "Advisory",
+      "advisory": "Research & Advisory",
       "labs": "Labs",
       "appliances": "Appliances",
       "pilot": "Pilot",
@@ -26,7 +26,7 @@
   "footer": {
     "description": "Local AI, governed memory, and attested systems for work that has to remain understandable.",
     "begin": "Begin",
-    "advisory": "QuietWire Advisory",
+    "advisory": "Research & Advisory",
     "node_appliances": "Node appliances",
     "pilot": "60-day pilot",
     "patterns": "Deployment patterns",
