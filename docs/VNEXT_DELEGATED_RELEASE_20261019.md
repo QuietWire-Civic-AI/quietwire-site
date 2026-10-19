@@ -41,3 +41,10 @@ Avoid global guarantees for local processing, data never leaving, security, mode
 - [ ] Record public verification and send Chris/Lumina an exception-only report, not an approval request.
 
 **Boundary:** This checklist is an implementation aid, not proof of completion, new runtime rights, or a waiver of legal/security/custody requirements.
+
+## Verified implementation update — 2026-10-19
+- English claim-discipline changes from PR #40 were copied into `about.html`, `patterns.html`, and `work.html`, retaining conditional wording rather than unconditional guarantees. English generated pages were rebuilt; resulting Git blobs match checked laptop build: About `834dcf75a4ed4dbb1fe873eed0dab54cb31a97cb`, Patterns `54b258ec305ddcf6b3193bd82ad112d258775ee7`, Work `42f3b0dee771d2b9de31608d5ded3c0565e5f33b`.
+- Entire `make check` suite passed after English change, including existing locale structural checks. **This does not attest semantic parity or human approval for the new English changes.** The corresponding Arabic, French, and Spanish claim corrections in PR #40 remain unintegrated pending language stewardship; do not misrepresent locale coherence.
+- Research & Advisory edits exist as **uncommitted work in the user's separate laptop working tree**. These were inspected but intentionally not imported or overwritten. They can be brought into the source PR once reviewed for current English claim boundaries and source/build contract.
+- PR #41 Library/publications is still separate. Its curated records and generated shelves must be reconciled before website-wide release.
+- **Release status remains HOLD:** About/Field privacy-source redlines, translated material route review, official logo, and operator proof remain incomplete. This is not a launch receipt.
