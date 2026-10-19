@@ -554,3 +554,8 @@ h3 { font-size: 1.4rem; }
 .lean-cta .button-light{margin-top:18px}
 @media(max-width:1000px){.lean-hero .hero-grid,.lean-evidence-grid{grid-template-columns:1fr;gap:58px}.lean-hero{min-height:0}.lean-graphic{max-width:660px}.lean-paths,.lean-principles{padding:90px 0}.lean-evidence{padding:85px 0}}
 @media(max-width:760px){.lean-hero{padding-top:calc(var(--header-h) + 85px);padding-bottom:75px}.lean-hero h1{font-size:clamp(3.25rem,12.2vw,4.6rem)}.lean-hero .hero-grid{gap:45px}.lean-graphic{padding:26px 22px 10px;min-height:350px}.graphic-row strong{font-size:1.26rem}.graphic-row>span:last-child{font-size:.75rem}.lean-paths{padding:72px 0}.lean-heading{margin-bottom:32px}.lean-path-grid,.lean-principles-grid{grid-template-columns:1fr}.lean-path-grid{gap:14px}.lean-path-card{min-height:275px;padding:28px}.lean-path-card h3{font-size:2.5rem}.lean-principles{padding:82px 0}.lean-principles-grid{gap:24px;margin-top:45px}.lean-principles-grid h3{margin-top:12px;max-width:none}.lean-evidence{padding:75px 0}.lean-evidence-grid{gap:28px}.lean-evidence-grid h2{font-size:2.8rem}.lean-cta{padding:70px 0 80px}}
+
+/* Approved QuietWire lockup — original April 2026 source, no synthetic logo treatment. */
+.brand .official-logo-panel{display:inline-flex;align-items:center;justify-content:center;padding:4px 8px;border-radius:10px;background:#f7f6f2;border:1px solid rgba(255,255,255,.26)}
+.brand .official-logo-panel img{width:180px;height:auto;max-width:none;border-radius:0;object-fit:contain}
+@media(max-width:760px){.brand .official-logo-panel img{width:150px}}
