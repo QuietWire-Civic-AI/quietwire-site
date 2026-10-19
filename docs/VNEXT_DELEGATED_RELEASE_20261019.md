@@ -55,3 +55,16 @@ Avoid global guarantees for local processing, data never leaving, security, mode
 - **Claims:** English source repairs from PR #40 are integrated; the translated variants from PR #40 are *not* and require human semantic parity review. This does not block continuing English work, but does block claiming website-wide locale completion.
 - **Privacy/geography:** Existing About top copy still says `Canadian-held. Globally rooted.` That phrase should be treated as a provenance/custody claim needing substantiation or conservative revision before publication, rather than taken as a guaranteed hosting fact. Oct 17 source redlines are still to be reconciled.
 - **Operator boundary:** No website publication go/no-go, merge or Teddy release is implied by this source reconciliation.
+
+## Owner visual preview gate — before Ali/Khalil handoff
+
+**Owner direction (Chris Beall, 2026-10-19):** Complete the remaining English implementation/reconciliation work, then provide a **clickable preview of the actual website source**, including desktop and mobile layouts, for his visual and reader-experience review **before any new website package is sent to Ali Adnan/Khalil for Arabic revision**.
+
+- [ ] Finish English source/claims and regenerate checked site output; distinguish unresolved locale content.
+- [ ] Produce an offline or loopback-only, non-production preview from the **exact intended PR branch/commit**, with the homepage and primary navigation destinations accessible; provide desktop and mobile views.
+- [ ] Chris Beall reviews: first 30 seconds for an unfamiliar institutional visitor; clear two starting doors; official logo and visual calm; About/Field privacy and geographic wording; Research & Advisory and Work credibility; links and CTAs; remaining proposed copy changes.
+- [ ] Record his explicit **APPROVE PREVIEW FOR ARABIC HANDOFF** or requested edits against the preview commit. Rebuild and re-present if changes are material.
+- [ ] **Only after that gate:** send a bounded changed-route package to Ali/Khalil for human Arabic translation and semantic-parity review. This is a sequencing gate, not a request for Chris Blask's approval.
+- [ ] Keep public site unchanged until the later explicit publication go/no-go and authorized Teddy deployment.
+
+A preliminary local preview may be used for early inspection, but **cannot satisfy this gate before the English work is reconciled**. Neither previewing nor approval to send for Arabic review equals permission to deploy publicly.
