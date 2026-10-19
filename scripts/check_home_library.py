@@ -78,8 +78,13 @@ else:
         errors.append("home_library: unconfigured item leaked into shelf")
     if "From QuietWire" not in output or "Explore the Library" not in output:
         errors.append("home_library: required English shelf copy is missing")
-    if not (output.index("patterns-preview") < output.index("data-home-library-shelf") < output.index("method-preview")):
-        errors.append("home_library: shelf is not between Patterns and Method")
+    # The lean vNext homepage intentionally places the curated shelf after its closing CTA.
+    # Preserve a single ordered shelf and ensure it remains after the narrative, not in the hero.
+    if "lean-hero" in output:
+        if not ("lean-hero" in output and "lean-cta" in output and output.index("lean-hero") < output.index("lean-cta") < output.index("data-home-library-shelf")):
+            errors.append("home_library: lean homepage shelf must follow closing CTA")
+    elif not (all(marker in output for marker in ("patterns-preview", "method-preview")) and output.index("patterns-preview") < output.index("data-home-library-shelf") < output.index("method-preview")):
+        errors.append("home_library: legacy homepage shelf is not between Patterns and Method")
 
 resolved = resolve_home_library(home_config, editions, publications)
 if [(kind, record["edition_id"] if kind == "edition" else record["stable_id"]) for kind, record in resolved] != [

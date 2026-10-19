@@ -11,7 +11,7 @@
       "pages": [
         {"source": "index.html", "output": "index.html", "key": "home", "title": "QuietWire — Coherence Infrastructure", "description": "Local AI, governed memory, and attested systems for organizations that need continuity they can own."},
         {"source": "work.html", "output": "work/index.html", "key": "work", "title": "QuietWire Work — Supported Capability Around Real Work", "description": "Continuity, decision integrity, local capability, companions, attestation, and mesh infrastructure assembled around consequential work."},
-        {"source": "advisory.html", "output": "advisory/index.html", "key": "advisory", "title": "QuietWire Advisory | AI Success, Sovereignty and Continuity", "description": "QuietWire helps institutions define AI success, map authority and trust boundaries, govern memory and evidence, and make defensible decisions before selecting or scaling technology."},
+        {"source": "advisory.html", "output": "advisory/index.html", "key": "advisory", "title": "QuietWire Research & Advisory | AI Success, Sovereignty and Continuity", "description": "QuietWire combines applied research and advisory work to help institutions define AI success, map authority and trust boundaries, govern memory and evidence, and make defensible decisions before selecting or scaling technology."},
         {"source": "appliances.html", "output": "appliances/index.html", "key": "appliances", "title": "Node Appliances & Pricing — QuietWire", "description": "Client-owned QuietWire node appliances with onboarding, governed memory, and monthly stewardship."},
         {"source": "pilot.html", "output": "pilot/index.html", "key": "pilot", "title": "The 60-Day Node Pilot — QuietWire", "description": "A bounded path from discovery to a working QuietWire node, evidence package, and expansion decision."},
         {"source": "patterns.html", "output": "patterns/index.html", "key": "patterns", "title": "Deployment Patterns — QuietWire", "description": "Practical QuietWire deployment patterns for hospitals, professional practices, field networks, and public infrastructure."},
@@ -69,7 +69,7 @@
   ],
   "nav": [
     {"label": "Work", "href": "/work/", "key": "work"},
-    {"label": "Advisory", "href": "/advisory/", "key": "advisory"},
+    {"label": "Research & Advisory", "href": "/advisory/", "key": "advisory"},
     {"label": "Labs", "href": "/labs/", "key": "labs", "locales": ["en-CA"]},
     {"label": "Library", "href": "/library/", "key": "library", "locales": ["en-CA"]},
     {"label": "About", "href": "/about/", "key": "about"}
