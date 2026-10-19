@@ -1,0 +1,43 @@
+# vNext delegated implementation — release and locale checklist (2026-10-19)
+
+**Status:** source implementation underway; not validated or published.
+**Website decision owner:** Chris Beall / Nexus. **Authority:** [Oct 19 direct delegation](https://github.com/QuietWire-Civic-AI/Internal/blob/main/01_Projects/Website/2026-10-19_Chris_Beall_Website_Publication_Delegation_Arabic_First_Locale_Gate.md).
+**Release executor:** an existing authorized Teddy operator; name and privilege to be verified, not inferred from GitHub admin.
+**Source preview:** [Internal draft PR #284](https://github.com/QuietWire-Civic-AI/Internal/pull/284) remains provenance, not an approval queue.
+
+## Scope in this branch
+- Bring the owner-selected **lean English homepage** and responsive styles into canonical site source.
+- Preserve exactly one `{{home_library_shelf}}` marker and the three-item Library contract.
+- Reconcile privacy/geography About and Field redlines before declaring the website-wide vNext complete.
+- Reconcile claim repair [site PR #40](https://github.com/QuietWire-Civic-AI/quietwire-site/pull/40) and Library curation [site PR #41](https://github.com/QuietWire-Civic-AI/quietwire-site/pull/41); neither is silently merged here.
+- Use the April 2026 **original approved QuietWire logo**. Do not redraw, recolor or invent an identity mark.
+- Requalify old claims rather than treating existing website language as ready-to-use evidence.
+
+## Arabic included at source PR time
+**English changed route:** `/`.
+**Arabic corresponding route:** `/ar/`.
+**Human language counterpart:** Ali Adnan / Khalil, using the glossary and manifest; review not yet attested.
+
+- [ ] Diff English source against `src/content/ar/pages/index.html` (or actual Arabic home route) and update `src/i18n/ar.json` / `docs/i18n/ar-glossary.md` and manifest as appropriate.
+- [ ] Document English revision, Arabic revision, reviewer, state and changed routes in `docs/i18n/ar-translation-manifest.json`.
+- [ ] Preserve approved prior Arabic text; no unreviewed machine replacement.
+- [ ] Test Arabic RTL, navigation, links, metadata, hreflang, and rendered equivalence; accurately hold affected materially drifted route if not ready.
+- [ ] Prove this source/reviewer/check/release loop with Ali before copying it to French or Spanish workflows.
+
+## Technical claim gates
+Avoid global guarantees for local processing, data never leaving, security, model/provider independence, backup/recovery and support. Consult Ashraf/Raasid for **material new** technical/data/security claims, not for general editorial signoff. See [technical claim review](https://github.com/QuietWire-Civic-AI/companion-wire/blob/main/inbox/Chris-Beall-Nexus/2026-10-07__CW-2026-10-07-AR-003__Website_vNext_technical_claim_review.md).
+
+## Build and release — not passed merely because commits exist
+- [ ] Integrate About and Field redlines from the Oct 17 Internal source.
+- [ ] Confirm official logo is packaged from approved source.
+- [ ] Reconcile #40 and #41 with current main and rebuild generated `dist/`.
+- [ ] Run `make check` and validate generated parity; inspect mobile and accessibility.
+- [ ] Record Ali's Arabic receipt or an explicitly honest route exclusion.
+- [ ] Review exact Git SHA, changed claims and all locale effects.
+- [ ] Chris Beall records website publication go/no-go within delegated scope.
+- [ ] Authorized Teddy operator runs `deploy/release-site.sh` on clean main.
+- [ ] Preserve previous immutable release, release hashes, source commit and rollback path.
+- [ ] Verify Teddy origin **and public edge** bytes. Exit 2 is **not** public cutover proof.
+- [ ] Record public verification and send Chris/Lumina an exception-only report, not an approval request.
+
+**Boundary:** This checklist is an implementation aid, not proof of completion, new runtime rights, or a waiver of legal/security/custody requirements.
