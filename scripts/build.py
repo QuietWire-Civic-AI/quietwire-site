@@ -159,7 +159,7 @@ def render_document(
         "patterns": shell["footer"]["patterns"], "explore": shell["footer"]["explore"],
         "what_we_build": shell["footer"]["what_we_build"], "method": shell["footer"]["method"],
         "field": shell["footer"]["field"], "about": shell["footer"]["about"],
-        "library_link": '\n        <a href="/library/">Library</a>' if locale["id"] == CONFIG["default_locale"] else "",
+         "library_link": '\n        <a href="/library/">Library</a>\n        <a href="/people/">People &amp; projects</a>' if locale["id"] == CONFIG["default_locale"] else "",
         "connect": shell["footer"]["connect"], "privacy": shell["footer"]["privacy"],
         "copyright": shell["footer"]["copyright"].replace("{{year}}", year),
         "quiet_principles": shell["footer"]["quiet_principles"], "content": body, "year": year,
@@ -196,6 +196,8 @@ def build() -> None:
             output = DIST / relative_output
             output.parent.mkdir(parents=True, exist_ok=True)
             html = render_document(layout, page, locale, shell, body, year)
+            if locale["id"] == default_locale["id"] and page["key"] in {"appliances", "pilot", "patterns", "field"}:
+                html = html.replace("</head>", '  <meta name="robots" content="noindex,follow">\n</head>', 1)
             output.write_text(html.rstrip() + "\n", encoding="utf-8")
 
     collection_locale = next(locale for locale in locales() if locale["id"] == collection["locale"])
@@ -244,6 +246,21 @@ def build() -> None:
     )
     library_output.write_text(library_html.rstrip() + "\n", encoding="utf-8")
 
+    people_page = {
+        "output": "people/index.html", "key": "people",
+        "title": "People & Projects — QuietWire",
+        "description": "People and independent organizations exploring local AI, information integrity, civic resilience, and continuity with QuietWire.",
+    }
+    people_html = render_document(
+        layout, people_page, editions_locale, editions_shell,
+        (ROOT / "src/content/en-CA/people-projects.html").read_text(encoding="utf-8"),
+        year, single_locale_language_data(people_page, editions_locale),
+    )
+    people_output = DIST / people_page["output"]
+    people_output.parent.mkdir(parents=True, exist_ok=True)
+    people_output.write_text(people_html.rstrip() + "\n", encoding="utf-8")
+
+
     edition_urls: list[str] = []
     for record in edition_records:
         relative_output = record["canonical_path"].lstrip("/") + "index.html"
@@ -286,6 +303,7 @@ def build() -> None:
     urls.append(collection_url)
     urls.append(editions_url)
     urls.append(CONFIG["base_url"] + "/library/")
+    urls.append(canonical_url(people_page, editions_locale))
     urls.extend(edition_urls)
     urls.extend(CONFIG["base_url"] + "/" + app["output"].strip("/") + "/" for app in CONFIG.get("static_apps", []))
     (DIST / "sitemap.xml").write_text(
