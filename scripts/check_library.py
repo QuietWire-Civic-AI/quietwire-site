@@ -137,9 +137,12 @@ for route in ("appliances", "pilot", "patterns"):
     if not (DIST / route / "index.html").is_file():
         errors.append(f"library: durable route missing /{route}/")
 work_text = (DIST / "work/index.html").read_text(encoding="utf-8")
-for route in ("appliances", "pilot", "patterns"):
-    if f'href="/{route}/"' not in work_text:
-        errors.append(f"library: Work page no longer links to /{route}/")
+for route in ("appliances", "pilot", "patterns", "field"):
+    if f'href="/{route}/"' in work_text:
+        errors.append(f"library: Work still promotes retired route /{route}/")
+    retired_html = (DIST / route / "index.html").read_text(encoding="utf-8")
+    if 'content="noindex,follow"' not in retired_html or 'This page is being updated.' not in retired_html:
+        errors.append(f"library: retired English route /{route}/ lacks review state and noindex")
 if '<a href="/library/">Library</a>' not in (DIST / "index.html").read_text(encoding="utf-8"):
     errors.append("library: English footer Library link is missing")
 

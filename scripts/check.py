@@ -267,12 +267,14 @@ glossary_version = re.search(r'^# Arabic glossary (\S+)', glossary, re.MULTILINE
 if not glossary_version or glossary_version.group(1) != 'v1.2.0' or manifest.get('glossary_version') != '1.2.0':
     errors.append('ar: glossary and manifest versions must both be 1.2.0')
 baseline = 'HEAD'
-# Issue-specific English homepage content is intentionally changed here; all
-# other non-Arabic content remains protected against unrelated drift.
+# English homepage, About, and Research & Advisory editorial copy is explicitly
+# in scope for this isolated preview. Keep all other pages and translations
+# protected against unrelated drift from the checked-out source baseline.
+editorial_scope = {'index.html', 'about.html', 'advisory.html', 'work.html', 'method.html', 'appliances.html', 'pilot.html', 'patterns.html', 'field.html'}
 non_arabic_paths = [
     str(path.relative_to(ROOT))
     for path in (ROOT / 'src/content/en-CA/pages').glob('*.html')
-    if path.name != 'index.html'
+    if path.name not in editorial_scope
 ]
 non_arabic_paths += ['src/content/es', 'src/content/fr-CA']
 unchanged = subprocess.run(['git', 'diff', '--quiet', baseline, '--', *non_arabic_paths], cwd=ROOT).returncode

@@ -50,18 +50,41 @@ def render_library(editions: list[dict], publications: list[dict]) -> str:
     publication_shelf = publications[:MAX_PUBLICATION_SHELF]
     edition_cards = "".join(_edition_card(record) for record in edition_shelf)
     publication_cards = "".join(_publication_card(record) for record in publication_shelf)
+    collaborative_article = next((record for record in publications if record["title"] == "Narrative Integrity Risk: The Next Frontier in Financial Stability"), None)
+    if collaborative_article is None:
+        raise ValueError("Library requires the verified collaborative Lawfare article")
+    collaborative_card = _publication_card(collaborative_article).replace("data-library-publication-id", "data-library-collaboration-id", 1)
     return (
         '<section class="page-hero compact-hero section-dark"><div class="shell page-hero-grid">'
         '<div data-reveal><p class="eyebrow"><span></span> QuietWire Library</p>'
         '<h1>Library</h1>'
-        '<p class="hero-lede">A visitor-facing home for QuietWire writing, media, and first-party publishing.</p></div>'
-        '<div class="hero-aside" data-reveal><p>Start with the latest confirmed public writing, then explore '
-        'authors, QuietWire Editions, and public conversations.</p></div>'
+        '<p class="hero-lede">Ideas, research, and perspectives from people exploring how AI, cybersecurity, and governance affect the organizations and communities around us.</p></div>'
+        '<div class="hero-aside" data-reveal><p>Explore original thinking, shared research, and public conversations from '
+        'the people behind and around QuietWire.</p></div>'
         '</div></section>'
+        '<section class="section section-mist companion-demo" id="companion-example" data-companion-demo>'
+        '<div class="shell companion-demo-grid">'
+        '<div class="companion-demo-copy"><p class="section-kicker">An interactive example</p><h2>What should the next person know?</h2>'
+        '<p class="large-copy">See how a companion could help make sense of a project handoff: what the records support, what is still uncertain, and what needs a human decision.</p>'
+        '<p>This is a guided illustration using fictional information, <strong>not a live AI system</strong>. It runs entirely in your browser and sends no information to QuietWire.</p></div>'
+        '<div class="companion-demo-panel"><p class="demo-small">Fictional scenario · Harbour Community Services</p>'
+        '<p>A project lead is leaving during a proposed expansion of an AI-assisted help desk. What can their successor safely rely on?</p>'
+        '<div class="companion-demo-choices" role="group" aria-label="Choose a question about the fictional project">'
+        '<button type="button" data-demo-choice="handoff">What do the records tell us?</button>'
+        '<button type="button" data-demo-choice="challenge">Someone says expansion is approved</button>'
+        '<button type="button" data-demo-choice="next">What should happen next?</button></div>'
+        '<div class="companion-demo-response" data-demo-response aria-live="polite"><p class="demo-placeholder">Choose a question to explore the fictional record.</p></div>'
+        '<p class="demo-small demo-end">No login, data collection, or model connection. A live companion demonstration would require separate technical review.</p>'
+        '</div></div></section>'
+        '<script src="/assets/companion-demo.js" defer></script>'
         '<section class="section section-cream"><div class="shell library-shelf" data-reveal>'
         '<div class="section-heading"><div><p class="section-kicker">Writing &amp; media</p>'
         '<h2>Recent Publications</h2></div><a class="text-link" href="/publications/">All Publications →</a></div>'
         f'<div class="library-grid">{publication_cards}</div></div></section>'
+        '<section class="section section-cream library-collaborative"><div class="shell library-shelf" data-reveal>'
+        '<div class="section-heading"><div><p class="section-kicker">Featured collaborative writing</p><h2>Different perspectives, one question.</h2>'
+        '<p>Chris Beall, Chris Blask, and Jen Rosiere Reynolds examine how narrative manipulation can create financial risk.</p></div></div>'
+        f'<div class="library-grid library-featured-writing">{collaborative_card}</div></div></section>'
         f'{AUTHORS_SHELF_MARKER}'
         '<section class="section section-cream"><div class="shell library-feature" data-reveal>'
         '<p class="section-kicker">Featured Edition</p>'

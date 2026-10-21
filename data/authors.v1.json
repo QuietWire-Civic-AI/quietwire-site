@@ -106,6 +106,23 @@
           "url": "https://www.linkedin.com/posts/ashraf-al-hajj_artificialintelligence-softwaredevelopment-activity-7490958740175695872-lW2r"
         }
       ]
+    },
+    {
+      "author_id": "jen-rosiere-reynolds",
+      "name": "Jen Rosiere Reynolds",
+      "affiliation": "Writer and practitioner · information integrity and operational governance",
+      "summary": "Works at the intersection of technology, operational governance, national security, and the information environment. Co-author, with Chris Beall and Chris Blask, of a Lawfare article on narrative integrity and financial stability.",
+      "profile_url": "https://www.linkedin.com/in/rosierereynolds",
+      "selected_work": [],
+      "additional_publications": [
+        {
+          "title": "The Puzzling Non-Use of Data Access Laws: The NetzDG Case",
+          "venue": "Lawfare",
+          "published_on": "2023-07-10",
+          "summary": "With Jacob N. Shapiro, examines why a law intended to provide access to platform data has been underused.",
+          "url": "https://www.lawfaremedia.org/article/the-puzzling-non-use-of-data-access-laws-the-netzdg-case"
+        }
+      ]
     }
   ]
 }
