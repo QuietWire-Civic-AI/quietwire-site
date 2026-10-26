@@ -366,6 +366,35 @@
       "artifact_type": "article",
       "summary": "Traces narrative malware from the Good Times hoax to modern cognitive attacks, arguing that manipulative content can consume attention and disrupt institutions without exploiting software.",
       "canonical_url": "https://securityboulevard.com/2025/05/mental-denial-of-service-narrative-malware-and-the-future-of-resilience/"
+    },
+    {
+      "stable_id": "chris-beall-2024-11-12-global-platform-governance-model",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "A Systems Approach to Data Governance: The Global Platform Governance Model",
+      "authors": [
+        "Chris Beall"
+      ],
+      "venue": "Centre for International Governance Innovation (CIGI)",
+      "published_on": "2024-11-12",
+      "artifact_type": "article",
+      "summary": "Argues for a systems approach to digital and data governance that addresses interactions across the information environment rather than governing platforms, data, institutions, and social effects as isolated components.",
+      "canonical_url": "https://www.cigionline.org/articles/a-systems-approach-to-data-governance-the-global-platform-governance-model/"
+    },
+    {
+      "stable_id": "chris-beall-robert-fay-2020-12-28-disconnected-digital-governance",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "In the Age of Connection, Disconnected Digital Governance Isn't Working",
+      "authors": [
+        "Chris Beall",
+        "Robert Fay"
+      ],
+      "venue": "Centre for International Governance Innovation (CIGI)",
+      "published_on": "2020-12-28",
+      "artifact_type": "article",
+      "summary": "Calls for coordinated international digital governance rather than fragmented national and platform responses, proposing a Bretton Woods-style cooperative architecture for the connected digital environment.",
+      "canonical_url": "https://www.cigionline.org/articles/age-connection-disconnected-digital-governance-isnt-working/"
     }
   ]
 }
