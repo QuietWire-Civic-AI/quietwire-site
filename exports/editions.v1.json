@@ -2,12 +2,30 @@
   "schema_id": "quietwire.editions-manifest.v1",
   "editions": [
     {
+      "edition_id": "the-hive-still-makes-the-chips",
+      "release_state": "approved",
+      "website_visibility": "listed",
+      "title": "The Hive Still Makes the Chips",
+      "slug": "the-hive-still-makes-the-chips",
+      "authors": [
+        "Chris Blask"
+      ],
+      "source_date": "2026-10-26",
+      "artifact_type": "essay",
+      "summary": "Rorqual Maru, Hive-made chips, and a practical way to use trained language models without giving their makers control of the ship.",
+      "canonical_path": "/editions/the-hive-still-makes-the-chips/",
+      "body_file": "exports/editions/the-hive-still-makes-the-chips.html"
+    },
+    {
       "edition_id": "the-geometry-between-us",
       "release_state": "approved",
       "website_visibility": "listed",
       "title": "The Geometry Between Us",
       "slug": "the-geometry-between-us",
-      "authors": ["Chris Blask", "Lumina"],
+      "authors": [
+        "Chris Blask",
+        "Lumina"
+      ],
       "source_date": "2026-09-08",
       "artifact_type": "essay",
       "summary": "What recent neuroscience and AI research suggests about representational geometry, conversation, continuity, and the space between biological and machine cognition.",
@@ -20,7 +38,9 @@
       "website_visibility": "listed",
       "title": "Own the Origin",
       "slug": "own-the-origin",
-      "authors": ["Chris Blask"],
+      "authors": [
+        "Chris Blask"
+      ],
       "source_date": "2026-08-29",
       "artifact_type": "essay",
       "summary": "Why first-party canonical publication matters in an AI world: preserve the origin, make downstream copies legible, and let distribution remain the mesh.",
@@ -33,7 +53,9 @@
       "website_visibility": "listed",
       "title": "Foundry Wakes",
       "slug": "foundry-wakes",
-      "authors": ["Chris Blask"],
+      "authors": [
+        "Chris Blask"
+      ],
       "source_date": "2025-09-11",
       "artifact_type": "article",
       "summary": "From the early QuietWire Editions archive: a short note marking the moment the original attested content-automation scaffolding woke up, restored as the seed for the canonical-first publishing path.",
