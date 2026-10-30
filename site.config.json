@@ -91,9 +91,9 @@
   },
   "home_library": {
     "items": [
-      {"kind": "edition", "id": "own-the-origin"},
-      {"kind": "publication", "id": "chris-blask-2026-08-19-token-exhaustion-attacks"},
-      {"kind": "publication", "id": "chris-blask-2026-07-28-model-wasnt-rogue"}
+      {"kind": "edition", "id": "the-hive-still-makes-the-chips"},
+      {"kind": "publication", "id": "chris-blask-2026-10-26-own-your-world-model"},
+      {"kind": "publication", "id": "chris-blask-2026-10-27-maintainer-was-not-npc"}
     ]
   },
   "static_apps": [

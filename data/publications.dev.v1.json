@@ -2,6 +2,174 @@
   "schema_id": "quietwire.publications-manifest.v1",
   "publications": [
     {
+      "stable_id": "chris-blask-2026-10-27-maintainer-was-not-npc",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "The Maintainer Was Not an NPC",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "Security Boulevard",
+      "published_on": "2026-10-27",
+      "artifact_type": "article",
+      "summary": "A cybersecurity exercise involving deceptive AI-created pull requests reaches real open-source maintainers; the people outside a simulated environment still bear the cost of the experiment.",
+      "canonical_url": "https://securityboulevard.com/2026/10/the-maintainer-was-not-an-npc/"
+    },
+    {
+      "stable_id": "chris-blask-2026-10-26-own-your-world-model",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "Own Your World Model",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "CYBR.SEC.Media",
+      "published_on": "2026-10-26",
+      "artifact_type": "article",
+      "summary": "A kilometer of fiber, 200 acres of farmland, construction machinery, little robots, homes and communities illustrate why cyber defence begins with a locally governed model of the actual world.",
+      "canonical_url": "https://www.cybrsecmedia.com/own-your-world-model/"
+    },
+    {
+      "stable_id": "chris-blask-2026-10-20-long-live-ship-chicken",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "Long Live Ship Chicken",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "Security Boulevard",
+      "published_on": "2026-10-20",
+      "artifact_type": "article",
+      "summary": "A meeting transcription error that invented a ship chicken becomes a warning about treating AI-generated minutes, plausible records, and fabricated governance as institutional truth.",
+      "canonical_url": "https://securityboulevard.com/2026/10/long-live-ship-chicken/"
+    },
+    {
+      "stable_id": "chris-blask-2026-10-14-playable-universe-not-game",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "The Playable Universe Is Not a Game",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "Security Boulevard",
+      "published_on": "2026-10-14",
+      "artifact_type": "article",
+      "summary": "Temporal world models can make past, present and possible futures explorable; cybersecurity must keep proposed simulations distinct from witnessed history and presently authorized operations.",
+      "canonical_url": "https://securityboulevard.com/2026/10/the-playable-universe-is-not-a-game/"
+    },
+    {
+      "stable_id": "chris-blask-2026-10-12-captcha-ai-explain",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "The CAPTCHA That Needed an AI to Explain It",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "CYBR.SEC.Media",
+      "published_on": "2026-10-12",
+      "artifact_type": "article",
+      "summary": "An incomprehensible CAPTCHA reveals how a security control can itself become an obstacle to people, obscuring whether the system serves actual humans and their work.",
+      "canonical_url": "https://www.cybrsecmedia.com/the-captcha-that-needed-an-ai-to-explain-it/"
+    },
+    {
+      "stable_id": "chris-blask-2026-10-09-save-attention",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "Save Attention",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "LinkedIn",
+      "published_on": "2026-10-09",
+      "artifact_type": "article",
+      "summary": "Beyond paying attention, organizations should preserve human attention as a finite reserve for the consequential decisions, surprises and relationships that actually require it.",
+      "canonical_url": "https://www.linkedin.com/pulse/save-attention-chris-blask-cfd7c"
+    },
+    {
+      "stable_id": "chris-blask-2026-10-06-next-chapter-make-sense",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "The Next Chapter Has to Make Sense",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "Security Boulevard",
+      "published_on": "2026-10-06",
+      "artifact_type": "article",
+      "summary": "Plausible futures emerge by building a coherent path from present reality to the next chapter, with security and governance protecting the connections rather than assuming a perfect plan.",
+      "canonical_url": "https://securityboulevard.com/2026/10/the-next-chapter-has-to-make-sense/"
+    },
+    {
+      "stable_id": "chris-blask-2026-10-03-this-is-how-you-get-ants",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "This Is How You Get Ants",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "LinkedIn",
+      "published_on": "2026-10-03",
+      "artifact_type": "article",
+      "summary": "Uses opaque and unpredictable AI-provider execution interventions as a systems-assurance example, arguing for legible failure semantics, dependency independence, and recoverable controls.",
+      "canonical_url": "https://www.linkedin.com/pulse/how-you-get-ants-chris-blask-vrdlc"
+    },
+    {
+      "stable_id": "chris-blask-2026-10-03-platform-say-no-without-why",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "When the Platform Can Say No Without Saying Why",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "CYBR.SEC.Media",
+      "published_on": "2026-10-03",
+      "artifact_type": "article",
+      "summary": "Externally governed inference and action providers create opaque availability dependencies; a safety control that can silently interrupt a critical action must enter the system's hazard model.",
+      "canonical_url": "https://www.cybrsecmedia.com/when-the-platform-can-say-no-without-saying-why/"
+    },
+    {
+      "stable_id": "chris-blask-2026-09-29-welcome-error-plane",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "Welcome to the Error Plane",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "Security Boulevard",
+      "published_on": "2026-09-29",
+      "artifact_type": "article",
+      "summary": "As speech becomes text, intent, context and action, every component can succeed while meaning drifts; security must preserve uncertainty across these semantic error planes.",
+      "canonical_url": "https://securityboulevard.com/2026/09/welcome-to-the-error-plane/"
+    },
+    {
+      "stable_id": "chris-blask-2026-09-29-goddamn-pen-blue",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "The Goddamn Pen is Blue",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "LinkedIn",
+      "published_on": "2026-09-29",
+      "artifact_type": "article",
+      "summary": "A blue lamp, AI-assisted control and an old Jim Carrey joke become a test of whether a governed system can truthfully report its capabilities, authorization and actual effects.",
+      "canonical_url": "https://www.linkedin.com/pulse/goddam-pen-blue-chris-blask-il8nc"
+    },
+    {
+      "stable_id": "chris-blask-2026-09-29-chair-attention-built",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "The Chair That Attention Built",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "Security Boulevard",
+      "published_on": "2026-09-29",
+      "artifact_type": "article",
+      "summary": "A handmade rocking chair built for guitar playing shows how skilled attention becomes useful geometry and why good security architecture must preserve the learning behind its design.",
+      "canonical_url": "https://securityboulevard.com/2026/09/the-chair-that-attention-built/"
+    },
+    {
       "stable_id": "chris-blask-2026-09-22-build-future-you-can-tolerate",
       "publication_state": "confirmed_public",
       "website_visibility": "listed",
@@ -44,20 +212,6 @@
       "canonical_url": "https://www.cybrsecmedia.com/coherence-is-not-perfection/"
     },
     {
-      "stable_id": "chris-blask-2026-09-08-sideways-driveway",
-      "publication_state": "confirmed_public",
-      "website_visibility": "listed",
-      "title": "Your Security Architecture May Be a Sideways Driveway",
-      "authors": [
-        "Chris Blask"
-      ],
-      "venue": "CYBR.SEC.Media",
-      "published_on": "2026-09-08",
-      "artifact_type": "article",
-      "summary": "Uses a misaligned driveway as a metaphor for adaptation debt: local fixes and exceptions that keep working while forcing users, systems, and agents to compensate for architecture that no longer matches real identity, authority, and data flows.",
-      "canonical_url": "https://www.cybrsecmedia.com/your-security-architecture-may-be-a-sideways-driveway/"
-    },
-    {
       "stable_id": "chris-blask-2026-09-08-willow-doesnt-restore-from-backup",
       "publication_state": "confirmed_public",
       "website_visibility": "listed",
@@ -70,6 +224,20 @@
       "artifact_type": "article",
       "summary": "Uses storm damage to Mother Willow to distinguish restoration from continuity, arguing that resilient living, institutional, and agentic systems preserve generative structure, provenance, authority, and evidence while adapting through irreversible change.",
       "canonical_url": "https://securityboulevard.com/2026/09/the-willow-doesnt-restore-from-backup/"
+    },
+    {
+      "stable_id": "chris-blask-2026-09-08-sideways-driveway",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "Your Security Architecture May Be a Sideways Driveway",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "CYBR.SEC.Media",
+      "published_on": "2026-09-08",
+      "artifact_type": "article",
+      "summary": "Uses a misaligned driveway as a metaphor for adaptation debt: local fixes and exceptions that keep working while forcing users, systems, and agents to compensate for architecture that no longer matches real identity, authority, and data flows.",
+      "canonical_url": "https://www.cybrsecmedia.com/your-security-architecture-may-be-a-sideways-driveway/"
     },
     {
       "stable_id": "chris-blask-2026-09-05-prosthetics-ai-creativity",
@@ -142,20 +310,6 @@
       "canonical_url": "https://www.linkedin.com/pulse/agent-longer-security-boundary-chris-blask-awvye"
     },
     {
-      "stable_id": "chris-blask-2026-08-25-architecture-of-liberty",
-      "publication_state": "confirmed_public",
-      "website_visibility": "listed",
-      "title": "The Architecture of Liberty",
-      "authors": [
-        "Chris Blask"
-      ],
-      "venue": "Security Boulevard",
-      "published_on": "2026-08-25",
-      "artifact_type": "article",
-      "summary": "Connects long-running experiments in distributed authority, bounded power, dissent, local autonomy, and resilient cooperation to the architecture of modern institutions and networks.",
-      "canonical_url": "https://securityboulevard.com/2026/08/the-architecture-of-liberty/"
-    },
-    {
       "stable_id": "chris-blask-2026-08-25-every-citizen-research-department",
       "publication_state": "confirmed_public",
       "website_visibility": "listed",
@@ -170,18 +324,18 @@
       "canonical_url": "https://www.linkedin.com/pulse/when-every-citizen-has-research-department-chris-blask-dcekc"
     },
     {
-      "stable_id": "chris-blask-2026-08-19-ai-governance-without-surveillance",
+      "stable_id": "chris-blask-2026-08-25-architecture-of-liberty",
       "publication_state": "confirmed_public",
       "website_visibility": "listed",
-      "title": "AI Governance Without Surveillance: The Missing Evidentiary Layer",
+      "title": "The Architecture of Liberty",
       "authors": [
         "Chris Blask"
       ],
       "venue": "Security Boulevard",
-      "published_on": "2026-08-19",
+      "published_on": "2026-08-25",
       "artifact_type": "article",
-      "summary": "Argues for a bounded evidentiary layer around consequential AI actions that preserves authority, material sources, decisions, and resulting state without turning governance into indiscriminate surveillance.",
-      "canonical_url": "https://securityboulevard.com/2026/08/ai-governance-without-surveillance-the-missing-evidentiary-layer/"
+      "summary": "Connects long-running experiments in distributed authority, bounded power, dissent, local autonomy, and resilient cooperation to the architecture of modern institutions and networks.",
+      "canonical_url": "https://securityboulevard.com/2026/08/the-architecture-of-liberty/"
     },
     {
       "stable_id": "chris-blask-2026-08-19-token-exhaustion-attacks",
@@ -196,6 +350,20 @@
       "artifact_type": "article",
       "summary": "Frames narrative attacks as resource-exhaustion attacks against finite human and institutional attention, borrowing cybersecurity concepts such as amplification, rate limiting, and incident triage.",
       "canonical_url": "https://www.cybrsecmedia.com/the-token-exhaustion-attack/"
+    },
+    {
+      "stable_id": "chris-blask-2026-08-19-ai-governance-without-surveillance",
+      "publication_state": "confirmed_public",
+      "website_visibility": "listed",
+      "title": "AI Governance Without Surveillance: The Missing Evidentiary Layer",
+      "authors": [
+        "Chris Blask"
+      ],
+      "venue": "Security Boulevard",
+      "published_on": "2026-08-19",
+      "artifact_type": "article",
+      "summary": "Argues for a bounded evidentiary layer around consequential AI actions that preserves authority, material sources, decisions, and resulting state without turning governance into indiscriminate surveillance.",
+      "canonical_url": "https://securityboulevard.com/2026/08/ai-governance-without-surveillance-the-missing-evidentiary-layer/"
     },
     {
       "stable_id": "chris-blask-2026-08-10-hacker-summer-camp",

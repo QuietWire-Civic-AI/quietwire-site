@@ -64,16 +64,16 @@ else:
         errors.append("home_library: expected exactly three curated items")
     if "/library/" not in parser.links:
         errors.append("home_library: missing Explore the Library link")
-    if "/editions/own-the-origin/" not in parser.links:
+    if "/editions/the-hive-still-makes-the-chips/" not in parser.links:
         errors.append("home_library: Edition card has the wrong destination")
     selected_ids = {item_id for _, item_id in parser.items}
     for record in publications:
         if record["stable_id"] in selected_ids and record["canonical_url"] not in parser.links:
             errors.append(f"home_library: publication {record['stable_id']} does not use its validated canonical URL")
-    if "chris-blask-2026-08-19-token-exhaustion-attacks" in output and "https://www.cybrsecmedia.com/the-token-exhaustion-attack/" not in output:
-        errors.append("home_library: Token-Exhaustion canonical URL missing")
-    if "chris-blask-2026-07-28-model-wasnt-rogue" in output and "https://securityboulevard.com/2026/07/the-model-wasnt-rogue-the-control-plane-was/" not in output:
-        errors.append("home_library: Model Wasn't Rogue canonical URL missing")
+    if "chris-blask-2026-10-26-own-your-world-model" in output and "https://www.cybrsecmedia.com/own-your-world-model/" not in output:
+        errors.append("home_library: World Model canonical URL missing")
+    if "chris-blask-2026-10-27-maintainer-was-not-npc" in output and "https://securityboulevard.com/2026/10/the-maintainer-was-not-an-npc/" not in output:
+        errors.append("home_library: Maintainer canonical URL missing")
     if output.count("data-home-library-id=") != 3:
         errors.append("home_library: unconfigured item leaked into shelf")
     if "From QuietWire" not in output or "Explore the Library" not in output:
@@ -83,9 +83,9 @@ else:
 
 resolved = resolve_home_library(home_config, editions, publications)
 if [(kind, record["edition_id"] if kind == "edition" else record["stable_id"]) for kind, record in resolved] != [
-    ("edition", "own-the-origin"),
-    ("publication", "chris-blask-2026-08-19-token-exhaustion-attacks"),
-    ("publication", "chris-blask-2026-07-28-model-wasnt-rogue"),
+    ("edition", "the-hive-still-makes-the-chips"),
+    ("publication", "chris-blask-2026-10-26-own-your-world-model"),
+    ("publication", "chris-blask-2026-10-27-maintainer-was-not-npc"),
 ]:
     errors.append("home_library: selections did not resolve from validated records in configured order")
 missing = copy.deepcopy(home_config); missing["items"][0]["id"] = "missing-edition"
@@ -94,7 +94,7 @@ duplicate = copy.deepcopy(home_config); duplicate["items"][2] = copy.deepcopy(du
 assert_rejected(duplicate, "duplicate ID")
 wrong_kind = copy.deepcopy(home_config); wrong_kind["items"][0]["kind"] = "publication"
 assert_rejected(wrong_kind, "wrong kind")
-malformed = {"items": [{"kind": "edition", "id": "own-the-origin", "extra": True}] * 3}
+malformed = {"items": [{"kind": "edition", "id": "the-hive-still-makes-the-chips", "extra": True}] * 3}
 assert_rejected(malformed, "malformed item")
 
 sitemap = (DIST / "sitemap.xml").read_text(encoding="utf-8")
