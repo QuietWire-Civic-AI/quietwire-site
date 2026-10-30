@@ -7,7 +7,7 @@ from html import escape
 
 
 MAX_EDITION_SHELF = 3
-MAX_PUBLICATION_SHELF = 3
+MAX_PUBLICATION_SHELF = 9
 AUTHORS_SHELF_MARKER = "<!-- quietwire-authors-shelf -->"
 MEDIA_SHELF_MARKER = "<!-- quietwire-media-shelf -->"
 
