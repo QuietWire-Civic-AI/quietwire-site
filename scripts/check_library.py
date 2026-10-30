@@ -91,7 +91,7 @@ else:
         errors.append("library: featured Edition is not the newest validated Edition")
     if parser.editions != min(3, max(0, len(editions) - 1)):
         errors.append("library: Editions shelf is not bounded or does not match remaining validated records")
-    if parser.publications != min(3, len(publications)):
+    if parser.publications != min(9, len(publications)):
         errors.append("library: Publications shelf is not bounded or does not match validated records")
     if "/editions/" not in parser.links or "/publications/" not in parser.links:
         errors.append("library: missing Editions or Publications collection link")
