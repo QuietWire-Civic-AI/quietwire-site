@@ -5,6 +5,7 @@ build:
 	python3 scripts/build_authors.py
 check: build
 	python3 scripts/check_publications.py
+	python3 scripts/check_reveal_visibility.py
 	python3 scripts/check_editions.py
 	python3 scripts/check_library.py
 	python3 scripts/check_media_appearances.py

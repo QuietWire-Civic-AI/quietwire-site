@@ -31,7 +31,8 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12 });
+    // Large publication groups can exceed a viewport: any intersection suffices.
+    }, { threshold: 0 });
     items.forEach((item) => observer.observe(item));
   } else {
     items.forEach((item) => item.classList.add('is-visible'));
