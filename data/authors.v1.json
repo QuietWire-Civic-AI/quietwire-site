@@ -39,6 +39,13 @@
       "profile_url": "https://ca.linkedin.com/in/chris-beall-7b2389114",
       "selected_work": [
         {
+          "kind": "Public testimony",
+          "title": "Artificial Intelligence and Canada's Democratic Institutions",
+          "venue": "House of Commons · PROC 45",
+          "summary": "October 29, 2026. QuietWire President Chris Beall addressed Parliament's study of artificial intelligence and Canada's democratic institutions.",
+          "url": "/library/media/ai-democratic-institutions-parliament-2026/"
+        },
+        {
           "kind": "Public conversation",
           "title": "A Conversation With Audrey Tang",
           "venue": "Centre for International Governance Innovation (CIGI)",

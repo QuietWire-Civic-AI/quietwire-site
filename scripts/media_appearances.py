@@ -282,8 +282,8 @@ def render_library_shelf(config: dict, series: list[dict], items: list[dict]) ->
     items_by_id = _item_map(items)
     cards: list[str] = []
     shelf = config.get("library_shelf")
-    if not isinstance(shelf, list) or len(shelf) != 3:
-        raise ManifestError("media website config requires exactly three explicit library_shelf selections")
+    if not isinstance(shelf, list) or len(shelf) != 4:
+        raise ManifestError("media website config requires exactly four explicit library_shelf selections")
     seen: set[tuple[str, str]] = set()
     for position, selection in enumerate(shelf):
         if not isinstance(selection, dict) or set(selection) != {"kind", "id"}:
@@ -320,7 +320,7 @@ def render_library_shelf(config: dict, series: list[dict], items: list[dict]) ->
         '<section class="section section-dark" data-library-media-shelf><div class="shell library-shelf" data-reveal>'
         '<div class="section-heading"><div><p class="section-kicker">Watch &amp; Listen</p>'
         '<h2>Conversations in public</h2></div><a class="text-link" href="/library/media/">All media →</a></div>'
-        f'<div class="three-grid">{"".join(cards)}</div></div></section>'
+        f'<div class="four-grid">{"".join(cards)}</div></div></section>'
     )
 
 
