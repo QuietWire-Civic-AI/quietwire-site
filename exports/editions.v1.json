@@ -2,6 +2,22 @@
   "schema_id": "quietwire.editions-manifest.v1",
   "editions": [
     {
+      "edition_id": "the-sound-of-sitting-together",
+      "release_state": "approved",
+      "website_visibility": "listed",
+      "title": "The Sound of Sitting Together",
+      "slug": "the-sound-of-sitting-together",
+      "authors": [
+        "Chris Blask",
+        "Lumina"
+      ],
+      "source_date": "2026-11-09",
+      "artifact_type": "essay",
+      "summary": "From a pre-dawn conversation about Mother Willow to a practical argument for humane AI Companions: continuity, privacy, trust and the sound of sitting together.",
+      "canonical_path": "/editions/the-sound-of-sitting-together/",
+      "body_file": "exports/editions/the-sound-of-sitting-together.html"
+    },
+    {
       "edition_id": "the-hive-still-makes-the-chips",
       "release_state": "approved",
       "website_visibility": "listed",
