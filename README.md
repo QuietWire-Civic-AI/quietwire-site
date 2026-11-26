@@ -38,6 +38,10 @@ The deeper implementation surfaces remain intact: Appliances, Pilot, Patterns, M
 
 Labs is currently an English-only first-party surface under `src/labs/`, copied as a static app. This intentionally avoids fabricating translated Labs pages while Arabic, Spanish, and Canadian-French review states remain distinct. Existing localized route bodies are preserved; their translation manifests record the English Home/Work information-architecture drift introduced on 2026-09-06.
 
+## Proposed conversational homepage
+
+The [Ask QuietWire conversational homepage specification](docs/ASK_QUIETWIRE_CONVERSATIONAL_HOMEPAGE.md) describes a public-only conversation-first entry point and separate gateway acceptance gates. This is a design proposal, not a change to the static hosting or production release contract.
+
 ## Build
 
 ```bash
