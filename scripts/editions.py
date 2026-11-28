@@ -251,8 +251,35 @@ def load_manifest(path: Path) -> list[dict]:
     return hydrated
 
 
+def _baseline_jpeg_size(body: bytes) -> tuple[int, int]:
+    """Read the dimensions of a bounded, baseline JPEG header, without a decoder."""
+    if not body.startswith(b"\xff\xd8") or not body.endswith(b"\xff\xd9"):
+        raise EditionsError("share asset must be a JPEG")
+    i = 2
+    while i < len(body):
+        if body[i] != 0xff:
+            break
+        while i < len(body) and body[i] == 0xff:
+            i += 1
+        if i >= len(body):
+            break
+        marker = body[i]
+        i += 1
+        if marker in (0xda, 0xd9) or i + 2 > len(body):
+            break
+        size = int.from_bytes(body[i:i + 2], "big")
+        if size < 2 or i + size > len(body):
+            break
+        if marker == 0xc0 and size >= 8 and body[i + 2] == 8:
+            height = int.from_bytes(body[i + 3:i + 5], "big")
+            width = int.from_bytes(body[i + 5:i + 7], "big")
+            return width, height
+        i += size
+    raise EditionsError("share asset must contain a baseline JPEG frame")
+
+
 def attach_covers(records: list[dict], covers: object, asset_root: Path) -> None:
-    """Admit only explicitly configured, local, hash-pinned WebP covers.
+    """Admit only explicit, local, hash-pinned WebP covers and JPEG share derivatives.
 
     This site-owned configuration does not extend the public body HTML allowlist
     or the Editions v1 manifest. An image path is derived from a listed slug.
@@ -264,8 +291,8 @@ def attach_covers(records: list[dict], covers: object, asset_root: Path) -> None
     for slug, cover in covers.items():
         if not isinstance(slug, str) or not ID_PATTERN.fullmatch(slug) or slug not in by_slug:
             raise EditionsError("cover must name a listed Edition slug")
-        if not isinstance(cover, dict) or set(cover) != {"alt", "caption", "sha256"}:
-            raise EditionsError("cover fields must be exactly alt, caption, sha256")
+        if not isinstance(cover, dict) or set(cover) != {"alt", "caption", "sha256", "share_sha256"}:
+            raise EditionsError("cover fields must be exactly alt, caption, sha256, share_sha256")
         alt = _plain_text(cover["alt"], "cover.alt", 0, 500)
         caption = _plain_text(cover["caption"], "cover.caption", 0, 500)
         digest = cover["sha256"]
@@ -282,7 +309,25 @@ def attach_covers(records: list[dict], covers: object, asset_root: Path) -> None
             raise EditionsError(f"invalid WebP cover for {slug}")
         if hashlib.sha256(body).hexdigest() != digest:
             raise EditionsError(f"cover hash mismatch for {slug}")
-        pending[slug] = {"src": f"/assets/editions/{slug}.webp", "alt": alt, "caption": caption}
+        share_digest = cover["share_sha256"]
+        if not isinstance(share_digest, str) or not re.fullmatch(r"[0-9a-f]{64}", share_digest):
+            raise EditionsError("share asset must carry a lowercase SHA-256")
+        share_path = cover_root / f"{slug}-share.jpg"
+        if share_path.is_symlink() or not share_path.is_file():
+            raise EditionsError(f"missing or nonregular share asset for {slug}")
+        if not 12 <= share_path.stat().st_size <= 2_000_000:
+            raise EditionsError(f"invalid share asset size for {slug}")
+        share = share_path.read_bytes()
+        if hashlib.sha256(share).hexdigest() != share_digest:
+            raise EditionsError(f"share asset hash mismatch for {slug}")
+        if _baseline_jpeg_size(share) != (1200, 630):
+            raise EditionsError(f"share asset must be 1200x630 for {slug}")
+        pending[slug] = {
+            "src": f"/assets/editions/{slug}.webp",
+            "share_src": f"/assets/editions/{slug}-share.jpg",
+            "alt": alt,
+            "caption": caption,
+        }
     for slug, cover in pending.items():
         by_slug[slug]["cover"] = cover
 
