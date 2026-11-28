@@ -106,7 +106,7 @@ class EditionsContractTests(unittest.TestCase):
             assets = Path(directory)
             (assets / "editions").mkdir()
             image = assets / "editions" / "example-edition.webp"
-            fixture = b"RIFF\\x04\\x00\\x00\\x00WEBP"
+            fixture = b"RIFF" + bytes((4, 0, 0, 0)) + b"WEBP"
             image.write_bytes(fixture)
             metadata = {"alt": 'A "quoted" willow', "caption": "An illustration", "sha256": hashlib.sha256(fixture).hexdigest()}
             self.assertEqual(render_edition_cover(records[0]), "")
