@@ -121,3 +121,7 @@ Large audio/video masters should remain outside ordinary site releases in
 QuietWire-controlled media/object storage. Editions pages can carry metadata,
 transcripts/captions, provenance, and owned media URLs while external platforms
 remain optional distribution channels.
+
+### Optional local cover art
+
+The site-owned `data/editions-site.v1.json` may explicitly configure a `covers` object keyed by an approved, listed Edition slug. Each entry contains exactly `alt`, `caption`, and the SHA-256 of the WebP asset. The renderer derives the local path `src/assets/editions/<slug>.webp`, rejects missing, symlinked, oversized, non-WebP or hash-mismatched assets, and escapes all text. The public v1 manifest and its body HTML allowlist are unchanged. The generated cover is checked against its original asset in the build; no external image host or arbitrary body markup is admitted. The editorial source retains the artwork and provenance. The first instance is The Architecture of Return, whose generated artwork is labelled as an illustration rather than a documentary photograph.

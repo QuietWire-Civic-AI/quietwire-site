@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 from html import escape
 from pathlib import Path
 
-from editions import load_manifest as load_editions_manifest, render_edition, render_editions_landing
+from editions import attach_covers, load_manifest as load_editions_manifest, render_edition, render_editions_landing
 from home_library import render_home_library
 from library import render_library
 from publications import load_manifest, render_publications
@@ -171,6 +171,7 @@ def build() -> None:
     publication_records = load_manifest(ROOT / collection["manifest"])
     editions_collection = EDITIONS_CONFIG
     edition_records = load_editions_manifest(ROOT / editions_collection["manifest"])
+    attach_covers(edition_records, editions_collection.get("covers", {}), SRC / "assets")
 
     if DIST.exists():
         shutil.rmtree(DIST)

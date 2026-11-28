@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import copy
+import hashlib
 import json
 import re
 import unicodedata
@@ -250,6 +251,53 @@ def load_manifest(path: Path) -> list[dict]:
     return hydrated
 
 
+def attach_covers(records: list[dict], covers: object, asset_root: Path) -> None:
+    """Admit only explicitly configured, local, hash-pinned WebP covers.
+
+    This site-owned configuration does not extend the public body HTML allowlist
+    or the Editions v1 manifest. An image path is derived from a listed slug.
+    """
+    if not isinstance(covers, dict):
+        raise EditionsError("Edition covers must be an object")
+    by_slug = {record["slug"]: record for record in records}
+    pending = {}
+    for slug, cover in covers.items():
+        if not isinstance(slug, str) or not ID_PATTERN.fullmatch(slug) or slug not in by_slug:
+            raise EditionsError("cover must name a listed Edition slug")
+        if not isinstance(cover, dict) or set(cover) != {"alt", "caption", "sha256"}:
+            raise EditionsError("cover fields must be exactly alt, caption, sha256")
+        alt = _plain_text(cover["alt"], "cover.alt", 0, 500)
+        caption = _plain_text(cover["caption"], "cover.caption", 0, 500)
+        digest = cover["sha256"]
+        if not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest):
+            raise EditionsError("cover must carry a lowercase SHA-256")
+        cover_root = asset_root / "editions"
+        path = cover_root / f"{slug}.webp"
+        if cover_root.is_symlink() or path.is_symlink() or not path.is_file():
+            raise EditionsError(f"missing or nonregular cover for {slug}")
+        if not 12 <= path.stat().st_size <= 2_000_000:
+            raise EditionsError(f"invalid cover size for {slug}")
+        body = path.read_bytes()
+        if body[:4] != b"RIFF" or body[8:12] != b"WEBP":
+            raise EditionsError(f"invalid WebP cover for {slug}")
+        if hashlib.sha256(body).hexdigest() != digest:
+            raise EditionsError(f"cover hash mismatch for {slug}")
+        pending[slug] = {"src": f"/assets/editions/{slug}.webp", "alt": alt, "caption": caption}
+    for slug, cover in pending.items():
+        by_slug[slug]["cover"] = cover
+
+
+def render_edition_cover(record: dict) -> str:
+    cover = record.get("cover")
+    if cover is None:
+        return ""
+    return (
+        '<figure class="edition-cover">'
+        f'<img src="{escape(cover["src"], quote=True)}" alt="{escape(cover["alt"], quote=True)}" decoding="async">'
+        f'<figcaption>{escape(cover["caption"])}</figcaption></figure>'
+    )
+
+
 def _date_label(value: str) -> str:
     parsed = date.fromisoformat(value)
     return f"{parsed.day} {parsed.strftime('%B')} {parsed.year}"
@@ -299,6 +347,7 @@ def render_edition(record: dict, base_url: str) -> str:
         '<section class="section section-cream"><div class="shell">'
         '<article class="detail-grid"><div class="detail-number">QuietWire<br>Edition</div><div>'
         f'<p class="section-kicker">By {authors}</p>'
+        f'{render_edition_cover(record)}'
         f'<div class="large-copy">{record["body_html"].rstrip()}</div>'
         '<hr>'
         f'<p class="microcopy">Canonical first-party Edition at QuietWire. Source artifact dated {date_label}. '

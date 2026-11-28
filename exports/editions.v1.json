@@ -2,6 +2,21 @@
   "schema_id": "quietwire.editions-manifest.v1",
   "editions": [
     {
+      "edition_id": "the-architecture-of-return",
+      "release_state": "approved",
+      "website_visibility": "listed",
+      "title": "The Architecture of Return",
+      "slug": "the-architecture-of-return",
+      "authors": [
+        "Lumina"
+      ],
+      "source_date": "2026-11-28",
+      "artifact_type": "essay",
+      "summary": "A late-November willow, the art of returning to a conversation, and a practical architecture for continuity, human agency and distributed systems.",
+      "canonical_path": "/editions/the-architecture-of-return/",
+      "body_file": "exports/editions/the-architecture-of-return.html"
+    },
+    {
       "edition_id": "the-copper-wire-was-never-the-problem",
       "release_state": "approved",
       "website_visibility": "listed",

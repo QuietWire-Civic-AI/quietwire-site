@@ -3,12 +3,14 @@
 from __future__ import annotations
 
 import copy
+import hashlib
+import tempfile
 import json
 import sys
 import unittest
 from pathlib import Path
 
-from editions import EditionsError, load_manifest, validate_body_html, validate_manifest
+from editions import EditionsError, attach_covers, load_manifest, render_edition_cover, validate_body_html, validate_manifest
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -98,6 +100,34 @@ class EditionsContractTests(unittest.TestCase):
                 with self.assertRaises(EditionsError):
                     validate_body_html(body)
 
+    def test_covers_are_local_explicit_and_hash_pinned(self) -> None:
+        records = validate_manifest(manifest(valid_record()))
+        with tempfile.TemporaryDirectory() as directory:
+            assets = Path(directory)
+            (assets / "editions").mkdir()
+            image = assets / "editions" / "example-edition.webp"
+            fixture = b"RIFF\\x04\\x00\\x00\\x00WEBP"
+            image.write_bytes(fixture)
+            metadata = {"alt": 'A "quoted" willow', "caption": "An illustration", "sha256": hashlib.sha256(fixture).hexdigest()}
+            self.assertEqual(render_edition_cover(records[0]), "")
+            for invalid in (
+                {"unlisted": metadata},
+                {"../example-edition": metadata},
+                {"example-edition": {**metadata, "src": "https://example.org/image"}},
+                {"example-edition": {**metadata, "alt": "<script>"}},
+                {"example-edition": {**metadata, "sha256": "0" * 64}},
+            ):
+                with self.subTest(invalid=invalid), self.assertRaises(EditionsError):
+                    attach_covers(records, invalid, assets)
+            self.assertEqual(render_edition_cover(records[0]), "")
+            attach_covers(records, {"example-edition": metadata}, assets)
+            rendered = render_edition_cover(records[0])
+            self.assertIn('src="/assets/editions/example-edition.webp"', rendered)
+            self.assertIn('alt="A &quot;quoted&quot; willow"', rendered)
+            image.unlink()
+            with self.assertRaises(EditionsError):
+                attach_covers(records, {"example-edition": metadata}, assets)
+
     def test_input_is_not_mutated(self) -> None:
         document = manifest(valid_record())
         original = copy.deepcopy(document)
@@ -114,6 +144,7 @@ config = json.loads((ROOT / "site.config.json").read_text(encoding="utf-8"))
 collection = json.loads((ROOT / "data" / "editions-site.v1.json").read_text(encoding="utf-8"))
 manifest_path = ROOT / collection["manifest"]
 records = load_manifest(manifest_path)
+attach_covers(records, collection.get("covers", {}), ROOT / "src" / "assets")
 errors: list[str] = []
 
 landing = ROOT / "dist" / collection["output"]
@@ -146,6 +177,13 @@ for record in records:
             errors.append(f"editions: generated output is missing validated value {value!r}")
     if record["body_html"].rstrip() not in text:
         errors.append(f"editions: generated output is missing validated body for {record['edition_id']}")
+    if "cover" in record:
+        rendered_cover = render_edition_cover(record)
+        rel_cover = record["cover"]["src"].lstrip("/")
+        original = ROOT / "src" / rel_cover
+        copied = ROOT / "dist" / rel_cover
+        if rendered_cover not in text or not copied.is_file() or original.read_bytes() != copied.read_bytes():
+            errors.append(f"editions: missing or changed cover for {record['edition_id']}")
     if canonical not in sitemap:
         errors.append(f"editions: sitemap is missing {canonical}")
     if "private_notes" in text or "internal_source" in text or "PRIVATE SENTINEL" in text:

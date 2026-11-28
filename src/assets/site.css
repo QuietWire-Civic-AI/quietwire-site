@@ -509,3 +509,8 @@ h3 { font-size: 1.4rem; }
   .language-switcher > summary { width: fit-content; margin-inline-start: auto; }
   .language-menu { position: static; margin-block-start: 8px; margin-inline-start: auto; width: min(100%, 230px); }
 }
+
+/* Approved, locally hosted Editions cover artwork. */
+.edition-cover { margin: 0 0 2rem; max-width: 880px; }
+.edition-cover img { width: 100%; height: auto; border-radius: 12px; }
+.edition-cover figcaption { margin-top: .65rem; font-size: .9rem; }
