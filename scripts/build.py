@@ -126,6 +126,19 @@ def render_document(
 ) -> str:
     links, alternates = language_data if language_data is not None else language_links(page, locale)
     urls = {item["key"]: locale_path(item, locale) for item in locale["pages"]}
+    cover = page.get("edition_cover")
+    social_image = CONFIG["base_url"] + (cover["share_src"] if cover else "/assets/quietwire-og.png")
+    og_image_details = ""
+    twitter_image_details = ""
+    if cover:
+        alt = escape(cover["alt"], quote=True)
+        og_image_details = (
+            '\n  <meta property="og:image:type" content="image/jpeg">'
+            '\n  <meta property="og:image:width" content="1200">'
+            '\n  <meta property="og:image:height" content="630">'
+            f'\n  <meta property="og:image:alt" content="{alt}">'
+        )
+        twitter_image_details = f'\n  <meta name="twitter:image:alt" content="{alt}">'
     return replace(layout, {
         "lang": escape(locale["id"]),
         "direction": escape(locale["direction"]),
@@ -144,6 +157,10 @@ def render_document(
         "page_key": escape(page["key"]),
         "canonical_url": canonical_url(page, locale),
         "base_url": CONFIG["base_url"],
+        "social_type": "article" if cover else "website",
+        "social_image": escape(social_image, quote=True),
+        "og_image_details": og_image_details,
+        "twitter_image_details": twitter_image_details,
         "structured_data": structured_data(shell["metadata"]["site_name"]),
         "site_name": shell["metadata"]["site_name"],
         "navigation": navigation(page["key"], shell, locale),
@@ -254,6 +271,8 @@ def build() -> None:
             "title": f'{record["title"]} — QuietWire Editions',
             "description": record["summary"],
         }
+        if "cover" in record:
+            edition_page["edition_cover"] = record["cover"]
         if locale_path(edition_page, editions_locale) != record["canonical_path"]:
             raise ValueError(f'Edition route mismatch for {record["edition_id"]}')
         edition_output = DIST / relative_output

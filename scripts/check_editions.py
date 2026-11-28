@@ -9,6 +9,7 @@ import json
 import sys
 import unittest
 from pathlib import Path
+from html.parser import HTMLParser
 
 from editions import EditionsError, attach_covers, load_manifest, render_edition_cover, validate_body_html, validate_manifest
 
@@ -108,7 +109,12 @@ class EditionsContractTests(unittest.TestCase):
             image = assets / "editions" / "example-edition.webp"
             fixture = b"RIFF" + bytes((4, 0, 0, 0)) + b"WEBP"
             image.write_bytes(fixture)
-            metadata = {"alt": 'A "quoted" willow', "caption": "An illustration", "sha256": hashlib.sha256(fixture).hexdigest()}
+            share_path = assets / "editions" / "example-edition-share.jpg"
+            # Minimal synthetic baseline SOF0 header: 8 bit, 630x1200.
+            # This is a header-validator fixture, not a decodable image.
+            share_fixture = bytes.fromhex("ffd8 ffc0 000b 08 0276 04b0 01 011100 ffd9")
+            share_path.write_bytes(share_fixture)
+            metadata = {"alt": 'A "quoted" willow', "caption": "An illustration", "sha256": hashlib.sha256(fixture).hexdigest(), "share_sha256": hashlib.sha256(share_fixture).hexdigest()}
             self.assertEqual(render_edition_cover(records[0]), "")
             for invalid in (
                 {"unlisted": metadata},
@@ -116,6 +122,8 @@ class EditionsContractTests(unittest.TestCase):
                 {"example-edition": {**metadata, "src": "https://example.org/image"}},
                 {"example-edition": {**metadata, "alt": "<script>"}},
                 {"example-edition": {**metadata, "sha256": "0" * 64}},
+                {"example-edition": {**metadata, "share_sha256": "0" * 64}},
+                {"example-edition": {**metadata, "share_src": "https://example.org/image.jpg"}},
             ):
                 with self.subTest(invalid=invalid), self.assertRaises(EditionsError):
                     attach_covers(records, invalid, assets)
@@ -124,6 +132,15 @@ class EditionsContractTests(unittest.TestCase):
             rendered = render_edition_cover(records[0])
             self.assertIn('src="/assets/editions/example-edition.webp"', rendered)
             self.assertIn('alt="A &quot;quoted&quot; willow"', rendered)
+            self.assertEqual(records[0]["cover"]["share_src"], "/assets/editions/example-edition-share.jpg")
+            share_path.unlink()
+            with self.assertRaises(EditionsError):
+                attach_covers(records, {"example-edition": metadata}, assets)
+            bad_share = share_fixture.replace(bytes.fromhex("0276"), bytes.fromhex("0275"))
+            share_path.write_bytes(bad_share)
+            with self.assertRaises(EditionsError):
+                attach_covers(records, {"example-edition": {**metadata, "share_sha256": hashlib.sha256(bad_share).hexdigest()}}, assets)
+            share_path.write_bytes(share_fixture)
             image.unlink()
             with self.assertRaises(EditionsError):
                 attach_covers(records, {"example-edition": metadata}, assets)
@@ -146,6 +163,43 @@ manifest_path = ROOT / collection["manifest"]
 records = load_manifest(manifest_path)
 attach_covers(records, collection.get("covers", {}), ROOT / "src" / "assets")
 errors: list[str] = []
+
+
+class SocialMeta(HTMLParser):
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.values = {}
+        self.in_head = False
+
+    def handle_starttag(self, tag, attrs):
+        if tag == "head":
+            self.in_head = True
+        if tag == "meta" and self.in_head:
+            a = dict(attrs)
+            key = a.get("property") or a.get("name")
+            if key:
+                self.values.setdefault(key, []).append(a.get("content"))
+
+    def handle_endtag(self, tag):
+        if tag == "head":
+            self.in_head = False
+
+
+def check_social(text, expected, label):
+    parser = SocialMeta()
+    parser.feed(text)
+    for key, value in expected.items():
+        if parser.values.get(key) != [value]:
+            errors.append(f"editions: {label} missing or duplicate {key}: {parser.values.get(key)}")
+    for key in ("og:image:type", "og:image:width", "og:image:height", "og:image:alt", "twitter:image:alt"):
+        if key not in expected and key in parser.values:
+            errors.append(f"editions: {label} unexpected {key}")
+
+
+default_share = config["base_url"] + "/assets/quietwire-og.png"
+check_social((ROOT / "dist" / "index.html").read_text(encoding="utf-8"), {
+    "og:type": "website", "og:image": default_share, "twitter:image": default_share,
+}, "home")
 
 landing = ROOT / "dist" / collection["output"]
 if not landing.is_file():
@@ -177,13 +231,27 @@ for record in records:
             errors.append(f"editions: generated output is missing validated value {value!r}")
     if record["body_html"].rstrip() not in text:
         errors.append(f"editions: generated output is missing validated body for {record['edition_id']}")
+    expected_share = {"og:type": "website", "og:image": default_share, "twitter:image": default_share}
     if "cover" in record:
+        cover = record["cover"]
+        share_url = config["base_url"] + cover["share_src"]
+        expected_share = {
+            "og:type": "article", "og:image": share_url, "twitter:image": share_url,
+            "og:image:type": "image/jpeg", "og:image:width": "1200", "og:image:height": "630",
+            "og:image:alt": cover["alt"], "twitter:image:alt": cover["alt"],
+        }
+        rel_share = cover["share_src"].lstrip("/")
+        original_share = ROOT / "src" / rel_share
+        copied_share = ROOT / "dist" / rel_share
+        if not copied_share.is_file() or original_share.read_bytes() != copied_share.read_bytes():
+            errors.append(f"editions: missing or changed social image for {record['edition_id']}")
         rendered_cover = render_edition_cover(record)
         rel_cover = record["cover"]["src"].lstrip("/")
         original = ROOT / "src" / rel_cover
         copied = ROOT / "dist" / rel_cover
         if rendered_cover not in text or not copied.is_file() or original.read_bytes() != copied.read_bytes():
             errors.append(f"editions: missing or changed cover for {record['edition_id']}")
+    check_social(text, expected_share, record["edition_id"])
     if canonical not in sitemap:
         errors.append(f"editions: sitemap is missing {canonical}")
     if "private_notes" in text or "internal_source" in text or "PRIVATE SENTINEL" in text:
@@ -205,3 +273,5 @@ print("PASS: Editions v2 requires explicit approved release state plus listed we
 print("PASS: Editions v2 rejects private fields, malformed routes, duplicates, and executable body markup")
 print(f"PASS: {len(records)} first-party Edition record(s) render at canonical QuietWire routes")
 print("PASS: Editions remains an explicit English-source surface without fabricated translations")
+
+print("PASS: illustrated Editions advertise one verified article-specific JPEG in Open Graph and Twitter metadata; other pages retain fallback")
